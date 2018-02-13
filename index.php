@@ -28,7 +28,7 @@ index.php
 <body>
 <header>
     <div class="top">
-        <div class="wraper">
+        <div class="wrapper">
             <div class="top-container">
                 <div class="logo"><img src="images/logo-oeverdef.png"></div>
                 <div class="site-name"> De oever</div>
@@ -38,7 +38,7 @@ index.php
 
 </header>
 
-<div class="wraper">
+<div class="wrapper">
     <h1>De wegwijzer</h1>
     <div class="node-container">
         <?php
