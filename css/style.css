@@ -1,27 +1,31 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Feb 12, 2018, 3:16:23 PM
-    Author     : carlos.solis.reyes
-*/
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
+/*Normalize*/
+*,
+*::after,
+*::before {
+ margin: 0;
+ padding: 0;
+ box-sizing: inherit; 
 }
 
+html {
+ font-size: 62.5%; 
+}
+body {
+ font-family: 'Montserrat', sans-serif;    
+ box-sizing: border-box; 
+}
+
+/*header*/
+
 .top{
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,00aded+76,00aded+76,2ba2f2+100,29b8e5+100 */
+
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(left, #ffffff 0%, #00aded 76%, #00aded 76%, #2ba2f2 100%, #29b8e5 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left, #ffffff 0%,#00aded 76%,#00aded 76%,#2ba2f2 100%,#29b8e5 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, #ffffff 0%,#00aded 76%,#00aded 76%,#2ba2f2 100%,#29b8e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#29b8e5',GradientType=1 ); /* IE6-9 */
 }
-.wraper{
+.wrapper{
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -33,35 +37,6 @@ body {
 .top-container{
     flex-direction: row;
 }
-.node-container{
-    flex-direction: column;
-}
-.item{
-    background-color: #1f87c1;
-    color: white;
-    margin-top: 15px;
-    padding: 4%;
-}
-.node1{
-    order: 1;
-}
-.node2{
-    
-    order: 2;
-}
-.node3{
-    
-    order: 3;
-}
-.node4{
-    
-    order: 4;
-}
-
-.item a {
-    text-decoration: none;
-    color: white;
-}
 
 .logo{
     align-self: flex-start;
@@ -70,6 +45,7 @@ body {
 }
 .logo img {
     width: 100%;
+    height:auto;
 }
 
 .site-name{
@@ -79,3 +55,24 @@ body {
     font-size: 35px;
     color: #ffffff;
 }
+/*content*/
+
+.node-container{
+    flex-direction: column;
+}
+.item{
+    background-color: #1f87c1;
+    color: white;
+    margin-top: 15px;
+    padding: 4%;
+}
+
+
+.item a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
