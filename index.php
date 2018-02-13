@@ -21,10 +21,10 @@ index.php
     <link rel="shortcut icon" href="images/favico.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favico.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="vendors/asBreadcrumbs/asBreadcrumbs.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-        <script>
-    </script>
     <title>De wegwijzer | oever</title>
 </head>
 <body>
@@ -43,6 +43,17 @@ index.php
 <div class="wrapper">
     <h1>De wegwijzer</h1>
     <!-- BREADCRAMBS DOES NOT WERK!!! I added new version of jQuery and it stopped working -->
+
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Getting Started</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Document</a></li>
+        <li><a href="#">Components</a></li>
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">Customize</a></li>
+        <li class="active">Data</li>
+    </ol>
 
     <!-- <div class="breadCrumbHolder module">
                 <div id="breadCrumb" class="breadCrumb module">
@@ -86,6 +97,8 @@ index.php
 <!-- JAVASCRIPT AND JQUERY LIBRARIES -->
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="vendors/asBreadcrumbs/jquery-asBreadcrumbs.min.js"></script>
+<script src="vendors/bootstrap.min.js"></script>
 <script>
     //fallback if dowloading from CDN is not successful
     window.jQuery || document.write("<script src='Js\/jquery.js'><\/script>");
@@ -100,7 +113,10 @@ index.php
     var id;
     var string;
     $(document).ready(function() {
-        $("#breadCrumb").jBreadCrumb();
+        /* $("#breadCrumb").jBreadCrumb(); */
+        $('.breadcrumb').asBreadcrumbs({
+            namespace: 'breadcrumb'
+        });
 
         $('.node-container').on('click', '.item', function(){
             // every div with class .item or .text have id, and we give this id to ajax as parent element
@@ -114,6 +130,7 @@ index.php
                 method: 'get',              //with get method
                 data: {id: id},             //give id as parametr 
                 success: function (data) {
+                    localStorage.setItem("data", data);
                     string = '';
                     //loop through elements in JSON array
                     $.each(data, function(index, element) {
