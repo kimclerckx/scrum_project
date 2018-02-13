@@ -49,7 +49,7 @@ index.php
     </div>
 </div>
 <?php
-// put your code here
+// test
 ?>
 </body>
 </html>
