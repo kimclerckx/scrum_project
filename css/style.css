@@ -10,6 +10,7 @@
 html {
  font-size: 62.5%; 
 }
+
 body {
  font-family: 'Montserrat', sans-serif;    
  box-sizing: border-box; 
@@ -60,18 +61,18 @@ body {
 .node-container{
     flex-direction: column;
 }
-.item{
+
+.item, .text {
     background-color: #1f87c1;
     color: white;
     margin-top: 1.5rem;
     padding: 1.5rem;
 }
 
-
-.item a {
-    text-decoration: none;
-    color: white;
+.item {
+	cursor: pointer;
 }
+
 
 /*breadcrums*/
 
