@@ -2,19 +2,19 @@
 require_once 'NodeList.php';
 session_start();
 $errors = [];
-if (!isset($_SESSION['email'])) {
-    header("Location:index.php");
-}
+//if (!isset($_SESSION['email'])) {
+//    header("Location:index.php");
+//}
 
 function buildTree(array $elements, $parentID = 1)
 {
-    $structure = "<ul>";
+    $structure = '<ul class="editor-page">';
     foreach ($elements as $element) {
         if ($element['parentID'] == $parentID) {
             $structure .= "<li>" . $element['content']
-                . '<a href="NodeList.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>'. ' '
-                . '<a href="NodeList.php?action=edit&id=' . $element['ID'] . '"><i class="ion-edit"></i></a>' . ' '
-                . '<a href="NodeList.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a>';
+                . '<a href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>'. ' '
+                . '<a href="NodeEdit.php?action=edit&id=' . $element['ID'] . '"><i class="ion-edit"></i></a>' . ' '
+                . '<a href="NodeEdit.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a>';
             if ($element['hasChild'] == 1) {
                 $structure .= buildTree($elements, $element['ID']);
             }
@@ -41,6 +41,7 @@ if (isset($_SESSION['email'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../admin/css/admin-style.css">
     <link rel="stylesheet" href="../css/ionicons.min.css">
     <title>Document</title>
 </head>

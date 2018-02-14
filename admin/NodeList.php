@@ -38,4 +38,21 @@ class NodeList
         $structure .= "</ul>";
         return $structure;
     }
+    
+    function getContentByID ($id){      
+        $db = new Database();
+        $sql= "select content from nodes where ID = :id";
+        $db->executeWithParam($sql, array(array(':id', $id)));
+        $result = $db->single();
+        $db = null;
+        return $result;
+    }
+    function upDateNode($id ,$content){
+        
+        $db = new Database();
+        $sql= "update nodes set content = :content where ID = :id";
+        $db->executeWithParam($sql, array(array(':id', $id),array(':content', $content)));
+        $db = null;
+    }
+    
 }
