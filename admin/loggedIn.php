@@ -1,6 +1,10 @@
 <?php
 require_once 'NodeList.php';
 session_start();
+$errors = [];
+if (!isset($_SESSION['email'])) {
+    header("Location:index.php");
+}
 
 function buildTree(array $elements, $parentID = 1)
 {
