@@ -12,9 +12,6 @@ if (isset($_GET["action"]) && ($_GET["action"] == "replace")){
 
 $node = new NodeList();
 $content = $node->getContentByID($_GET["id"]);
-
-
-
 ?>
 
 <!doctype html>
@@ -35,10 +32,9 @@ $content = $node->getContentByID($_GET["id"]);
 <br>
 <div class="container">
     <div class="row">
-        <div class="col"></div>
-        <div class="col-10 text-center">
-            
-            <form action="NodeEdit.php?action=replace&id=2" method="post">
+        <div class="col-11">
+            <div class="form-group">
+            <form action="NodeEdit.php?action=replace&id=<?php print ($_GET["id"]);?>" method="post">
                 <textarea name="content" id="ckeditor">
                   <?php
                     print $content['content'];
@@ -47,11 +43,10 @@ $content = $node->getContentByID($_GET["id"]);
                 <script>
                     CKEDITOR.replace( 'ckeditor' );
                 </script>
-                <input type="submit" value="Opslaan">
+                <input class="btn btn-primary spacer" type="submit" value="Opslaan">
             </form>
-            
+            </div>
         </div>
-        <div class="col"></div>
     </div>
 </div>
 </body>
