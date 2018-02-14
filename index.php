@@ -42,46 +42,13 @@ index.php
 
 <div class="wrapper">
     <h1>De wegwijzer</h1>
-    <!-- BREADCRAMBS DOES NOT WERK!!! I added new version of jQuery and it stopped working -->
 
+    <!--Here begins the list for the breadcrumbs    -->
     <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Getting Started</a></li>
-        <li><a href="#">Library</a></li>
-        <li><a href="#">Document</a></li>
-        <li><a href="#">Components</a></li>
-        <li><a href="#">JavaScript</a></li>
-        <li><a href="#">Customize</a></li>
-        <li class="active">Data</li>
+        <li class="active">Home</li>
     </ol>
 
-    <!-- <div class="breadCrumbHolder module">
-                <div id="breadCrumb" class="breadCrumb module">
-                    <ul>
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Biocompare Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Product Discovery</a>
-                        </li>
-                        <li>
-                            <a href="#">Life Science Products / Laboratory Supplies</a>
-                        </li>
-                        <li>
-                            <a href="#">Kits and Assays</a>
-                        </li>
-                        <li>
-                            <a href="#">Mutagenesis Kits</a>
-                        </li>
-                        <li>
-                            Mutation Generation System&trade;
-                        </li>
-                    </ul>
-                </div>
-            </div> -->
+    <!--Generate divs for the main page   -->
     <div class="node-container">
         <?php
         //Loop through $resultset and create html for each node with content
@@ -100,52 +67,98 @@ index.php
 <script src="vendors/asBreadcrumbs/jquery-asBreadcrumbs.min.js"></script>
 <script src="vendors/bootstrap.min.js"></script>
 <script>
-    //fallback if dowloading from CDN is not successful
+    //fallback if downloading from CDN is not successful
     window.jQuery || document.write("<script src='Js\/jquery.js'><\/script>");
 </script>
--
-<!-- jBreadCrumb -->
-<script src="js/jquery.easing.1.3.js" type="text/javascript" language="JavaScript"></script>
-<script src="js/jquery.jBreadCrumb.1.1.js" type="text/javascript" language="JavaScript"></script>
 
 <!-- Our javascript code -->
 <script type="text/javascript">
     var id;
     var string;
+    var x, parent;
+
+    <!--   If document is ready, perform the code    -->
     $(document).ready(function() {
-        /* $("#breadCrumb").jBreadCrumb(); */
+
+        <!--   Using Jquery library for breadcrumbs   -->
         $('.breadcrumb').asBreadcrumbs({
             namespace: 'breadcrumb'
         });
 
+        <!--   If we click on menu divs   -->
         $('.node-container').on('click', '.item', function(){
+
+            <!--Give li elements the class : active -->
+            $( "li" ).last().removeClass('active');
+
+            <!-- Retrieve the text from clicked li -->
+            x = $( "li" ).last().text();
+
+            <!-- Add to the clicked li element a element -->
+            $( "li" ).last().html('<a href="" id="' + this.id +'">' + x +'</a>');
+
+            <!-- Add li element to the breadcrumb -->
+             string = '<li class="active">' + $(this).text() + '</li>';
+             $('.breadcrumb').append(string);
+
             // every div with class .item or .text have id, and we give this id to ajax as parent element
             // to retrieve data from database
             id = this.id;
 
             // here begins the magic
             $.ajax({
-                url: 'getContentNodes.php', 
+                url: 'getContentNodes.php',
                 dataType: 'json',           //we expect JSON array to be returned back
                 method: 'get',              //with get method
-                data: {id: id},             //give id as parametr 
-                success: function (data) {
-                    localStorage.setItem("data", data);
-                    string = '';
-                    //loop through elements in JSON array
-                    $.each(data, function(index, element) {
-                        // if it has children then give .item class, otherwise .text (.item is clickable, .text - no)
-                        if(element.hasChild == 1) {
-                            string += '<div class= "item" id ="'+ element.ID + '">' + element.content + '</div>';
-                        } else {
-                            string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '</div>';
-                        }
-                    });
-
-                    $('.node-container').html(string);
-                }
+                data: {id: id, param: 1},   //give id as parameter and also param is parameter
+                // param 1 = clicked on divs & param 2 = clicked on breadcrumb
+                success: onSuccess
             });
         });
+
+        <!-- If you click on a element in li in breadcrumbs  -->
+        $('ol').on('click', 'li a', function(e) {
+
+            <!-- Stop the natural behaviour of a elements = will not go to the link in href-->
+            e.preventDefault();
+
+            <!-- Find all the next siblings of parent element (li) of clicked a element -->
+            $(this).parent().nextAll().remove();
+
+            <!-- Make a copy of text in a element -->
+            x = $(this).html();
+
+            parent = $(this).parent();
+            <!-- Remove a element from li -->
+            $(this).remove();
+            <!-- Set the text of li element to text from a element -->
+            parent.text(x);
+
+            <!-- Every a element has id -->
+            id = this.id;
+
+            $.ajax({
+                url: 'getContentNodes.php',
+                dataType: 'json',           //we expect JSON array to be returned back
+                method: 'get',              //with get method
+                data: {id: id, param: 2},   //give id as parametr
+                success: onSuccess
+            })
+        });
+        <!-- This is the function to perform if ajax was successful performed -->
+        function onSuccess(data) {
+            string = '';
+            //loop through elements in JSON array
+            $.each(data, function(index, element) {
+                // if it has children then give .item class, otherwise .text (.item is clickable, .text - no)
+                if(element.hasChild == 1) {
+                    string += '<div class= "item" id ="'+ element.ID + '">' + element.content + '</div>';
+                } else {
+                    string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '</div>';
+                }
+            });
+            $('.node-container').html(string);
+        }
     });
 </script>
 
