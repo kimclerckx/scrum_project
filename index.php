@@ -157,6 +157,7 @@ index.php
                     string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '</div>';
                 }
             });
+
             $('.node-container').html(string);
         }
     });
