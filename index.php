@@ -59,10 +59,10 @@ index.php
         <?php
         //Loop through $resultset and create html for each node with content
         foreach ($resultSet as $value) {
-        // we create divs with class item and id (from database)
-        echo '<div class="item" id="'. $value['ID'].'">';
-        echo $value['content'];
-        echo '</div>';
+            // we create divs with class item and id (from database)
+            echo '<div class="item" id="' . $value['ID'] . '">';
+            echo $value['content'];
+            echo '</div>';
         } ?>
     </div>
 </div>
@@ -89,7 +89,7 @@ index.php
     
 
     <!--   If document is ready, perform the code    -->
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         <!--   Using Jquery library for breadcrumbs   -->
         $('.breadcrumb').asBreadcrumbs({
@@ -97,20 +97,20 @@ index.php
         });
 
         <!--   If we click on menu divs   -->
-        $('.node-container').on('click', '.item', function(){
+        $('.node-container').on('click', '.item', function () {
 
             <!--Give li elements the class : active -->
-            $( "li" ).last().removeClass('active');
+            $("li").last().removeClass('active');
 
             <!-- Retrieve the text from clicked li -->
-            x = $( "li" ).last().text();
+            x = $("li").last().text();
 
             <!-- Add to the clicked li element a element -->
-            $( "li" ).last().html('<a href="" id="' + this.id +'">' + x +'</a>');
+            $("li").last().html('<a href="" id="' + this.id + '">' + x + '</a>');
 
             <!-- Add li element to the breadcrumb -->
-             string = '<li class="active">' + $(this).text() + '</li>';
-             $('.breadcrumb').append(string);
+            string = '<li class="active">' + $(this).text() + '</li>';
+            $('.breadcrumb').append(string);
 
             // every div with class .item or .text have id, and we give this id to ajax as parent element
             // to retrieve data from database
@@ -128,7 +128,7 @@ index.php
         });
 
         <!-- If you click on a element in li in breadcrumbs  -->
-        $('ol').on('click', 'li a', function(e) {
+        $('ol').on('click', 'li a', function (e) {
 
             <!-- Stop the natural behaviour of a elements = will not go to the link in href-->
             e.preventDefault();
@@ -156,14 +156,15 @@ index.php
                 success: onSuccess
             })
         });
+
         <!-- This is the function to perform if ajax was successful performed -->
         function onSuccess(data) {
             string = '';
             //loop through elements in JSON array
-            $.each(data, function(index, element) {
+            $.each(data, function (index, element) {
                 // if it has children then give .item class, otherwise .text (.item is clickable, .text - no)
-                if(element.hasChild == 1) {
-                    string += '<div class= "item" id ="'+ element.ID + '">' + element.content + '</div>';
+                if (element.hasChild == 1) {
+                    string += '<div class= "item" id ="' + element.ID + '">' + element.content + '</div>';
                 } else {
                     if (element.button == 0) {
                         string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '</div>';
@@ -175,8 +176,10 @@ index.php
                     }else {string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + url + '</div>';
                        
                 } 
+                   
                 }
             });
+
             $('.node-container').html(string);
         }
     });

@@ -5,6 +5,7 @@
 
 
 
+
 CKEDITOR.editorConfig = function( config ) {
     
 	config.toolbarGroups = [
@@ -23,8 +24,8 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	 config.removeButtons = 'Cut,Copy,Anchor,Strike,Subscript,Superscript,About,Paste';
-        
-         
+    config.removeButtons = 'Cut,Copy,Anchor,Strike,Subscript,Superscript,About,Paste';
+
+
 };
 

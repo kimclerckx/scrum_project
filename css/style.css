@@ -4,16 +4,23 @@
 *::before {
  margin: 0;
  padding: 0;
- box-sizing: inherit; 
+ box-sizing: inherit;
+}
+
+a,
+a:hover {
+	color: #f5f5f5;
+	border-bottom: 1px solid #f5f5f5;
+	text-decoration: none;
 }
 
 html {
- font-size: 62.5%; 
+ font-size: 62.5%;
 }
 
 body {
- font-family: 'Montserrat', sans-serif;    
- box-sizing: border-box; 
+ font-family: 'Montserrat', sans-serif;
+ box-sizing: border-box;
 }
 
 /*header*/
@@ -101,91 +108,7 @@ body {
 	min-height: 1%;
 }
 
-/* Breadcrumb Styles
- ---------------------------------------------------------------------*/
 
-.breadCrumb
-{
-	margin: 0;
-	padding: 0;
-	float: left;
-	display: block;
-	height: 21px;
-	overflow: hidden;
-	width: 100%;
-	padding:5px;
-	border:solid 1px #dedede;
-	background:#fff;
-}
-.breadCrumb ul
-{
-	margin: 0;
-	padding: 0;
-	height: 21px;
-	display: block;
-}
-.breadCrumb ul li
-{
-	display: block;
-	float: left;
-	position: relative;
-	height: 21px;
-	overflow: hidden;
-	line-height: 21px;
-	margin: 0px 6px 0px 0;
-	padding: 0px 10px 0px 0;
-	font-size: .9167em;
-	background: url(../Images/Chevron.gif) no-repeat 100% 0;
-	min-width: 30px;
-}
-.breadCrumb ul li div.chevronOverlay
-{
-	position: absolute;
-	right: 0;
-	top: 0;
-	z-index: 2;
-}
-.breadCrumb ul li span
-{
-	display: block;
-	overflow: hidden;
-	overflow: hidden;
-	vertical-align: middle;
-	-webkit-mask-image: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(1%,rgba(255,255,255,0.99)), color-stop(100%,rgba(255,255,255,0.01)));
-}
-.breadCrumb ul li span:hover
-{
-	-webkit-mask-image:none;
-}
-.breadCrumb ul li a
-{
-	display: block;
-	position: relative;
-	height: 21px;
-	line-height: 21px;
-	overflow: hidden;
-	float: left;
-}
-.breadCrumb ul li.first a
-{
-	height: 16px !important;
-	text-indent:-1000em;
-	width:16px;
-	padding: 0;
-	margin-top: 2px;
-	overflow: hidden;
-	background:url(../Images/IconHome.gif) no-repeat 0 0;
-}
-.breadCrumb ul li.first a:hover
-{
-	background-position: 0 -16px;
-}
-.breadCrumb ul li.last
-{
-	background: none;
-	margin-right: 0;
-	padding-right: 0;
-}
 .chevronOverlay
 {
 	display: none;
@@ -194,6 +117,13 @@ body {
 	height: 20px;
 }
 
+.breadcrumb li a{
+    color: #7d7d7d;
+}
+
+.breadcrumb li.active {
+    color: #000000;
+}
 
 
 

@@ -19,11 +19,11 @@ if(isset($_POST['red']) && isset($_POST['yellow'])){
 /* Nodes updaten */
 $edit = new NodeList();
 $updated = false;
-if (isset($_GET["action"]) && ($_GET["action"] == "replace")){
+if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
     $edit_data = $_POST['content'];
     $edit->upDateNode($_GET["id"], $edit_data, $button);
     $updated = true;
-    
+  
     header ("location:loggedIn.php");
 }
 
@@ -43,7 +43,7 @@ $content = $edit->getContentByID($_GET["id"]);
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Admin Login</title>
     <script src="../ckeditor/ckeditor.js"></script>
-    
+
 </head>
 <body>
 <br>
@@ -53,7 +53,7 @@ $content = $edit->getContentByID($_GET["id"]);
         <div class="col"></div>
         <div class="col-10 text-center">
             
-            <form action="NodeEdit.php?action=replace&id=<?=$_GET["id"]?>" method="post">
+            <form action="NodeEdit.php?action=replace&id=<?= $_GET["id"]?>" method="post">
                 <textarea name="content" id="ckeditor">
                   <?php print $content['content'];?>  
                 </textarea>

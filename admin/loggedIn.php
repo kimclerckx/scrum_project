@@ -2,9 +2,11 @@
 require_once 'NodeList.php';
 session_start();
 $errors = [];
-//if (!isset($_SESSION['email'])) {
-//    header("Location:index.php");
-//}
+
+if (!isset($_SESSION['email'])) {
+    header("Location:index.php");
+}
+
 
 function buildTree(array $elements, $parentID = 1)
 {
@@ -12,7 +14,7 @@ function buildTree(array $elements, $parentID = 1)
     foreach ($elements as $element) {
         if ($element['parentID'] == $parentID) {
             $structure .= "<li>" . $element['content']
-                . '<a href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>'. ' '
+                . '<a href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>' . ' '
                 . '<a href="NodeEdit.php?action=edit&id=' . $element['ID'] . '"><i class="ion-edit"></i></a>' . ' '
                 . '<a href="NodeEdit.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a>';
             if ($element['hasChild'] == 1) {
@@ -27,13 +29,18 @@ function buildTree(array $elements, $parentID = 1)
     $structure .= "</ul>";
     return $structure;
 }
-$test = new NodeList();
+
+$nodeList = new NodeList();
 /**
  * @var Node $node
  */
 if (isset($_SESSION['email'])) {
     $welcome = ' Hello ' . $_SESSION['email'] . ' : you are now logged in.';
 }
+//if (isset($_SESSION['password'])) {
+//    echo ' Uw wachtwoord is nu gewijzigd.';
+//    unset($_SESSION['password']);
+//}
 ?>
 <!doctype html>
 <html lang="en">
@@ -61,12 +68,14 @@ if (isset($_SESSION['email'])) {
 
 <!-- Treeview -->
 <?php
-echo buildTree($test->getAllNodes());
+echo buildTree($nodeList->getAllNodes());
 ?>
 <!-- End of Treeview -->
 <br/><br/>
 <div class="text-center">
     <a class="btn btn-primary" href="logout.php">Logout ?</a>
+    <br/><br/>
+    <a class="btn btn-primary" href="passwordChange.php">Wijzig wachtwoord</a>
 </div>
 </body>
 </html>
