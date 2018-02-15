@@ -19,6 +19,9 @@ function buildTree(array $elements, $parentID = 1)
                 $structure .= buildTree($elements, $element['ID']);
             }
             $structure .= "</li>";
+            
+                        
+            
         }
     }
     $structure .= "</ul>";
@@ -53,6 +56,9 @@ if (isset($_SESSION['email'])) {
     ?>
 </div>
 <br/><br/>
+<!-- Edit contact button-->
+<p><a href="contact.php" target="_self">Pas contactgegevens aan </a></p>
+
 <!-- Treeview -->
 <?php
 echo buildTree($test->getAllNodes());

@@ -9,7 +9,7 @@ CKEDITOR.editorConfig = function( config ) {
     
 	config.toolbarGroups = [
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+		{ name: 'clipboard', groups: [ 'clipboard', 'undo'] },
 		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
 		{ name: 'forms', groups: [ 'forms' ] },
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
@@ -23,7 +23,8 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	config.removeButtons = 'Cut,Copy,Anchor,Strike,Subscript,Superscript,About,Paste';
-       
+	 config.removeButtons = 'Cut,Copy,Anchor,Strike,Subscript,Superscript,About,Paste';
+        
+         
 };
 

@@ -1,5 +1,6 @@
 <?php
     //connection to database
+    
     require_once 'Database.php';
     $db = new Database();
     //Select all the nodes with parentID 1 except the first dummy
@@ -8,6 +9,9 @@
     $db->executeWithoutParam($sql);
     //Fetch all the data
     $resultSet = $db->resultset();
+    $sql2 = 'SELECT * FROM contact';
+    $db->executeWithoutParam($sql2);
+    $result= $db->single();
     $db = null;
 ?>
 <!DOCTYPE html>
@@ -39,7 +43,9 @@ index.php
     </div>
 
 </header>
-
+    
+<?php echo '<div id="phone" name="'.$result['phone'] .'"></div>';?>
+<?php echo '<div id="link" name="'.$result['link'] .'"></div>';?>
 <div class="wrapper">
     <h1>De wegwijzer</h1>
 
@@ -73,9 +79,14 @@ index.php
 
 <!-- Our javascript code -->
 <script type="text/javascript">
+    var ph = '<a href=tel:"'+ document.getElementById("phone").getAttribute("name")+'" class="phone">Bel met een medewerker</a>';
+    var url = '<a href="'+ document.getElementById("link").getAttribute("name")+'" class="url">Chat met een medewerker</a>';
     var id;
     var string;
     var x, parent;
+    
+    
+    
 
     <!--   If document is ready, perform the code    -->
     $(document).ready(function() {
@@ -154,7 +165,16 @@ index.php
                 if(element.hasChild == 1) {
                     string += '<div class= "item" id ="'+ element.ID + '">' + element.content + '</div>';
                 } else {
-                    string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '</div>';
+                    if (element.button == 0) {
+                        string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '</div>';
+                    } else if (element.button == 1) {
+                        string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + '</div>';
+                    } else if (element.button == 2) {
+                         string += '<div class= "text" id ="'+ element.ID + '">' + element.content + url + '</div>';
+                    
+                    }else {string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + url + '</div>';
+                       
+                } 
                 }
             });
             $('.node-container').html(string);
@@ -165,3 +185,5 @@ index.php
 
 </body>
 </html>
+        
+   
