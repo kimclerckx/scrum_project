@@ -3,7 +3,7 @@ require_once 'NodeList.php';
 session_start();
 $errors = [];
 if (!isset($_SESSION['email'])) {
-   header("Location:index.php");
+    header("Location:index.php");
 }
 
 function buildTree(array $elements, $parentID = 1)
@@ -12,7 +12,7 @@ function buildTree(array $elements, $parentID = 1)
     foreach ($elements as $element) {
         if ($element['parentID'] == $parentID) {
             $structure .= "<li>" . $element['content']
-                . '<a href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>'. ' '
+                . '<a href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>' . ' '
                 . '<a href="NodeEdit.php?action=edit&id=' . $element['ID'] . '"><i class="ion-edit"></i></a>' . ' '
                 . '<a href="NodeEdit.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a>';
             if ($element['hasChild'] == 1) {
@@ -24,6 +24,7 @@ function buildTree(array $elements, $parentID = 1)
     $structure .= "</ul>";
     return $structure;
 }
+
 $nodeList = new NodeList();
 /**
  * @var Node $node

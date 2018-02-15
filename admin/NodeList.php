@@ -1,6 +1,7 @@
 <?php
 require_once 'Node.php';
 require_once '../Database.php';
+
 class NodeList
 {
     public function getAllNodes()
@@ -38,21 +39,24 @@ class NodeList
         $structure .= "</ul>";
         return $structure;
     }
-    
-    function getContentByID ($id){      
+
+    function getContentByID($id)
+    {
         $db = new Database();
-        $sql= "select content from nodes where ID = :id";
+        $sql = "SELECT content FROM nodes WHERE ID = :id";
         $db->executeWithParam($sql, array(array(':id', $id)));
         $result = $db->single();
         $db = null;
         return $result;
     }
-    function upDateNode($id ,$content){
-        
+
+    function upDateNode($id, $content)
+    {
+
         $db = new Database();
-        $sql= "update nodes set content = :content where ID = :id";
-        $db->executeWithParam($sql, array(array(':id', $id),array(':content', $content)));
+        $sql = "UPDATE nodes SET content = :content WHERE ID = :id";
+        $db->executeWithParam($sql, array(array(':id', $id), array(':content', $content)));
         $db = null;
     }
-    
+
 }

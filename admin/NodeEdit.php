@@ -2,12 +2,12 @@
 
 require_once 'NodeList.php';
 $updated = false;
-if (isset($_GET["action"]) && ($_GET["action"] == "replace")){
+if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
     $edit_data = $_POST['content'];
     $edit = new NodeList();
     $edit->upDateNode($_GET["id"], $edit_data);
     $updated = true;
-    header ("location:loggedIn.php");
+    header("location:loggedIn.php");
 }
 
 $node = new NodeList();
@@ -25,7 +25,7 @@ $content = $node->getContentByID($_GET["id"]);
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Admin Login</title>
     <script src="../ckeditor/ckeditor.js"></script>
-    
+
 </head>
 <body>
 <br>
@@ -34,17 +34,17 @@ $content = $node->getContentByID($_GET["id"]);
     <div class="row">
         <div class="col-11">
             <div class="form-group">
-            <form action="NodeEdit.php?action=replace&id=<?php print ($_GET["id"]);?>" method="post">
+                <form action="NodeEdit.php?action=replace&id=<?php print ($_GET["id"]); ?>" method="post">
                 <textarea name="content" id="ckeditor">
                   <?php
-                    print $content['content'];
+                  print $content['content'];
                   ?>  
                 </textarea>
-                <script>
-                    CKEDITOR.replace( 'ckeditor' );
-                </script>
-                <input class="btn btn-primary spacer" type="submit" value="Opslaan">
-            </form>
+                    <script>
+                        CKEDITOR.replace('ckeditor');
+                    </script>
+                    <input class="btn btn-primary spacer" type="submit" value="Opslaan">
+                </form>
             </div>
         </div>
     </div>

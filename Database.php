@@ -1,6 +1,7 @@
 <?php
 
-class Database {
+class Database
+{
 
     private $host = "172.30.24.7:3306";
     private $user = "fontonova";
@@ -11,7 +12,8 @@ class Database {
     private $error;
     private $stmt;
 
-    public function __construct() {
+    public function __construct()
+    {
         // Set DSN
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
         // Set options
@@ -23,24 +25,26 @@ class Database {
         // Create a new PDO instance
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-        }
-            // Catch any errors
+        } // Catch any errors
         catch (PDOException $e) {
             $this->error = $e->getMessage();
         }
     }
 
-    public function prepare($query) {
+    public function prepare($query)
+    {
         $this->stmt = $this->dbh->prepare($query);
     }
 
-    public function execute() {
+    public function execute()
+    {
         return $this->stmt->execute();
     }
 
     // bind with parameters
     //$array is array of arrays with parameters : see instructions below
-    public function bind($array) {
+    public function bind($array)
+    {
         foreach ($array as $row) {
             if (!isset($row[2])) {
                 switch (true) {
@@ -70,7 +74,8 @@ class Database {
 
         $db->executeWithParam ($sql, array(array(':title', $title), array(':body', $body), array(':author', $author)));
    */
-    public function executeWithParam($sql, $arr) {
+    public function executeWithParam($sql, $arr)
+    {
         $this->prepare($sql);
         $this->bind($arr);
         $this->execute();
@@ -78,20 +83,24 @@ class Database {
 
     //executeWithoutParam does prepare and execute
     //$sql is normal sql without parameters
-    public function executeWithoutParam($sql) {
+    public function executeWithoutParam($sql)
+    {
         $this->prepare($sql);
         $this->execute();
     }
 
-    public function resultset() {
+    public function resultset()
+    {
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function single() {
+    public function single()
+    {
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function rowCount() {
+    public function rowCount()
+    {
         return $this->stmt->rowCount();
     }
 }
