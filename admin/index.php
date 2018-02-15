@@ -92,6 +92,8 @@ if (isset($_POST['login'])) {
                 </div>
                 <button type="submit" class="btn btn-primary" name="login">Login</button>
             </form>
+            <br><br>
+            <a class="btn btn-primary" href="passwordReset.php">Reset wachtwoord</a>
         </div>
         <div class="col"></div>
     </div>
