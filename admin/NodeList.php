@@ -54,6 +54,7 @@ class NodeList
         $db->executeWithParam($sql, array(array(':id', $id),array(':content', $content),array(':button', $button)));
         $db = null;
     }
+
     public function deleteNodes($ids){
        $stringIds = implode(",",$ids);
        $db = new Database();
@@ -88,3 +89,5 @@ class NodeList
         return $result;
     }
 }
+
+   

@@ -59,6 +59,16 @@ if (isset($_POST['add'])) {
  
 }
 
+if (isset($_POST['add'])) {
+    
+    
+    $edit_data = $_POST['content'];
+    $edit->upDateNode($_GET["id"], $edit_data, $button);
+    $updated = true;
+  
+    header ("location:loggedIn.php");
+}
+
 //Object aanmaken
 $content = $edit->getContentByID($_GET["id"]);
 
