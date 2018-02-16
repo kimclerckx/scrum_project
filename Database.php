@@ -3,14 +3,9 @@
 class Database
 {
 
-  //  private $host = "172.30.24.7:3306";
-   // private $user = "fontonova";
-   // private $pass = "GumHM4Q4-pYgzWdYA";
-   // private $dbname = "fontonova";
-    
-    private $host = "localhost";
-    private $user = "root";
-    private $pass = "";
+    private $host = "172.30.24.7:3306";
+    private $user = "fontonova";
+    private $pass = "GumHM4Q4-pYgzWdYA";
     private $dbname = "fontonova";
 
 
@@ -85,6 +80,7 @@ class Database
         $this->prepare($sql);
         $this->bind($arr);
         $result = $this->execute();
+        return $result;
     }
 
     //executeWithoutParam does prepare and execute
