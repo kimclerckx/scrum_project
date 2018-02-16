@@ -6,10 +6,6 @@ class Database
     private $user = "fontonova";
     private $pass = "GumHM4Q4-pYgzWdYA";
     private $dbname = "fontonova";
-<<<<<<< HEAD
-=======
-   
->>>>>>> 8c5748ab5e74c6acc34b6494690dd824eab3bb5d
 
     private $dbh;
     private $error;
