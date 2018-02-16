@@ -2,12 +2,10 @@
 
 class Database
 {
-
     private $host = "172.30.24.7:3306";
     private $user = "fontonova";
     private $pass = "GumHM4Q4-pYgzWdYA";
     private $dbname = "fontonova";
-
 
     private $dbh;
     private $error;

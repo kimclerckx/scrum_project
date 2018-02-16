@@ -2,20 +2,17 @@
 
 require_once 'NodeList.php';
 
-//if (!isset($_SESSION['email'])) {
-//    header("Location:index.php");
-//}
-
 /* Controleren welke button(s) er moeten toegevoegd worden. (checkboxes) */
 $button= 0;
 if(isset($_POST['red']) && isset($_POST['yellow'])){
     
     $button = 3;
 
-}elseif(isset($_POST['red']) && !isset($_POST['yellow'])){
-    
+} elseif(isset($_POST['red']) && !isset($_POST['yellow'])){
+
     $button = 1;
-}elseif(!isset($_POST['red']) && isset($_POST['yellow'])){
+    
+} elseif(!isset($_POST['red']) && isset($_POST['yellow'])){
     
     $button = 2;
 }

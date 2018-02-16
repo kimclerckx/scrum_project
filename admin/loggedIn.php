@@ -1,23 +1,34 @@
 <?php
 require_once 'NodeList.php';
 session_start();
-$errors = [];
 
+// Check if user is logged in
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
 
+// Create new object
 $nodeList = new NodeList();
 
+// If delete button is clicked
 if (isset($_GET['action']) && $_GET['action'] == 'delete'){
+
+    // Retrieve all nodes from database 
     $nodes = $nodeList->getAllNodes();
-    $arrToDelete = $nodeList->toBeDeleted($nodes,$_GET['id']);
-//    echo '<pre>';
-   //print_r($arrToDelete);
-//    echo '</pre>';
-    //die();
-    
+    // Use recursive function to get the id of all children elements of clicked item
+    $nodeList->toBeDeleted($nodes, $_GET['id']);
+    // Push ids into array
+    $arrToDelete = $nodeList->toDelete;
+    // Push the id of the clicked element itself into array
+    array_push($arrToDelete, $_GET['id']);
+
+    // Delete nodes
     $nodeList->deleteNodes($arrToDelete);
+
+    echo "<script>
+    window.alert('Item is verwijderd');
+    window.location.href='loggedIn.php';
+   </script>";
  }
 
 function buildTree(array $elements, $parentID = 1)
@@ -39,16 +50,10 @@ function buildTree(array $elements, $parentID = 1)
     return $structure;
 }
 
-/**
- * @var Node $node
- */
 if (isset($_SESSION['email'])) {
     $welcome = ' Welkom ' . $_SESSION['email'] . ' : je bent nu ingelogd als administrator.';
 }
-//if (isset($_SESSION['password'])) {
-//    echo ' Uw wachtwoord is nu gewijzigd.';
-//    unset($_SESSION['password']);
-//}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -67,7 +72,7 @@ if (isset($_SESSION['email'])) {
 <br><br>
 <div class="text-center">
     <?php
-    print $welcome;
+        print $welcome;
     ?>
 </div>
 <br/><br/>
@@ -76,8 +81,7 @@ if (isset($_SESSION['email'])) {
 
 <!-- Treeview -->
 <?php
-echo buildTree($nodeList->getAllNodes());
-
+    echo buildTree($nodeList->getAllNodes());
 ?>
 <!-- End of Treeview -->
 <br/><br/>
