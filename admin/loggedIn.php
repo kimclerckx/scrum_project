@@ -13,9 +13,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete'){
     $nodes = $nodeList->getAllNodes();
     $arrToDelete = $nodeList->toBeDeleted($nodes,$_GET['id']);
 //    echo '<pre>';
-   print_r($arrToDelete);
+   //print_r($arrToDelete);
 //    echo '</pre>';
-    die();
+    //die();
     
     $nodeList->deleteNodes($arrToDelete);
  }
