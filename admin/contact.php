@@ -15,31 +15,21 @@ class Contact {
     public function updateContact($phone, $link) {
         $db = new Database();
         $sql = 'UPDATE contact set phone = :phone, link = :link where ID =1';
-        $result = $db->executeWithParam($sql, array(array(':phone', $phone), array(':link', $link)));
+        $db->executeWithParam($sql, array(array(':phone', $phone), array(':link', $link)));
         $db = null;
-        return $result;
     }
 
 }
-
-$updated = FALSE;
 if (isset($_GET['action']) && ($_GET['action'] == 'edit')) {
     $update = new Contact();
-    $updated = $update->updateContact($_POST['phone'], $_POST['link']);
-    
-    if ($updated) {
-        $alertMsg = 'Contactgegevens aangepast!';
-    } else {
-        $alertMsg = 'Er is een fout opgetreden. Probeer nog eens';
-    }
-    
-    echo "<script>
-    window.alert(". $alertMsg .");
+    $update->updateContact($_POST['phone'], $_POST['link']);
+    echo ("<script>
+    window.alert('Succesfully Updated');
     window.location.href='loggedIn.php';
-    </script>";
+    </script>");
 }
-
 ?>
+
 <!doctype html>
 <html lang="en">
     <head>

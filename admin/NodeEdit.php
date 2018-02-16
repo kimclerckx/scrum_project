@@ -22,38 +22,23 @@ if(isset($_POST['red']) && isset($_POST['yellow'])){
 
 /* Nodes updaten */
 $nodeList = new NodeList();
-$result = false;
 
 if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
     $edit_data = $_POST['content'];
     $result = $nodeList->upDateNode($_GET["id"], $edit_data, $button);
-    
-    if ($result) {
-        $alertMsg = 'Node aangepast!';
-    } else {
-        $alertMsg = 'Er is een fout opgetreden. Probeer nog eens';
-    }
-    
     echo "<script>
-    window.alert(". $alertMsg .");
+    window.alert('Aangepast');
     window.location.href='loggedIn.php';
-    </script>";
+   </script>";
 }
 
 if (isset($_POST['add'])) {
     
     $add_content = $_POST['content'];
     $parentid = $_POST['id'];
-    $result = $nodeList->addNode($parentid, $add_content, $button);
-    
-    if ($result) {
-        $alertMsg = 'Node toegevoegd!';
-    } else {
-        $alertMsg = 'Er is een fout opgetreden. Probeer nog eens';
-    }
-    
+   $nodeList->addNode($parentid, $add_content, $button);
     echo "<script>
-    window.alert(". $alertMsg .");
+    window.alert('Saved');
     window.location.href='loggedIn.php';
    </script>";
  

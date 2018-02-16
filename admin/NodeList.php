@@ -12,15 +12,26 @@ class NodeList
         $db = null;
         $nodeList = array();
         foreach ($resultSet as $value) {
-            $content = array();
-            $content['ID'] = $value['ID'];
-            $content['content'] = $value['content'];
-            $content['parentID'] = $value['parentID'];
-            $content['button'] = $value['button'];
-            $content['hasChild'] = $value['hasChild'];
-            array_push($nodeList, $content);
+            array_push($nodeList, $value);
         }
         return $nodeList;
+    }
+    
+    public function toBeDeleted($nodes, $parentId )
+    {   
+        //    echo '<pre>';
+   //print_r($arrToDelete);
+//    echo '</pre>';
+    //die();
+        $toDelete = array();
+        foreach ($nodes as $node) {
+            if ($node['parentID'] == $parentId) {
+                array_push($toDelete, $node["ID"]);
+                if ($node['hasChild'] == 1) {
+                    $this->toBeDeleted($nodes, $node['ID']);
+                }
+            }
+        }
     }
 
 //    function buildTree(array $elements, $parentID = 1)
@@ -55,36 +66,26 @@ class NodeList
         $db = null;
     }
 
-    public function deleteNodes($ids){
-       $stringIds = implode(",",$ids);
-       $db = new Database();
-       $sql = "DELETE FROM nodes WHERE ID = :id";
-       $db->executeWithParam($sql, array(array(':id', $stringIds)));
-       $db = null;
-       }
-
-    public function toBeDeleted(array $nodes,$parentId )
-    {   
-        $toDelete = array();
-        foreach ($nodes as $node) {
-            if ($node['parentID'] == $parentId) {
-                array_push($toDelete, $node["ID"]);
-                if ($node['hasChild'] == 1) {
-                    $this->toBeDeleted($nodes, $node['ID']);
-            }
-     
+    function deleteNodes($ids){
+        $db = new Database();
+        $sql = "DELETE FROM nodes WHERE ID = :id";
+        foreach ($ids as $id) {
+            $db->executeWithParam($sql, array(array(':id', $id)));
         }
-    }
-        
- 
-        return $toDelete;
+        $db = null;
     }
   
     // Add new node
     function addNode($parentId ,$content, $button){ 
         $db = new Database();
-        $sql= "insert nodes content = :content, parentId = :parenrtId, button = :button ";
+        $sql = 'INSERT INTO nodes(content, parentId, button)
+        VALUES (:content, :parentId, :button)';
         $result = $db->executeWithParam($sql, array(array(':content', $content), array(':parentId', $parentId), array(':button', $button)));
+        
+               
+        $sql= "update nodes set hasChild = '1' where ID = :id";
+        $db->executeWithParam($sql, array(array(':id', $parentId)));
+        
         $db = null;
         return $result;
     }

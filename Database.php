@@ -79,7 +79,6 @@ class Database
         $this->prepare($sql);
         $this->bind($arr);
         $result = $this->execute();
-        return $result;
     }
 
     //executeWithoutParam does prepare and execute
