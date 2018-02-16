@@ -79,16 +79,16 @@ if (isset($_POST['login'])) {
         <div class="col-4 text-center">
             <form action="index.php" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="Enter email" name="email">
-                    <small id="emailHelp" class="form-text text-muted">Please input your admin login email.</small>
+                           placeholder="Admin email" name="email">
+                    <small id="emailHelp" class="form-text text-muted">Geef de admin login email in.</small>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                    <label for="exampleInputPassword1">Wachtwoord</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Admin wachtwoord"
                            name="password">
-                    <small id="emailHelp" class="form-text text-muted">Please input your admin login password.</small>
+                    <small id="emailHelp" class="form-text text-muted">Geef het admin login wachtwoord in.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="login">Login</button>
             </form>
