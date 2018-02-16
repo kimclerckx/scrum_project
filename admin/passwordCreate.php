@@ -13,23 +13,21 @@ if (isset($_POST['create'])) {
 
     //3. Check if fields are empty
     if (empty($passwordNew)) {
-        $errors[] = "Password is required!";
+        $errors[] = "Wachtwoord is verplicht.";
     }
     if (empty($passwordConfirmNew)) {
-        $errors[] = "Password is required!";
+        $errors[] = "Wachtwoord herhalen is verplicht.";
     }
 
     if (count($errors) == 0) {
-        //7. Check if passwords match
+        //4. Check if passwords match and update password in the database if true
         if ($passwordNew !== $passwordConfirmNew) {
-            $errors[] = "De 2 nieuwe wachtwoorden zijn niet gelijk";
+            $errors[] = "De ingevoerde wachtwoorden zijn niet gelijk, probeer opnieuw.";
         } else {
             $sql = 'UPDATE users SET password = :password WHERE ID = :id';
             $db->executeWithParam($sql, array(array(':password', password_hash($passwordConfirmNew, PASSWORD_BCRYPT)), array(':id', $_SESSION['user_id_reset_pass'])));
             $db = null;
             require_once 'logout.php';
-//                header("Location:loggedIn.php");
-//                $_SESSION['password'] = true;
         }
     }
 }
@@ -43,7 +41,7 @@ if (isset($_POST['create'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Change password</title>
+    <title>Nieuw wachtwoord</title>
 </head>
 <body>
 <br><br>
@@ -64,7 +62,7 @@ if (isset($_POST['create'])) {
                     <input type="password" class="form-control" id="exampleInputPassword1"
                            placeholder="Herhaal je nieuwe wachtwoord"
                            name="confirmNewPassword">
-                    <small id="emailHelp" class="form-text text-muted">Voer je nieuwe wachtwoord volledig in.</small>
+                    <small id="emailHelp" class="form-text text-muted">Bevestig je nieuwe wachtwoord.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="create">Maak nieuw wachtwoord</button>
             </form>
@@ -73,7 +71,7 @@ if (isset($_POST['create'])) {
     </div>
 </div>
 <br/>
-<!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
+<!-- implode —> Join array elements with a string and use separator <br><br> in this case (showing the different error messages under each other)-->
 <p class="text-center"><?php echo implode("<br><br>", $errors); ?></p>
 </body>
 </html>

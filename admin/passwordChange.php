@@ -4,6 +4,8 @@ require_once '../Database.php';
 $errors = [];
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
+} else {
+    $welcome = ' Welkom ' . $_SESSION['email'] . ' : je bent ingelogd als administrator.';
 }
 //php for password change
 //1. Check is Password Change button is clicked
@@ -17,13 +19,13 @@ if (isset($_POST['change'])) {
 
     //3. Check if fields are empty
     if (empty($password)) {
-        $errors[] = "Password is required!";
+        $errors[] = "Wachtwoord is verplicht.";
     }
     if (empty($passwordNew)) {
-        $errors[] = "Password is required!";
+        $errors[] = "Nieuw wachtwoord is verplicht.";
     }
     if (empty($passwordConfirmNew)) {
-        $errors[] = "Password is required!";
+        $errors[] = "Herhaling van nieuw wachtwoord is verplicht.";
     }
     //4. Check if current password matches user email
     if (count($errors) == 0) {
@@ -31,28 +33,23 @@ if (isset($_POST['change'])) {
         $sql = "SELECT password FROM users WHERE email = :email";
         $db->executeWithParam($sql, array(array(':email', $email)));
         $resultSet = $db->single();
-//        echo '<pre>';
-//        print_r ($resultSet);
-//        echo '</pre>';
-//        print ($resultSet['password']);
-//        die();
+
         //5. Check if current
         if (!password_verify($password, $resultSet['password'])) {
-            $errors[] = "Password for " . $email . " is not correct";
+            $errors[] = "Wachtwoord voor  " . $email . " is niet correct.";
         }
 
         if (count($errors) == 0) {
 
             //7. Check if passwords match
             if ($passwordNew !== $passwordConfirmNew) {
-                $errors[] = "De 2 nieuwe wachtwoorden zijn niet gelijk";
+                $errors[] = "De ingevoerde wachtwoorden zijn niet gelijk, probeer opnieuw.";
             } else {
                 $sql = 'UPDATE users SET password = :password WHERE email = :email';
                 $db->executeWithParam($sql, array(array(':password', password_hash($passwordConfirmNew, PASSWORD_BCRYPT)), array(':email', $_SESSION['email'])));
                 $db = null;
                 require_once 'logout.php';
-//                header("Location:loggedIn.php");
-//                $_SESSION['password'] = true;
+
             }
         }
     }
@@ -70,8 +67,9 @@ if (isset($_POST['change'])) {
     <title>Change password</title>
 </head>
 <body>
-<?= $_SESSION['email']; ?>
-<br><br>
+<br>
+<div class="text-center"><?= $welcome?></div>
+<br>
 <div class="container">
     <div class="row">
         <div class="col"></div>
@@ -80,7 +78,7 @@ if (isset($_POST['change'])) {
                 <div class="form-group">
                     <label for="exampleInputEmail1">Huidig wachtwoord</label>
                     <input type="password" class="form-control" id="exampleInputEmail1"
-                           placeholder="Voer je wachtwoord in" name="password">
+                           placeholder="Je huidige wachtwoord" name="password">
                     <small id="emailHelp" class="form-text text-muted">Voer je huidige wachtwoord in.</small>
                 </div>
                 <div class="form-group">
@@ -95,7 +93,7 @@ if (isset($_POST['change'])) {
                     <input type="password" class="form-control" id="exampleInputPassword1"
                            placeholder="Herhaal je nieuwe wachtwoord"
                            name="confirmNewPassword">
-                    <small id="emailHelp" class="form-text text-muted">Voer je nieuwe wachtwoord volledig in.</small>
+                    <small id="emailHelp" class="form-text text-muted">Voer je nieuwe wachtwoord opnieuw in.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="change">Wijzig wachtwoord</button>
             </form>

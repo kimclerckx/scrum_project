@@ -10,7 +10,7 @@ if (isset($_POST['reset'])) {
 
 //2. Check if fields are empty
     if (empty($_POST['email'])) {
-        $errors[] = "email is required!";
+        $errors[] = "Email is verplicht.";
     } else {
 
         //3. Trim $_POST to remove accidental extra whitespace from inputs and put in variable
@@ -20,7 +20,7 @@ if (isset($_POST['reset'])) {
     //4. Validate email when there are no errors
     if (count($errors) == 0) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Email is not valid!";
+            $errors[] = "Geen geldig email adres.";
         } else {
 
             //5. Check to see if email exists in database
@@ -30,7 +30,7 @@ if (isset($_POST['reset'])) {
 
             //6. Check if email is found in database
             if ($db->rowCount() == 0) {
-                $errors[] = "Sorry, user with email : " . $email . " doesn't exist in our database";
+                $errors[] = "De gebruiker met email : " . $email . " bestaat niet in onze database.";
             }
         }
         if (count($errors) == 0) {
@@ -47,7 +47,6 @@ if (isset($_POST['reset'])) {
             //Insert the request information
             //into our password_reset_request table.
             //The SQL statement.
-
 
             $insertSql = "INSERT INTO password_reset_request (user_ID, date_requested, token) VALUES (:user_id, :date_requested, :token)";
 
@@ -105,8 +104,7 @@ if (isset($_POST['reset'])) {
                     <label for="exampleInputEmail1">Je account email</label>
                     <input type="email" class="form-control" id="exampleInputEmail1"
                            placeholder="Voer je email in" name="email">
-                    <small id="emailHelp" class="form-text text-muted">Voer het email adres in waar het tijdelijke
-                        wachtwoord naartoe gestuurd wordt.
+                    <small id="emailHelp" class="form-text text-muted">Voer het email adres van een bestaande account in.
                     </small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="reset">Reset wachtwoord</button>

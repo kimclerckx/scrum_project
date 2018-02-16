@@ -15,7 +15,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete'){
     $nodeList->deleteNodes($arrToDelete);
     }
 
-
 function buildTree(array $elements, $parentID = 1)
 {
     $structure = '<ul class="editor-page">';
@@ -29,21 +28,17 @@ function buildTree(array $elements, $parentID = 1)
                 $structure .= buildTree($elements, $element['ID']);
             }
             $structure .= "</li>";
-            
-                        
-            
         }
     }
     $structure .= "</ul>";
     return $structure;
 }
 
-
 /**
  * @var Node $node
  */
 if (isset($_SESSION['email'])) {
-    $welcome = ' Hello ' . $_SESSION['email'] . ' : you are now logged in.';
+    $welcome = ' Welkom ' . $_SESSION['email'] . ' : je bent nu ingelogd als administrator.';
 }
 //if (isset($_SESSION['password'])) {
 //    echo ' Uw wachtwoord is nu gewijzigd.';
@@ -82,7 +77,7 @@ echo buildTree($nodeList->getAllNodes());
 <!-- End of Treeview -->
 <br/><br/>
 <div class="text-center">
-    <a class="btn btn-primary" href="logout.php">Logout ?</a>
+    <a class="btn btn-primary" href="logout.php">Logout</a>
     <br/><br/>
     <a class="btn btn-primary" href="passwordChange.php">Wijzig wachtwoord</a>
 </div>
