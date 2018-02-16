@@ -83,18 +83,35 @@ body {
 
 /*buttons*/
 
+/** red **/
+
 .phone{
+    color: white;
     text-decoration: none;
     display: inline-block;
     max-width: 21rem;
     background-color: #CC0000;
-    padding: 0.25rem 1.5rem;
+    padding: 0.15rem 1.5rem;
     border-radius: 2.5rem;
 }
 
+.phone:hover{
+    
+    background-color: #990000;
+}
+.phone:active{
+    background-color: #660000;
+   
+}
 
+.phone:visited{
+    background-color: #ff7f7f;
+}
+
+
+/** yellow **/
 .url{
-    color: blue;
+    color:  #1f87c1;
     text-decoration: none;
     display: inline-block;
     max-width: 22rem;
@@ -103,6 +120,12 @@ body {
     border-radius: 2.5rem;
     background-color: #FFFF19;
 }
+.url:hover{
+    color: #1f87c1;
+    background-color: #cccc00;
+}
+
+
 
 
 /*breadcrums*/
