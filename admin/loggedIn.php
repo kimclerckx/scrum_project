@@ -11,9 +11,14 @@ $nodeList = new NodeList();
 
 if (isset($_GET['action']) && $_GET['action'] == 'delete'){
     $nodes = $nodeList->getAllNodes();
-    $arrToDelete= $nodeList->toBeDeleted($nodes,$_GET['id']);
+    $arrToDelete = $nodeList->toBeDeleted($nodes,$_GET['id']);
+//    echo '<pre>';
+   //print_r($arrToDelete);
+//    echo '</pre>';
+    //die();
+    
     $nodeList->deleteNodes($arrToDelete);
-    }
+ }
 
 function buildTree(array $elements, $parentID = 1)
 {
