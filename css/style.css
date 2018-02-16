@@ -81,6 +81,30 @@ body {
 }
 
 
+/*buttons*/
+
+.phone{
+    text-decoration: none;
+    display: inline-block;
+    max-width: 21rem;
+    background-color: #CC0000;
+    padding: 0.25rem 1.5rem;
+    border-radius: 2.5rem;
+}
+
+
+.url{
+    color: blue;
+    text-decoration: none;
+    display: inline-block;
+    max-width: 22rem;
+    padding: 0.25rem 1.5rem;
+    margin-left: 1rem;
+    border-radius: 2.5rem;
+    background-color: #FFFF19;
+}
+
+
 /*breadcrums*/
 
 /* Float Clearing
