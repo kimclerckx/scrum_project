@@ -2,9 +2,9 @@
 
 require_once 'NodeList.php';
 
-if (!isset($_SESSION['email'])) {
-    header("Location:index.php");
-}
+//if (!isset($_SESSION['email'])) {
+//    header("Location:index.php");
+//}
 
 /* Controleren welke button(s) er moeten toegevoegd worden. (checkboxes) */
 $button= 0;
@@ -55,22 +55,12 @@ if (isset($_POST['add'])) {
     echo "<script>
     window.alert(". $alertMsg .");
     window.location.href='loggedIn.php';
-    </script>";
+   </script>";
  
 }
 
-if (isset($_POST['add'])) {
-    
-    
-    $edit_data = $_POST['content'];
-    $edit->upDateNode($_GET["id"], $edit_data, $button);
-    $updated = true;
-  
-    header ("location:loggedIn.php");
-}
-
 //Object aanmaken
-$content = $edit->getContentByID($_GET["id"]);
+$content = $nodeList->getContentByID($_GET["id"]);
 
 ?>
 
@@ -134,7 +124,7 @@ $content = $edit->getContentByID($_GET["id"]);
                 
                 <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
                 
-                <input type="submit" value="add">
+                <input type="submit" value="Toevoegen" name="add">
             </form> 
             
             

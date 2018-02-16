@@ -17,6 +17,7 @@ class Contact {
         $sql = 'UPDATE contact set phone = :phone, link = :link where ID =1';
         $result = $db->executeWithParam($sql, array(array(':phone', $phone), array(':link', $link)));
         $db = null;
+        return $result;
     }
 
 }
