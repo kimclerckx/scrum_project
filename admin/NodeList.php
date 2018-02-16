@@ -23,21 +23,21 @@ class NodeList
         return $nodeList;
     }
 
-    function buildTree(array $elements, $parentID = 1)
-    {
-        $structure = "<ul>";
-        foreach ($elements as $element) {
-            if ($element['parentID'] == $parentID) {
-                $structure .= "<li>" . $element['content'];
-                if ($element['hasChild'] == 1) {
-                    $structure .= buildTree($elements, $element['ID']);
-                }
-                $structure .= "</li>";
-            }
-        }
-        $structure .= "</ul>";
-        return $structure;
-    }
+//    function buildTree(array $elements, $parentID = 1)
+//    {
+//        $structure = "<ul>";
+//        foreach ($elements as $element) {
+//            if ($element['parentID'] == $parentID) {
+//                $structure .= "<li>" . $element['content'];
+//                if ($element['hasChild'] == 1) {
+//                    $structure .= buildTree($elements, $element['ID']);
+//                }
+//                $structure .= "</li>";
+//            }
+//        }
+//        $structure .= "</ul>";
+//        return $structure;
+//    }
     
     function getContentByID ($id){      
         $db = new Database();
@@ -47,12 +47,18 @@ class NodeList
         $db = null;
         return $result;
     }
-    function upDateNode($id ,$content,$button){
-        
+    
+    function upDateNode($id ,$content,$button){ 
         $db = new Database();
         $sql= "update nodes set content = :content, button = :button where ID = :id";
         $db->executeWithParam($sql, array(array(':id', $id),array(':content', $content),array(':button', $button)));
         $db = null;
     }
     
+    function addNode($parentId ,$content,$button){ 
+        $db = new Database();
+        $sql= "insert nodes content = :content, parentId = :parenrtId, button = :button ";
+        $db->executeWithParam($sql, array(array(':content', $content),array(':parentId', $parentId),array(':button', $button)));
+        $db = null;
+    }
 }

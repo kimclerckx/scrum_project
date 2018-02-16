@@ -2,12 +2,16 @@
 
 require_once 'NodeList.php';
 
+if (!isset($_SESSION['email'])) {
+    header("Location:index.php");
+}
+
 /* Controleren welke button(s) er moeten toegevoegd worden. (checkboxes) */
 $button= 0;
 if(isset($_POST['red']) && isset($_POST['yellow'])){
     
     $button = 3;
-    
+
 }elseif(isset($_POST['red']) && !isset($_POST['yellow'])){
     
     $button = 1;
@@ -20,6 +24,16 @@ if(isset($_POST['red']) && isset($_POST['yellow'])){
 $edit = new NodeList();
 $updated = false;
 if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
+    $edit_data = $_POST['content'];
+    $edit->upDateNode($_GET["id"], $edit_data, $button);
+    $updated = true;
+  
+    header ("location:loggedIn.php");
+}
+
+if (isset($_POST['add'])) {
+    
+    
     $edit_data = $_POST['content'];
     $edit->upDateNode($_GET["id"], $edit_data, $button);
     $updated = true;
@@ -52,7 +66,9 @@ $content = $edit->getContentByID($_GET["id"]);
     <div class="row">
         <div class="col"></div>
         <div class="col-10 text-center">
-            
+            <?php 
+                if ($_GET['action'] == 'edit') {
+            ?>
             <form action="NodeEdit.php?action=replace&id=<?= $_GET["id"]?>" method="post">
                 <textarea name="content" id="ckeditor">
                   <?php print $content['content'];?>  
@@ -75,6 +91,32 @@ $content = $edit->getContentByID($_GET["id"]);
                     ?>>
                 <input type="submit" value="Opslaan">
             </form>
+            <?php 
+                } else if ($_GET['action'] == 'add') {
+            ?>  
+            
+            <form action="NodeEdit.php" method="post">
+                <textarea name="content" id="ckeditor" placeholder="Schrijf hier de nieuwe text"> </textarea>
+                <script>
+                    CKEDITOR.replace( 'ckeditor' );
+                </script>
+                
+                Knop telefoon toevoegen: <input type="checkbox" name="red">
+                Knop chat toevoegen: <input type="checkbox" name="yellow">
+                
+                <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
+                
+                <input type="submit" value="add">
+            </form> 
+            
+            
+            
+            <?php 
+                }
+            ?>
+            
+            
+            
             
         </div>
         <div class="col"></div>
