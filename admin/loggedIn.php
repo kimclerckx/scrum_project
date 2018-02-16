@@ -7,6 +7,14 @@ if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
 
+$nodeList = new NodeList();
+
+if (isset($_GET['action']) && $_GET['action'] == 'delete'){
+    $nodes = $nodeList->getAllNodes();
+    $arrToDelete= $nodeList->toBeDeleted($nodes,$_GET['id']);
+    $nodeList->deleteNodes($arrToDelete);
+    }
+
 
 function buildTree(array $elements, $parentID = 1)
 {
@@ -16,7 +24,7 @@ function buildTree(array $elements, $parentID = 1)
             $structure .= "<li>" . $element['content']
                 . '<a href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>' . ' '
                 . '<a href="NodeEdit.php?action=edit&id=' . $element['ID'] . '"><i class="ion-edit"></i></a>' . ' '
-                . '<a href="NodeEdit.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a>';
+                . '<a href="loggedIn.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a>';
             if ($element['hasChild'] == 1) {
                 $structure .= buildTree($elements, $element['ID']);
             }
@@ -30,7 +38,7 @@ function buildTree(array $elements, $parentID = 1)
     return $structure;
 }
 
-$nodeList = new NodeList();
+
 /**
  * @var Node $node
  */
@@ -69,6 +77,7 @@ if (isset($_SESSION['email'])) {
 <!-- Treeview -->
 <?php
 echo buildTree($nodeList->getAllNodes());
+
 ?>
 <!-- End of Treeview -->
 <br/><br/>

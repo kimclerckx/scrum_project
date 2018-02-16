@@ -54,5 +54,29 @@ class NodeList
         $db->executeWithParam($sql, array(array(':id', $id),array(':content', $content),array(':button', $button)));
         $db = null;
     }
-    
+    public function deleteNodes($ids){
+       $stringIds = implode(",",$ids);
+       $db = new Database();
+       $sql = "DELETE FROM nodes WHERE ID = :id";
+       $db->executeWithParam($sql, array(array(':id', $stringIds)));
+       $db = null;
+       }
+
+    public function toBeDeleted(array $nodes,$parentId )
+    {   
+        $toDelete = array();
+        foreach ($nodes as $node) {
+            if ($node['parentID'] == $parentId) {
+                array_push($toDelete, $node["ID"]);
+                if ($node['hasChild'] == 1) {
+                    $this->toBeDeleted($nodes, $node['ID']);
+            }
+     
+        }
+    }
+        
+ 
+        return $toDelete;
+    }
+  
 }

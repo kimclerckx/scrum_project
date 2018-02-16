@@ -61,7 +61,7 @@ if ($updated) {
                             Telefoon: <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
                         </div>
                         <div class="form-group">
-                            Lin<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
+                            Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
                         </div>
                         <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
                     </form>
