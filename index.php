@@ -21,9 +21,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/favico.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favico.png">
+    <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Breadcrumns CSS -->
     <link rel="stylesheet" href="vendors/asBreadcrumbs/asBreadcrumbs.min.css">
-    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="vendors/Bootstrap_3.3.7_for_Breadcrumbs/bootstrap.min.css">
+    <!-- OUR STYLES -->
     <link rel="stylesheet" href="css/style.css">
 
     <title> De wegwijzer | oever </title>
@@ -67,7 +71,7 @@
 <!-- Breadcrumns jquery -->
 <script src="vendors/asBreadcrumbs/jquery-asBreadcrumbs.min.js"></script>
 <!-- Bootstrap js -->
-<script src="vendors/bootstrap.min.js"></script>
+<script src="vendors/Bootstrap_3.3.7_for_Breadcrumbs/bootstrap.min.js"></script>
 <script>
     //fallback if downloading from CDN is not successful
     window.jQuery || document.write("<script src='Js\/jquery.js'><\/script>");
@@ -84,7 +88,7 @@
 
         // making to <a> for phone and link to chat
         var ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
-        var url = '<a href="tel:'+ link +'" class="url"> Chat met een medewerker </a>';
+        var url = '<a href="'+ link +'" class="url"> Chat met een medewerker </a>';
 
         var id, string, x, parent;
 
@@ -181,8 +185,6 @@
         }
     });
 </script>
-
-
 </body>
 </html>
         
