@@ -1,5 +1,9 @@
 <?php
 require_once '../Database.php';
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 class Contact {
 
@@ -19,6 +23,10 @@ class Contact {
         $db = null;
     }
 
+}
+
+if (!isset($_SESSION['email'])) {
+    header("Location:index.php");
 }
 
 $contact = new Contact();

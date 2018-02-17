@@ -1,6 +1,9 @@
 <?php
 require_once 'NodeList.php';
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 // Check if user is logged in
 if (!isset($_SESSION['email'])) {

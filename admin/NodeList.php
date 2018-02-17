@@ -1,6 +1,15 @@
 <?php
 require_once 'Node.php';
 require_once '../Database.php';
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+
+if (!isset($_SESSION['email'])) {
+    header("Location:index.php");
+}
+
 class NodeList
 {
     // Array to save ids of elements to be deleted
