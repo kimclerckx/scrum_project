@@ -1,23 +1,20 @@
 <?php
-    //connection to database
-    
+    // Connection to database
     require_once 'Database.php';
     $db = new Database();
-    //Select all the nodes with parentID 1 except the first dummy
+    // Select all the nodes with parentID 1 except the first dummy
     $sql = "SELECT * FROM nodes WHERE parentID = 1 AND ID != 1";
-    //see custom database file
     $db->executeWithoutParam($sql);
-    //Fetch all the data
     $resultSet = $db->resultset();
-    $sql2 = 'SELECT * FROM contact';
-    $db->executeWithoutParam($sql2);
+
+    // Contact data retrieving
+    $sql = 'SELECT * FROM contact';
+    $db->executeWithoutParam($sql);
     $result= $db->single();
     $db = null;
 ?>
+
 <!DOCTYPE html>
-<!--
-index.php
--->
 <html>
 <head>
     <meta charset="UTF-8">
@@ -29,7 +26,7 @@ index.php
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <title>De wegwijzer | oever</title>
+    <title> De wegwijzer | oever </title>
 </head>
 <body>
 <header>
@@ -41,11 +38,8 @@ index.php
             </div>
         </div>
     </div>
-
 </header>
     
-<?php echo '<div id="phone" name="'.$result['phone'] .'"></div>';?>
-<?php echo '<div id="link" name="'.$result['link'] .'"></div>';?>
 <div class="wrapper">
     <h1>De wegwijzer</h1>
 
@@ -70,7 +64,9 @@ index.php
 <!-- JAVASCRIPT AND JQUERY LIBRARIES -->
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Breadcrumns jquery -->
 <script src="vendors/asBreadcrumbs/jquery-asBreadcrumbs.min.js"></script>
+<!-- Bootstrap js -->
 <script src="vendors/bootstrap.min.js"></script>
 <script>
     //fallback if downloading from CDN is not successful
@@ -78,37 +74,38 @@ index.php
 </script>
 
 <!-- Our javascript code -->
-<script type="text/javascript">
-    var ph = '<a href=tel:"'+ document.getElementById("phone").getAttribute("name")+'" class="phone">Bel met een medewerker</a>';
-    var url = '<a href="'+ document.getElementById("link").getAttribute("name")+'" class="url">Chat met een medewerker</a>';
-    var id;
-    var string;
-    var x, parent;
-    
-    
-    
+<script type="text/javascript">   
 
-    <!--   If document is ready, perform the code    -->
+    /* If document is ready, perform the code */
     $(document).ready(function () {
 
-        <!--   Using Jquery library for breadcrumbs   -->
+        var phone = <?php echo $result['phone']; ?>;
+        var link = "<?php echo $result['link']; ?>";
+
+        // making to <a> for phone and link to chat
+        var ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
+        var url = '<a href="tel:'+ link +'" class="url"> Chat met een medewerker </a>';
+
+        var id, string, x, parent;
+
+        /* Using Jquery library for breadcrumbs */
         $('.breadcrumb').asBreadcrumbs({
             namespace: 'breadcrumb'
         });
 
-        <!--   If we click on menu divs   -->
+        /* If we click on menu divs */
         $('.node-container').on('click', '.item', function () {
 
-            <!--Give li elements the class : active -->
+            /* Give li elements the class : active */
             $("li").last().removeClass('active');
 
-            <!-- Retrieve the text from clicked li -->
+            /* Retrieve the text from clicked li */
             x = $("li").last().text();
 
-            <!-- Add to the clicked li element a element -->
+            /* Add to the clicked li element a element */
             $("li").last().html('<a href="" id="' + this.id + '">' + x + '</a>');
 
-            <!-- Add li element to the breadcrumb -->
+            /* Add li element to the breadcrumb */
             string = '<li class="active">' + $(this).text() + '</li>';
             $('.breadcrumb').append(string);
 
@@ -127,40 +124,42 @@ index.php
             });
         });
 
-        <!-- If you click on a element in li in breadcrumbs  -->
+        // If you click on a element in li in breadcrumbs 
         $('ol').on('click', 'li a', function (e) {
 
-            <!-- Stop the natural behaviour of a elements = will not go to the link in href-->
+            // Stop the natural behaviour of a elements = will not go to the link in hre
             e.preventDefault();
 
-            <!-- Find all the next siblings of parent element (li) of clicked a element -->
+            // Find all the next siblings of parent element (li) of clicked a element
             $(this).parent().nextAll().remove();
 
-            <!-- Make a copy of text in a element -->
+            // Make a copy of text in a element
             x = $(this).html();
 
             parent = $(this).parent();
-            <!-- Remove a element from li -->
+
+            // Remove a element from li
             $(this).remove();
-            <!-- Set the text of li element to text from a element -->
+
+            // Set the text of li element to text from a element
             parent.text(x);
 
-            <!-- Every a element has id -->
+            // Every a element has id
             id = this.id;
 
             $.ajax({
                 url: 'getContentNodes.php',
-                dataType: 'json',           //we expect JSON array to be returned back
-                method: 'get',              //with get method
-                data: {id: id, param: 2},   //give id as parametr
+                dataType: 'json',           // we expect JSON array to be returned back
+                method: 'get',              // with get method
+                data: {id: id, param: 2},   // give id as parametr
                 success: onSuccess
             })
         });
 
-        <!-- This is the function to perform if ajax was successful performed -->
+        // This is the function to do if ajax was successful performed
         function onSuccess(data) {
             string = '';
-            //loop through elements in JSON array
+            // loop through elements in JSON array
             $.each(data, function (index, element) {
                 // if it has children then give .item class, otherwise .text (.item is clickable, .text - no)
                 if (element.hasChild == 1) {
@@ -172,11 +171,9 @@ index.php
                         string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + '</div>';
                     } else if (element.button == 2) {
                          string += '<div class= "text" id ="'+ element.ID + '">' + element.content + url + '</div>';
-                    
-                    }else {string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + url + '</div>';
-                       
-                } 
-                   
+                    } else {
+                        string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + url + '</div>';      
+                    }    
                 }
             });
 

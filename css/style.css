@@ -1,4 +1,4 @@
-/*Normalize*/
+/* --------------- Normalize ------------------------ */
 *,
 *::after,
 *::before {
@@ -15,16 +15,16 @@ a:hover {
 }
 
 html {
- font-size: 62.5%;
+    /* Settin 1rem = 10px */
+    font-size: 62.5%;
 }
 
 body {
- font-family: 'Montserrat', sans-serif;
- box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
 }
 
-/*header*/
-
+/* --------------- Header ------------------------ */
 .top{
 
     background: #ffffff; /* Old browsers */
@@ -33,6 +33,7 @@ body {
     background: linear-gradient(to right, #ffffff 0%,#00aded 76%,#00aded 76%,#2ba2f2 100%,#29b8e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#29b8e5',GradientType=1 ); /* IE6-9 */
 }
+
 .wrapper{
     width: 80%;
     margin-left: auto;
@@ -40,32 +41,30 @@ body {
 }
 
 .node-container, .top-container{
-    display:flex;
-}
-.top-container{
-    flex-direction: row;
+    display: flex;
 }
 
-.logo{
+.logo {
     align-self: flex-start;
     flex-grow: 1;
     max-width: 10rem;
 }
+
 .logo img {
     width: 100%;
     height:auto;
 }
 
-.site-name{
+.site-name {
     align-self: flex-end;
     flex-grow: 2;
     text-align: right;
     font-size: 3.5rem;
     color: #ffffff;
 }
-/*content*/
 
-.node-container{
+/* --------------- Content ------------------------ */
+.node-container {
     flex-direction: column;
 }
 
@@ -81,11 +80,10 @@ body {
 }
 
 
-/*buttons*/
+/* --------------- Buttons ------------------------ */
+/* Red */
 
-/** red **/
-
-.phone{
+.phone {
     color: white;
     text-decoration: none;
     display: inline-block;
@@ -96,21 +94,19 @@ body {
 }
 
 .phone:hover{
-    
     background-color: #990000;
 }
+
 .phone:active{
     background-color: #660000;
-   
 }
 
-.phone:visited{
+.phone:visited {
     background-color: #ff7f7f;
 }
 
-
-/** yellow **/
-.url{
+/* Yellow */
+.url {
     color:  #1f87c1;
     text-decoration: none;
     display: inline-block;
@@ -120,49 +116,12 @@ body {
     border-radius: 2.5rem;
     background-color: #FFFF19;
 }
-.url:hover{
+.url:hover {
     color: #1f87c1;
     background-color: #cccc00;
 }
 
-
-
-
-/*breadcrums*/
-
-/* Float Clearing
- ---------------------------------------------------------------------*/
-
-.module:after
-{
-	clear: both;
-	content: ".";
-	display: block;
-	height: 0;
-	visibility: hidden;
-}
-
-/* float clearing for IE6 */
-* html .module
-{
-	height: 1%;
-	overflow: visible;
-}
-
-/* float clearing for IE7 */
-* + html .module
-{
-	min-height: 1%;
-}
-
-
-.chevronOverlay
-{
-	display: none;
-	background: url(../Images/ChevronOverlay.png) no-repeat 100% 0;
-	width: 13px;
-	height: 20px;
-}
+/* --------------- Breadcrumps ------------------------ */
 
 .breadcrumb li a{
     color: #7d7d7d;
