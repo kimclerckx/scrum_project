@@ -1,5 +1,4 @@
 <?php
-require_once 'Node.php';
 require_once '../Database.php';
 if(!isset($_SESSION)) 
 { 

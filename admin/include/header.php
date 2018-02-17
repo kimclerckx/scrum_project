@@ -11,7 +11,7 @@
     <!-- IONICONS FONT -->
     <link rel="stylesheet" href="../vendors/ionicons/css/ionicons.min.css">
     <!-- OUR STYLE FOR ADMIN -->
-    <link rel="stylesheet" href="../admin/css/admin-style.css">
+    <link rel="stylesheet" href="css/admin-style.css">
 
     <title> Admin Panel </title>
 </head>

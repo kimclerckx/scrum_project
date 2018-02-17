@@ -9,7 +9,10 @@ if(!isset($_SESSION))
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 } else {
-    echo "Welkom {$_SESSION['email']} : je bent nu ingelogd als administrator.";
+    echo '<div class="header">';
+        echo "<p>Welkom {$_SESSION['email']} : je bent nu ingelogd als administrator.</p>";
+        echo "<a class='btn btn-primary' href='logout.php'>Logout</a>";
+    echo '</div>';
 }
 
 // Create new object
@@ -41,17 +44,17 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 <!-- Including header -->
 <?php require_once ('include/header.php'); ?>
 <body>
-    <!-- Edit contact button-->
-    <p><a href="contact.php" target="_self">Pas contactgegevens aan </a></p>
-
     <!-- Treeview -->
-    <?php
-        echo $nodeList->buildTree($nodeList->getAllNodes());
-    ?>
+    <div class="jumbotron">
+        <a class="btn btn-primary" href="NodeEdit.php?action=add&id=1">Add root node </a>
+        <?php
+            echo $nodeList->buildTree($nodeList->getAllNodes());
+        ?>
+    </div>
     <!-- End of Treeview -->
 
     <div class="text-center">
-        <a class="btn btn-primary" href="logout.php">Logout</a>
+        <a class="btn btn-primary" href="contact.php" target="_self">Pas contactgegevens aan </a>
         <a class="btn btn-primary" href="passwordChange.php">Wijzig wachtwoord</a>
     </div>
 
