@@ -6,7 +6,6 @@
     $sql = "SELECT * FROM nodes WHERE parentID = 1 AND ID != 1";
     $db->executeWithoutParam($sql);
     $resultSet = $db->resultset();
-
     // Contact data retrieving
     $sql = 'SELECT * FROM contact';
     $db->executeWithoutParam($sql);
@@ -63,7 +62,6 @@
             echo '</div>';
         } ?>
     </div>
-
     <div class="back"><a href="" id="">Back</a> </div>
 </div>
 
@@ -81,27 +79,20 @@
 
 <!-- Our javascript code -->
 <script type="text/javascript">   
-
     /* If document is ready, perform the code */
     $(document).ready(function () {
-
         var phone = <?php echo $result['phone']; ?>;
         var link = "<?php echo $result['link']; ?>";
-
         // making to <a> for phone and link to chat
         var ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
         var url = '<a href="'+ link +'" class="url"> Chat met een medewerker </a>';
-
         var id, string, x, parent;
-
         /* Using Jquery library for breadcrumbs */
         $('.breadcrumb').asBreadcrumbs({
             namespace: 'breadcrumb'
         });
-
         /* If we click on menu divs */
         $('.node-container').on('click', '.item', function () {
-
             /* Give li elements the class : active */
             $("li").last().removeClass('active');
             /* Retrieve the text from clicked li */
@@ -111,9 +102,11 @@
             /* Add li element to the breadcrumb */
             string = '<li class="active">' + $(this).text() + '</li>';
             $('.breadcrumb').append(string);
+            // every div with class .item or .text have id, and we give this id to ajax as parent element
+            // to retrieve data from database
 
-            $('.back a').attr('id', this.id );
-
+            id = this.id;
+            $('.back a').attr('id', id );
             // here begins the magic
             $.ajax({
                 url: 'getContentNodes.php',
@@ -123,11 +116,7 @@
                 // param 1 = clicked on divs & param 2 = clicked on breadcrumb
                 success: onSuccess
             });
-
-
         });
-
-        
 
         // If you click on a element in li in breadcrumbs 
         $('ol').on('click', 'li a', function (e) {
@@ -144,7 +133,6 @@
             parent.text(x);
             // Every a element has id
             id = this.id;
-            
             $.ajax({
                 url: 'getContentNodes.php',
                 dataType: 'json',           // we expect JSON array to be returned back
@@ -154,10 +142,11 @@
             })
         });
 
-        $('.back a').on('click', function (e) {
+        $('.wrapper').on('click', '.back a', function (e) {
             e.preventDefault();
             id=this.id;
-            x = $('li a[id=id]');
+            id = console.log(id);
+            x = $('li a[id="' + id + '"]');
             x.triggerHandler('click');
         });
 
@@ -181,14 +170,9 @@
                     }    
                 }
             });
-
-            $('.node-container').html(string);  
-        };
-
+            $('.node-container').html(string);
+        }
     });
-
 </script>
 </body>
 </html>
-        
-   
