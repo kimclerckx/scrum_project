@@ -132,5 +132,9 @@ body {
 }
 
 
+.back a, .home a {
+    color: red !important;
+}
+
 
 

@@ -24,7 +24,7 @@
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <!-- Breadcrumns CSS -->
-    <link rel="stylesheet" href="vendors/asBreadcrumbs/asBreadcrumbs.min.css">
+    <link rel="stylesheet" href="vendors/asBreadcrumbs/css/asBreadcrumbs.css">
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="vendors/Bootstrap_3.3.7_for_Breadcrumbs/bootstrap.min.css">
     <!-- OUR STYLES -->
@@ -63,6 +63,8 @@
             echo '</div>';
         } ?>
     </div>
+
+    <div class="back"><a href="" id="">Back</a> </div>
 </div>
 
 <!-- JAVASCRIPT AND JQUERY LIBRARIES -->
@@ -102,20 +104,15 @@
 
             /* Give li elements the class : active */
             $("li").last().removeClass('active');
-
             /* Retrieve the text from clicked li */
             x = $("li").last().text();
-
             /* Add to the clicked li element a element */
             $("li").last().html('<a href="" id="' + this.id + '">' + x + '</a>');
-
             /* Add li element to the breadcrumb */
             string = '<li class="active">' + $(this).text() + '</li>';
             $('.breadcrumb').append(string);
 
-            // every div with class .item or .text have id, and we give this id to ajax as parent element
-            // to retrieve data from database
-            id = this.id;
+            $('.back a').attr('id', this.id );
 
             // here begins the magic
             $.ajax({
@@ -126,31 +123,28 @@
                 // param 1 = clicked on divs & param 2 = clicked on breadcrumb
                 success: onSuccess
             });
+
+
         });
+
+        
 
         // If you click on a element in li in breadcrumbs 
         $('ol').on('click', 'li a', function (e) {
-
             // Stop the natural behaviour of a elements = will not go to the link in hre
             e.preventDefault();
-
             // Find all the next siblings of parent element (li) of clicked a element
             $(this).parent().nextAll().remove();
-
             // Make a copy of text in a element
             x = $(this).html();
-
             parent = $(this).parent();
-
             // Remove a element from li
             $(this).remove();
-
             // Set the text of li element to text from a element
             parent.text(x);
-
             // Every a element has id
             id = this.id;
-
+            
             $.ajax({
                 url: 'getContentNodes.php',
                 dataType: 'json',           // we expect JSON array to be returned back
@@ -158,6 +152,13 @@
                 data: {id: id, param: 2},   // give id as parametr
                 success: onSuccess
             })
+        });
+
+        $('.back a').on('click', function (e) {
+            e.preventDefault();
+            id=this.id;
+            x = $('li a[id=id]');
+            x.triggerHandler('click');
         });
 
         // This is the function to do if ajax was successful performed
@@ -181,9 +182,11 @@
                 }
             });
 
-            $('.node-container').html(string);
-        }
+            $('.node-container').html(string);  
+        };
+
     });
+
 </script>
 </body>
 </html>
