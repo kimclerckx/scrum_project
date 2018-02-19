@@ -12,6 +12,8 @@
     $db->executeWithoutParam($sql);
     $result= $db->single();
     $db = null;
+
+    require_once 'logs.php';
 ?>
 
 <!DOCTYPE html>
@@ -148,6 +150,8 @@
                 // param 1 = clicked on divs & param 2 = clicked on breadcrumb
                 success: onSuccess
             });
+
+            
         });
 
 
@@ -214,6 +218,12 @@
                 }
             });
             $('.node-container').html(string);
+
+            $.ajax({
+                url: 'logs.php',
+                method: 'get',              //with get method
+                data: {id: id},   //give id as parameter and also param is parameter
+            });
         }
     });
 </script>
