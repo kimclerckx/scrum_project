@@ -5,6 +5,7 @@
  margin: 0;
  padding: 0;
  box-sizing: inherit;
+ --main-color: #74b9ff;
 }
 
 a,
@@ -20,8 +21,13 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Lato', sans-serif;
     box-sizing: border-box;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
 /* --------------- Header ------------------------ */
@@ -35,7 +41,7 @@ body {
 }
 
 .wrapper{
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -69,10 +75,28 @@ body {
 }
 
 .item, .text {
-    background-color: #1f87c1;
+    border-radius: 5px;
+    background-color: var(--main-color);
     color: white;
     margin-top: 1.5rem;
-    padding: 1.5rem;
+    padding: 1.7rem;
+
+    text-align: center;
+
+    transition: all .2s;
+    box-shadow: 0.2rem 0.2rem 1rem #aaa;
+}
+
+.item:active,
+.item:focus {
+    transform: translateY(2px);
+    background-color: #419fff;
+    box-shadow: none;
+}
+
+.item p, .text p {
+    padding: 0;
+    margin: 0;
 }
 
 .item {
@@ -122,7 +146,14 @@ body {
 }
 
 /* --------------- Breadcrumps ------------------------ */
-
+.breadcrumb {
+    padding: 0.6rem 0.6rem;
+    margin: 0;
+    background-color: #e9edf1;
+}
+.breadcrumb li {
+    font-size: 1rem;
+}
 .breadcrumb li a{
     color: #7d7d7d;
 }
@@ -131,9 +162,46 @@ body {
     color: #000000;
 }
 
+/* --------------- Back and Home buttons ------------------------ */
+.home a i, .back a i {
+    font-size: 3rem;
+    color: var(--main-color);
 
-.back a, .home a {
-    color: red !important;
+}
+
+.navigation a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.7rem;
+}
+
+.back {
+    margin-right: 2rem;
+}
+
+.back, .home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.red {
+    border: 1px solid red;
 }
 
 

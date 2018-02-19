@@ -25,10 +25,13 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favico.png">
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
     <!-- Breadcrumns CSS -->
     <link rel="stylesheet" href="vendors/asBreadcrumbs/css/asBreadcrumbs.css">
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="vendors/Bootstrap_3.3.7_for_Breadcrumbs/bootstrap.min.css">
+    <!-- IONICONS FONT -->
+    <link rel="stylesheet" href="vendors/ionicons/css/ionicons.min.css">
     <!-- OUR STYLES -->
     <link rel="stylesheet" href="css/style.css">
     <!-- START -> LINKS AND META FOR THE APP VERSION -->
@@ -72,6 +75,7 @@
     <!--Here begins the list for the breadcrumbs    -->
     <ol class="breadcrumb">
         <li class="active">Home</li>
+        <!-- <li><a>Text</a></li> -->
     </ol>
 
     <!--Generate divs for the main page   -->
@@ -89,8 +93,10 @@
     </div>
 
     <!-- Create back button -->
-    <div class="back"><a href="">Back</a></div>
-    <div class="home"><a href="" name="<?php echo $id_home; ?>">Home</a></div>
+    <div class="navigation">
+        <div class="back"><a href=""><i class="ion-ios-arrow-back"></i></a></div>
+        <div class="home"><a href="" name="<?php echo $id_home; ?>"> <i class="ion-ios-home-outline"></i> </a></div>
+    </div>
 </div>
 
 <!-- JAVASCRIPT AND JQUERY LIBRARIES -->
