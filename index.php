@@ -150,8 +150,6 @@
                 // param 1 = clicked on divs & param 2 = clicked on breadcrumb
                 success: onSuccess
             });
-
-            
         });
 
 
@@ -200,8 +198,11 @@
         // This is the function to do if ajax was successful performed
         function onSuccess(data) {
             string = '';
+            var id_element;
             // loop through elements in JSON array
             $.each(data, function (index, element) {
+                id_element = element.parentID; // this we need to do to give parent_id of clicked element to ajax to update database
+
                 // if it has children then give .item class, otherwise .text (.item is clickable, .text - no)
                 if (element.hasChild == 1) {
                     string += '<div class= "item" id ="' + element.ID + '">' + element.content + '</div>';
@@ -219,10 +220,11 @@
             });
             $('.node-container').html(string);
 
+
             $.ajax({
                 url: 'logs.php',
-                method: 'get',              //with get method
-                data: {id: id},   //give id as parameter and also param is parameter
+                method: 'get',            //with get method
+                data: {id: id_element},   //give id as parameter and also param is parameter
             });
         }
     });
