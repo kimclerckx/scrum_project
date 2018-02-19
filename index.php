@@ -6,6 +6,7 @@
     $sql = "SELECT * FROM nodes WHERE parentID = 1 AND ID != 1";
     $db->executeWithoutParam($sql);
     $resultSet = $db->resultset();
+
     // Contact data retrieving
     $sql = 'SELECT * FROM contact';
     $db->executeWithoutParam($sql);
@@ -36,7 +37,7 @@
     <div class="top">
         <div class="wrapper">
             <div class="top-container">
-                <div class="logo"><img src="images/logo-oeverdef.png"></div>
+                <div class="logo"><a href="" name="<?php echo $resultSet[0]['ID']; ?>"><img src="images/logo-oeverdef.png"></a></div>
                 <div class="site-name"> De oever</div>
             </div>
         </div>
@@ -54,6 +55,8 @@
     <!--Generate divs for the main page   -->
     <div class="node-container">
         <?php
+        $id_home = $resultSet[0]['ID'];
+
         //Loop through $resultset and create html for each node with content
         foreach ($resultSet as $value) {
             // we create divs with class item and id (from database)
@@ -62,7 +65,10 @@
             echo '</div>';
         } ?>
     </div>
-    <div class="back"><a href="" id="">Back</a> </div>
+
+    <!-- Create back button -->
+    <div class="back"><a href="">Back</a></div>
+    <div class="home"><a href="" name="<?php echo $id_home; ?>">Home</a></div>
 </div>
 
 <!-- JAVASCRIPT AND JQUERY LIBRARIES -->
@@ -86,11 +92,14 @@
         // making to <a> for phone and link to chat
         var ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
         var url = '<a href="'+ link +'" class="url"> Chat met een medewerker </a>';
+
         var id, string, x, parent;
+        
         /* Using Jquery library for breadcrumbs */
         $('.breadcrumb').asBreadcrumbs({
             namespace: 'breadcrumb'
         });
+        
         /* If we click on menu divs */
         $('.node-container').on('click', '.item', function () {
             /* Give li elements the class : active */
@@ -106,7 +115,10 @@
             // to retrieve data from database
 
             id = this.id;
-            $('.back a').attr('id', id );
+
+            // Every time we click on menu divs, change name attribute of back button to id of this div
+            $('.back a').attr('name', id);
+
             // here begins the magic
             $.ajax({
                 url: 'getContentNodes.php',
@@ -117,6 +129,7 @@
                 success: onSuccess
             });
         });
+
 
         // If you click on a element in li in breadcrumbs 
         $('ol').on('click', 'li a', function (e) {
@@ -131,8 +144,14 @@
             $(this).remove();
             // Set the text of li element to text from a element
             parent.text(x);
+            
             // Every a element has id
             id = this.id;
+            
+            // if 'a' element in breadcrumps was clicked, we need to change name attribute in 'a' elemnt in back button
+            id_1 = parent.prev().children().attr('id');
+            $('.back a').attr('name', id_1);
+
             $.ajax({
                 url: 'getContentNodes.php',
                 dataType: 'json',           // we expect JSON array to be returned back
@@ -142,14 +161,18 @@
             })
         });
 
-        $('.wrapper').on('click', '.back a', function (e) {
+        // When back or home button is clicked
+        $('.wrapper').on('click', '.back a, .home a', function (e) {
             e.preventDefault();
-            id=this.id;
-            id = console.log(id);
-            x = $('li a[id="' + id + '"]');
-            x.triggerHandler('click');
+            // 'a' element in div.back has attribute name met value = id
+            // so we take this id and then search for 'a' element with the same id in our breadcrumps
+            // then we trigger click event on this 'a' element in breadcrumps
+            id = $(this).attr('name');
+            x = $('li a[id=' + id + ']');
+            x.trigger('click');
         });
 
+    
         // This is the function to do if ajax was successful performed
         function onSuccess(data) {
             string = '';
