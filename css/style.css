@@ -33,11 +33,8 @@ body {
 /* --------------- Header ------------------------ */
 .top{
 
-    background: #ffffff; /* Old browsers */
-    background: -moz-linear-gradient(left, #ffffff 0%, #00aded 76%, #00aded 76%, #2ba2f2 100%, #29b8e5 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #ffffff 0%,#00aded 76%,#00aded 76%,#2ba2f2 100%,#29b8e5 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #ffffff 0%,#00aded 76%,#00aded 76%,#2ba2f2 100%,#29b8e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#29b8e5',GradientType=1 ); /* IE6-9 */
+    background: linear-gradient(to right, #fff, #3097ff ); 
+    margin-bottom: 2rem;
 }
 
 .wrapper{
@@ -50,10 +47,15 @@ body {
     display: flex;
 }
 
+.top-container {
+    padding: 1rem 0;
+}
+
 .logo {
     align-self: flex-start;
     flex-grow: 1;
-    max-width: 10rem;
+    max-width: 7rem;
+
 }
 
 .logo img {
@@ -63,10 +65,13 @@ body {
 
 .site-name {
     align-self: flex-end;
-    flex-grow: 2;
+    flex-grow: 1.5;
     text-align: right;
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     color: #ffffff;
+    font-family: 'Poiret One', cursive;
+    letter-spacing: 2px;
+
 }
 
 /* --------------- Content ------------------------ */
@@ -185,6 +190,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 1.7rem;
+    margin-bottom: 1.7rem;
 }
 
 .back {
@@ -197,6 +203,13 @@ body {
     align-items: center;
 }
 
+
+h1 {
+    color: #57606f;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
 
 
 
