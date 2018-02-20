@@ -76,14 +76,13 @@
     <!-- BREADCRUMBS-->
     <div id="bc1" class="btn-group btn-breadcrumb">
         <a href="#" class="btn btn-default" id="1"><i class="ion-ios-home-outline"></i></a>
-        <!-- <div class="btn btn-default">...</div> -->
+        <div class="btn btn-default">...</div>
     </div>
 
     <!-- Generate divs for the main page   -->
     <div class="node-container">
         <?php
         $id_home = $resultSet[0]['ID'];
-        echo $id_home;
 
         //Loop through $resultset and create html for each node with content
         foreach ($resultSet as $value) {
@@ -148,6 +147,14 @@
 <script type="text/javascript">   
     /* If document is ready, perform the code */
     $(document).ready(function () {
+
+   
+
+
+
+
+
+
         var id, string, x, parent, phone, link, ph, url;
 
         /* ---------- Creating buttons for bellen and chatten  ---------- */
@@ -175,7 +182,7 @@
 
             id = this.id;
 
-            
+    
 
             // here begins the magic
             $.ajax({
@@ -264,7 +271,7 @@
             $.ajax({
                 url: 'logs.php',
                 method: 'get',            // with get method
-                data: {id: id_parent},   // give id as parameter and also param is parameter
+                data: {id: id_parent, param:2},   // give id as parameter and also param is parameter
             });
         }
     });
