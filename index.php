@@ -81,7 +81,6 @@
     <!-- BREADCRUMBS-->
     <div id="bc1" class="btn-group btn-breadcrumb">
         <a href="#" class="btn btn-default" id="1"><i class="ion-ios-home-outline"></i></a>
-        <div class="btn btn-default">...</div>
     </div>
 
     <!-- Generate divs for the main page   -->
