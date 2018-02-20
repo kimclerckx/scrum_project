@@ -74,10 +74,23 @@
     
 <div class="wrapper">
     <!--Here begins the list for the breadcrumbs    -->
-    <ol class="breadcrumb">
-        <li class="active">Home</li>
+    <!-- <ol class="breadcrumb"> -->
+        <!-- <li class="active">Home</li> -->
         <!-- <li><a>Text</a></li> -->
-    </ol>
+
+        <div id="bc1" class="btn-group btn-breadcrumb">
+            <a href="#" class="btn btn-default"><i class="fa fa-home"></i></a>
+            <div class="btn btn-default">...</div>
+            <a href="#" class="btn btn-default"><div>label 1</div></a>
+            <a href="#" class="btn btn-default"><div>label 2. A very very long one to truncate</div></a>
+            <a href="#" class="btn btn-default"><div>label 3</div></a>
+            <a href="#" class="btn btn-default"><div>label 4</div></a>
+            <a href="#" class="btn btn-default"><div>label 5</div></a>
+            <a href="#" class="btn btn-default"><div>label 6. A very very long one to truncate</div></a>
+        </div>
+
+
+    <!-- </ol> -->
 
     <!--Generate divs for the main page   -->
     <div class="node-container">
