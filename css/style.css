@@ -196,7 +196,7 @@ body {
 }
 
 .navigation {
-    display: flex;
+    display: none;
     justify-content: center;
     margin-top: 1.7rem;
     margin-bottom: 1.7rem;
@@ -207,7 +207,6 @@ body {
 }
 
 .back, .home {
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -225,6 +224,11 @@ h1 {
 .red {
     border: 1px solid red;
 }
+
+.visible {
+    display: block !important;
+}
+
 
 
 
