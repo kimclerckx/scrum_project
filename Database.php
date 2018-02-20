@@ -9,7 +9,7 @@ class Database
 
     private $host = "localhost:3306";
     private $user = "root";
-    private $pass = "1111";
+    private $pass = "";
     private $dbname = "fontonova";
 
     private $dbh;
