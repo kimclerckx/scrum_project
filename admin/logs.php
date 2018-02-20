@@ -9,8 +9,6 @@ if (!isset($_GET['page'])) {
 
 if (isset($_POST['aantLogs'])) {
     $_SESSION['aantLogs'] = $_POST['aantLogs'];
-} else {
-    $_SESSION['aantLogs'] = 25;
 }
 $aantLogs = $_SESSION['aantLogs'];
 
