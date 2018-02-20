@@ -7,7 +7,7 @@ $db = new Database();
 //If we retrieve data only for divs then this ID we receive from ajax is parentID and we need to get only children with parentID = ID
 //If we retrieve data for breadcrumbs, first we find the element with given ID then find the parentID of this element and find every element with the same parentID.
 if ($_GET['param'] == 1) {
-    $sql = "SELECT * FROM nodes WHERE parentID = :id";
+    $sql = "SELECT * FROM nodes WHERE parentID = :id AND ID != 1";
 } else {
     $sql = "SELECT * FROM nodes WHERE ID = :id";
 }

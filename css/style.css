@@ -28,11 +28,11 @@ body {
     letter-spacing: 1px;
     font-weight: 400;
     text-transform: uppercase;
+    line-height: 1.8;
 }
 
 /* --------------- Header ------------------------ */
 .top{
-
     background: linear-gradient(to right, #fff, #3097ff ); 
     margin-bottom: 2rem;
 }
@@ -54,8 +54,7 @@ body {
 .logo {
     align-self: flex-start;
     flex-grow: 1;
-    max-width: 7rem;
-
+    max-width: 5.5rem;
 }
 
 .logo img {
@@ -67,11 +66,11 @@ body {
     align-self: flex-end;
     flex-grow: 1.5;
     text-align: right;
-    font-size: 2.2rem;
+    font-size: 2rem;
+    font-weight: 400;
     color: #ffffff;
     font-family: 'Poiret One', cursive;
     letter-spacing: 2px;
-
 }
 
 /* --------------- Content ------------------------ */
@@ -80,16 +79,18 @@ body {
 }
 
 .item, .text {
-    border-radius: 5px;
-    background-color: var(--main-color);
-    color: white;
     margin-top: 1.5rem;
     padding: 1.7rem;
+
+    border-radius: 5px;
+    box-shadow: 0.2rem 0.2rem 1rem #aaa;
+
+    background-color: var(--main-color);
+    color: white;
 
     text-align: center;
 
     transition: all .2s;
-    box-shadow: 0.2rem 0.2rem 1rem #aaa;
 }
 
 .item:active,
@@ -150,44 +151,34 @@ body {
     background-color: #cccc00;
 }
 
-/* --------------- Breadcrumps ------------------------ */
-.breadcrumb {
-    padding: 0.6rem 0.6rem;
-    margin: 0;
-    background-color: #e9edf1;
-}
-.breadcrumb li {
-    font-size: 1rem;
-}
-.breadcrumb li a{
-    color: #7d7d7d;
-}
-
-.breadcrumb li.active {
-    color: #000000;
-}
-
-/* --------------- Back and Home buttons ------------------------ */
-.home a i, .back a i {
-    font-size: 3rem;
-    color: var(--main-color);
 
 
+/* --------------- BACK AND HOME BUTTON ------------------------ */
+.navigation {
+    display: none;
+    justify-content: center;
+
+    margin-top: 1.7rem;
+    margin-bottom: 1.7rem;
 }
 
 .navigation a {
-    display: block;
-    width: 50px;
-    height: 50px;
-    border: 1px solid var(--main-color);
-    border-radius: 50%;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
-    transition: all .2s;
+    width: 5rem;
+    height: 5rem;
 
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+
+    transition: all .2s;
+}
+
+.home a i, .back a i {
+    font-size: 3rem;
+    color: var(--main-color);
 }
 
 .navigation a:active,
@@ -195,39 +186,119 @@ body {
     transform: translateY(2px);
 }
 
-.navigation {
-    display: none;
-    justify-content: center;
-    margin-top: 1.7rem;
-    margin-bottom: 1.7rem;
-}
-
 .back {
     margin-right: 2rem;
 }
 
-.back, .home {
-    justify-content: center;
-    align-items: center;
+/* --------------- BREADCRUMBS ------------------------ */
+#bc1 a {
+    font-size: 1rem;
+}
+
+.btn-breadcrumb .btn:not(:last-child):after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 10px solid white;
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    left: 100%;
+    z-index: 3;
+  }
+
+  .btn-breadcrumb .btn:not(:last-child):before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 10px solid rgb(173, 173, 173);
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    margin-left: 1px;
+    left: 100%;
+    z-index: 3;
+  }
+
+  .btn-breadcrumb .btn {
+    padding: 1rem 0.3rem 1rem 1.5rem;
+  }
+
+  .btn-breadcrumb .btn:first-child {
+    padding-right: 0.6rem;
+    padding-left: 1rem;
+  }
+
+  .btn-breadcrumb .btn:last-child {
+    padding-right: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  /** Default button **/
+.btn-breadcrumb .btn.btn-default:not(:last-child):after {
+    border-left: 10px solid #fff;
+}
+
+.btn-breadcrumb .btn.btn-default:not(:last-child):before {
+    border-left: 10px solid #ccc;
+}
+
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):after {
+    border-left: 10px solid #ebebeb;
+}
+
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
+    border-left: 10px solid #adadad;
+}
+
+/* The responsive part */
+.btn-breadcrumb > * > div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
+
+.btn-breadcrumb > *:nth-child(n+2) {
+    display: none;
+}
+
+/* For phones */
+@media (max-width: 767px) {
+    .btn-breadcrumb > *:nth-last-child(-n+3) {
+        display: block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 60px;
+    }
+}
+
+/* For tablets */
+@media (min-width: 768px) and (max-width:991px) {
+    .btn-breadcrumb > *:nth-last-child(-n+4) {
+        display: block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 100px;
+    }
+}
+
+/* For desktops */
+@media (min-width: 992px) {
+    .btn-breadcrumb > *:nth-last-child(-n+6) {
+        display: block;
+    } 
+    .btn-breadcrumb > * div {
+        width: 200px;
+    }
 }
 
 
-h1 {
-    color: #57606f;
-    font-family: 'Nanum Gothic Coding', monospace;
-    font-size: 2.2rem;
-    font-weight: 700;
-}
-
-
-
-.red {
-    border: 1px solid red;
-}
-
-.visible {
-    display: block !important;
-}
 /*
 Add to homescreen option bar*/
 

@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 .idea
 .vscode
 .nbproject
 /nbproject/private/
+=======
+.idea
+.vscode
+.nbproject
+*.sql
+>>>>>>> origin/master
