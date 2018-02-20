@@ -118,12 +118,12 @@
 </script>
 
 <!--Add to homescreen option bar-->
-<script src="js/addtohomescreen.js"></script>
+<script src="Js/addtohomescreen.js"></script>
 <script>
  
         
 var ath = addToHomescreen({
-debug: 'android',           // activate debug mode in ios emulation
+
 skipFirstVisit: false,	// show at first access
 icon: false,
 startDelay: 0,          // display the message right away

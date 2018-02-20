@@ -36,7 +36,7 @@
 	position: absolute;
 	z-index: 2147483641;
 	padding: 0.7em 0.6em;
-	width: 18em;
+	width: 100%;
 
 	background: #eee;
 	background-size: 100% auto;
@@ -81,8 +81,6 @@
 
 .ath-android {
 	bottom: 1.8em;
-	left: 50%;
-	margin-left: -9em;
 }
 
 /* close icon */
@@ -227,15 +225,7 @@
 
 @media only screen and (orientation: landscape) {
 	.ath-container.ath-phone {
-		width: 24em;
-	}
-
-	.ath-android.ath-phone {
-		margin-left: -12em;
-	}
-
-	.ath-ios.ath-phone {
-		margin-left: -12em;
+		width: 100%;
 	}
 
 	.ath-ios6:after {
