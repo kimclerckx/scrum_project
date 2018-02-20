@@ -96,7 +96,7 @@
     <!-- Create back button -->
     <div class="navigation">
         <div class="back"><a href=""><i class="ion-ios-arrow-back"></i></a></div>
-        <div class="home"><a href="" name="<?php echo $id_home; ?>"> <i class="ion-ios-home-outline"></i> </a></div>
+        <div class="home"><a href="" name="<?php echo $id_home; ?>"> <i class="ion-ios-home-outline"></i></a></div>
     </div>
 </div>
 
@@ -205,10 +205,10 @@
         // This is the function to do if ajax was successful performed
         function onSuccess(data) {
             string = '';
-            var id_element;
+            var id_parent;
             // loop through elements in JSON array
             $.each(data, function (index, element) {
-                id_element = element.parentID; // this we need to do to give parent_id of clicked element to ajax to update database
+                id_parent = element.parentID; // this we need to do to give parent_id of clicked element to ajax to update database
 
                 // if it has children then give .item class, otherwise .text (.item is clickable, .text - no)
                 if (element.hasChild == 1) {
@@ -225,13 +225,20 @@
                     }    
                 }
             });
+            
             $('.node-container').html(string);
 
+            // first .navigation is not visible, but if it is not root node - visible
+            if (id_parent == 1) {
+                $('.navigation').css('display', 'none');
+            } else {
+                $('.navigation').css('display', 'flex');
+            } 
 
             $.ajax({
                 url: 'logs.php',
                 method: 'get',            //with get method
-                data: {id: id_element},   //give id as parameter and also param is parameter
+                data: {id: id_parent},   //give id as parameter and also param is parameter
             });
         }
     });
