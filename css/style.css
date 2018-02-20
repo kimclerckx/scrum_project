@@ -167,6 +167,7 @@ body {
     font-size: 3rem;
     color: var(--main-color);
 
+
 }
 
 .navigation a {
@@ -179,6 +180,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: all .2s;
+
+}
+
+.navigation a:active,
+.navigation a:focus {
+    transform: translateY(2px);
 }
 
 .navigation {
