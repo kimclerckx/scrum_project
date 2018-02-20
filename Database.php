@@ -2,16 +2,16 @@
 
 class Database
 {
-     private $host = "172.30.24.7:3306";
+    private $host = "172.30.24.7:3306";
     private $user = "fontonova";
     private $pass = "GumHM4Q4-pYgzWdYA";
-    private $dbname = "fontonova"; 
-
-  /*  private $host = "localhost:3306";
-    private $user = "root";
-    private $pass = "";
     private $dbname = "fontonova";
-*/
+
+//    private $host = "localhost:3306";
+//    private $user = "root";
+//    private $pass = "";
+//    private $dbname = "fontonova";
+
     private $dbh;
     private $error;
     private $stmt;
@@ -112,5 +112,9 @@ class Database
     public function lastInsertId()
     {
         return $this->dbh->lastInsertId();
+    }
+    public function log()
+    {
+        return $this->stmt->fetch(PDO::FETCH_NUM);
     }
 }

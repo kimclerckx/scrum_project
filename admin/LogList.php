@@ -1,11 +1,13 @@
 <?php
 require_once '../Database.php';
 
-class LogList{
-    public function getAllLogs($aantLogs)
+class LogList
+{
+    public function getLogs($aantLogs, $i)
     {
+        $offset = ($i-1) * $aantLogs;
         $db = new Database();
-        $sql = "SELECT * FROM logs LIMIT  $aantLogs";
+        $sql = "SELECT * FROM logs LIMIT $aantLogs OFFSET $offset";
         $db->executeWithoutParam($sql);
         $resultSet = $db->resultset();
         $db = null;
@@ -15,16 +17,20 @@ class LogList{
         }
         return $logList;
     }
-    
-    public function getLastId(){
-        
-        $db= new Database();
-        $sql = "SELECT  MAX(ID) FROM logs ";
-        $id = $db->executeWithoutParam($sql);
+
+    public function getLogCount()
+    {
+        $db = new Database();
+        $sql = "SELECT  COUNT(*) FROM logs ";
+        $db->executeWithoutParam($sql);
+        $logCount = $db->log();
         $db = null;
-        return $id;
-        
-        
+        return reset($logCount);
     }
-    
-    }
+}
+
+/*$sql = "SELECT count(*) FROM `table` WHERE foo = bar";
+$statement = $con->prepare($sql);
+$statement->execute();
+$count = $statement->fetch(PDO::FETCH_NUM); // Return array indexed by column number
+return reset($count); // Resets array cursor and returns first value (the count)*/
