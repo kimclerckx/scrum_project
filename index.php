@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="vendors/ionicons/css/ionicons.min.css">
     <!-- OUR STYLES -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
     <!-- START -> LINKS AND META FOR THE APP VERSION -->
     <link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
@@ -55,6 +56,10 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="images/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <!--set a web app capable website-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+  
     <link rel="manifest" href="/manifest.json">
     <!-- END -> LINKS AND META FOR THE APP VERSION -->
 
@@ -115,31 +120,21 @@
 <!--Add to homescreen option bar-->
 <script src="js/addtohomescreen.js"></script>
     <script>
-            var _ath = addToHomescreen;
+ 
+        
+        var ath = addToHomescreen({
+    debug: 'android',           // activate debug mode in ios emulation
+    skipFirstVisit: false,	// show at first access
+    icon: false,
+    startDelay: 0,          // display the message right away
+    lifespan: 0,            // do not automatically kill the call out
+    displayPace: 0,         // do not obey the display pace
+    privateModeOverride: true,	// show the message in private mode
+    maxDisplayCount: 0    // do not obey the max display count
+  
+    
+});
 
-            // This is the special custom message for stock android, it has to be customized to your needs
-            var athMessages = {
-                    samsungAndroid: 'Klik hier om de pagina toe te voegen aan startscherm. This is an icon if needed: %icon',
-                    stockAndroid: 'Klik hier om de pagina toe te voegen aan startscherm. This is an icon if needed: %icon'
-            };
-
-            // Add stock browser compatibility
-            var _ua = window.navigator.userAgent;
-
-            _ath.isAndroidBrowser = _ua.indexOf('Android') > -1 && !(/Chrome\/[.0-9]*/).test(_ua);
-            _ath.isCompatible = _ath.isCompatible || _ath.isAndroidBrowser;
-            if ( _ath.OS == 'unsupported' && _ath.isAndroidBrowser ) {
-                    // additionally we check for some Samsung devices (not strictly needed)
-                    _ath.OS = (/ (GT-I9|GT-P7|SM-T2|GT-P5|GT-P3|SCH-I8)/).test(_ua) ? 'samsungAndroid' : 'stockAndroid';
-            }
-
-            _ath({
-                    message: _ath.OS in athMessages ? athMessages[_ath.OS] : '',
-
-                    // the followings are just for debug, customize the options to your needs
-                    skipFirstVisit: false,
-                    displayPace: false
-            });
          </script>
 
 
