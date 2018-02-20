@@ -121,18 +121,15 @@
 <script src="js/addtohomescreen.js"></script>
     <script>
  
-        
     var ath = addToHomescreen({
     debug: 'android',           // activate debug mode in ios emulation
     skipFirstVisit: false,	// show at first access
-    icon: false,
+    icon: false,                // Laat in de message geen icoontje van De Oever zien om plaats te besparen
     startDelay: 0,          // display the message right away
     lifespan: 0,            // do not automatically kill the call out
     displayPace: 0,         // do not obey the display pace
     privateModeOverride: true,	// show the message in private mode
     maxDisplayCount: 0    // do not obey the max display count
-  
-    
     });
 
     </script>
