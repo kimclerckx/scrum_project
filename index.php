@@ -73,29 +73,17 @@
 </header>
     
 <div class="wrapper">
-    <!--Here begins the list for the breadcrumbs    -->
-    <!-- <ol class="breadcrumb"> -->
-        <!-- <li class="active">Home</li> -->
-        <!-- <li><a>Text</a></li> -->
+    <!-- BREADCRUMBS-->
+    <div id="bc1" class="btn-group btn-breadcrumb">
+        <a href="#" class="btn btn-default" id="1"><i class="ion-ios-home-outline"></i></a>
+        <!-- <div class="btn btn-default">...</div> -->
+    </div>
 
-        <div id="bc1" class="btn-group btn-breadcrumb">
-            <a href="#" class="btn btn-default"><i class="fa fa-home"></i></a>
-            <div class="btn btn-default">...</div>
-            <a href="#" class="btn btn-default"><div>label 1</div></a>
-            <a href="#" class="btn btn-default"><div>label 2. A very very long one to truncate</div></a>
-            <a href="#" class="btn btn-default"><div>label 3</div></a>
-            <a href="#" class="btn btn-default"><div>label 4</div></a>
-            <a href="#" class="btn btn-default"><div>label 5</div></a>
-            <a href="#" class="btn btn-default"><div>label 6. A very very long one to truncate</div></a>
-        </div>
-
-
-    <!-- </ol> -->
-
-    <!--Generate divs for the main page   -->
+    <!-- Generate divs for the main page   -->
     <div class="node-container">
         <?php
         $id_home = $resultSet[0]['ID'];
+        echo $id_home;
 
         //Loop through $resultset and create html for each node with content
         foreach ($resultSet as $value) {
@@ -109,7 +97,7 @@
     <!-- Create back button -->
     <div class="navigation">
         <div class="back"><a href=""><i class="ion-ios-arrow-back"></i></a></div>
-        <div class="home"><a href="" name="<?php echo $id_home; ?>"> <i class="ion-ios-home-outline"></i></a></div>
+        <div class="home"><a href="" name="1"> <i class="ion-ios-home-outline"></i></a></div>
     </div>
 </div>
 
@@ -160,37 +148,34 @@
 <script type="text/javascript">   
     /* If document is ready, perform the code */
     $(document).ready(function () {
-        var phone = <?php echo $result['phone']; ?>;
-        var link = "<?php echo $result['link']; ?>";
-        // making to <a> for phone and link to chat
-        var ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
-        var url = '<a href="'+ link +'" class="url"> Chat met een medewerker </a>';
+        var id, string, x, parent, phone, link, ph, url;
 
-        var id, string, x, parent;
-        
-        /* Using Jquery library for breadcrumbs */
-        $('.breadcrumb').asBreadcrumbs({
-            namespace: 'breadcrumb'
-        });
-        
-        /* If we click on menu divs */
+        /* ---------- Creating buttons for bellen and chatten  ---------- */
+        phone = <?php echo $result['phone']; ?>;
+        link = "<?php echo $result['link']; ?>";
+
+        ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
+        url = '<a href="'+ link +'" class="url"> Chat met een medewerker </a>';
+
+       
+        /* ---------- Clicking on MENU DIVS  ---------- */
         $('.node-container').on('click', '.item', function () {
-            /* Give li elements the class : active */
-            $("li").last().removeClass('active');
-            /* Retrieve the text from clicked li */
-            x = $("li").last().text();
-            /* Add to the clicked li element a element */
-            $("li").last().html('<a href="" id="' + this.id + '">' + x + '</a>');
+
             /* Add li element to the breadcrumb */
-            string = '<li class="active">' + $(this).text() + '</li>';
-            $('.breadcrumb').append(string);
+            string = '<a href="" id="'+  this.id + '" class="btn btn-default"><div>' + $(this).text() + '</div></a>';
+
+            // Every time we click on menu divs, change name attribute of back button to id of this div
+
+            x = $('#bc1 a').last().attr('id');
+            $('.back a').attr('name', x);
+
+            $('#bc1').append(string);
             // every div with class .item or .text have id, and we give this id to ajax as parent element
             // to retrieve data from database
 
             id = this.id;
 
-            // Every time we click on menu divs, change name attribute of back button to id of this div
-            $('.back a').attr('name', id);
+            
 
             // here begins the magic
             $.ajax({
@@ -204,49 +189,46 @@
         });
 
 
-        // If you click on a element in li in breadcrumbs 
-        $('ol').on('click', 'li a', function (e) {
+        /* ---------- Clicking on <a> of BREADCRUMBS  ---------- */
+        $('#bc1').on('click', 'a', function (e) {
             // Stop the natural behaviour of a elements = will not go to the link in hre
             e.preventDefault();
-            // Find all the next siblings of parent element (li) of clicked a element
-            $(this).parent().nextAll().remove();
-            // Make a copy of text in a element
-            x = $(this).html();
-            parent = $(this).parent();
-            // Remove a element from li
-            $(this).remove();
-            // Set the text of li element to text from a element
-            parent.text(x);
+
+            // Find all the next siblings of clicked a element and remove it
+            $(this).nextAll().remove();
+
+            x = $('#bc1 a').last().prev().attr('id');
+            $('.back a').attr('name', x);
             
-            // Every a element has id
+            // Every <a> element has id
             id = this.id;
             
             // if 'a' element in breadcrumps was clicked, we need to change name attribute in 'a' elemnt in back button
-            id_1 = parent.prev().children().attr('id');
-            $('.back a').attr('name', id_1);
+            //id_1 = parent.prev().children().attr('id');
+            //$('.back a').attr('name', id);
 
             $.ajax({
                 url: 'getContentNodes.php',
                 dataType: 'json',           // we expect JSON array to be returned back
                 method: 'get',              // with get method
-                data: {id: id, param: 2},   // give id as parametr
+                data: {id: id, param: 1},   // give id as parametr
                 success: onSuccess
             })
         });
 
-        // When back or home button is clicked
+        /* ---------- CLICKING BACK, HOME, OR LOGO ---------- */
         $('.wrapper').on('click', '.back a, .home a, .logo .a', function (e) {
             e.preventDefault();
             // 'a' element in div.back has attribute name met value = id
             // so we take this id and then search for 'a' element with the same id in our breadcrumps
             // then we trigger click event on this 'a' element in breadcrumps
             id = $(this).attr('name');
-            x = $('li a[id=' + id + ']');
+            x = $('#bc1 a[id=' + id + ']');
             x.trigger('click');
         });
 
     
-        // This is the function to do if ajax was successful performed
+        /* ---------- FUNCTION TO PERFORM AFTER AJAX IS PERFORMD ---------- */
         function onSuccess(data) {
             string = '';
             var id_parent;
@@ -281,8 +263,8 @@
 
             $.ajax({
                 url: 'logs.php',
-                method: 'get',            //with get method
-                data: {id: id_parent},   //give id as parameter and also param is parameter
+                method: 'get',            // with get method
+                data: {id: id_parent},   // give id as parameter and also param is parameter
             });
         }
     });
