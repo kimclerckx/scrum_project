@@ -11,9 +11,12 @@ if (!isset($_SESSION['email'])) {
 } else {
     echo '<div class="header">';
         echo "<p>Welkom {$_SESSION['email']} : je bent nu ingelogd als administrator.</p>";
+        echo "<a class='btn-primary' href='logs.php'>Logs</a>";
         echo "<a class='btn btn-primary' href='logout.php'>Logout</a>";
     echo '</div>';
 }
+
+
 
 // Create new object
 $nodeList = new NodeList();

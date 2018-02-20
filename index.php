@@ -26,6 +26,9 @@
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
     <!-- Breadcrumns CSS -->
     <link rel="stylesheet" href="vendors/asBreadcrumbs/css/asBreadcrumbs.css">
     <!-- BOOTSTRAP CSS -->
@@ -63,15 +66,13 @@
         <div class="wrapper">
             <div class="top-container">
                 <div class="logo"><a href="" name="<?php echo $resultSet[0]['ID']; ?>"><img src="images/logo-oeverdef.png"></a></div>
-                <div class="site-name"> De oever</div>
+                <div class="site-name"> De wegwijzer</div>
             </div>
         </div>
     </div>
 </header>
     
 <div class="wrapper">
-    <h1>De wegwijzer</h1>
-
     <!--Here begins the list for the breadcrumbs    -->
     <ol class="breadcrumb">
         <li class="active">Home</li>
@@ -190,7 +191,7 @@
         });
 
         // When back or home button is clicked
-        $('.wrapper').on('click', '.back a, .home a', function (e) {
+        $('.wrapper').on('click', '.back a, .home a, .logo .a', function (e) {
             e.preventDefault();
             // 'a' element in div.back has attribute name met value = id
             // so we take this id and then search for 'a' element with the same id in our breadcrumps

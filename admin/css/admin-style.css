@@ -1,7 +1,6 @@
 .editor-page p {
     display: -webkit-inline-box;
 }
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -12,3 +11,14 @@
     text-align: center;
 }
 
+.wrapperLogs {
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
+    background-color:  #F5F5F5;
+	grid-row-gap: 3px;
+}
+
+.box{
+    
+    display: inline-block;
+}
