@@ -21,25 +21,37 @@ if (!isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <title>Logs</title>
-    <link rel="stylesheet" src="css/admin-style.css">
+    <link rel="stylesheet" href="css/admin-style.css">
 </head>
 
 <body>
    <div>
         <form action="logs.php" method="post">
 
-         <select name="" id="">
-         <option value="1">1</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-         <option value="4">4</option>
+         <select name="aantLogs" id="aantLogs">
+         <option value="20" default>25</option>
+         <option value="50">50</option>
+         <option value="100">100</option>
+         <option value="150">150</option>
+        
          </select>
         <input type="submit">
         </form>
     </div>
+   
+    
+    
+    
+
     <?php
+        $aantLogs = $_POST['aantLogs'];
         $ll = new LogList();
-        $list = $ll->getAllLogs();
+        $list = $ll->getAllLogs($aantLogs);
+        $db = new Database();
+        $lastId = $db->lastInsertId();
+    
+    echo $lastId;
+    
     ?>
        <div class="wrapperLogs">
         
