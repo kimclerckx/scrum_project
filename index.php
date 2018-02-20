@@ -122,7 +122,7 @@
     <script>
  
         
-        var ath = addToHomescreen({
+    var ath = addToHomescreen({
     debug: 'android',           // activate debug mode in ios emulation
     skipFirstVisit: false,	// show at first access
     icon: false,
@@ -133,9 +133,9 @@
     maxDisplayCount: 0    // do not obey the max display count
   
     
-});
+    });
 
-         </script>
+    </script>
 
 
 <!-- Our javascript code -->
