@@ -61,10 +61,24 @@ li{
     background-color: #9E9E9E;
 
 }
+
+/*menu buttons */
+
+.header .btn{
+    
+    border: 1px solid #74b9ff;
+    background-color: transparent;
+    color: #74b9ff;
+}
+.header .btn:hover{
+    
+    background-color: #007bff;
+}
+
 /* buttons*/
 
 .listBtn{
-    border: 1px solid #0198E1;
+    border: 1px solid #74b9ff;
     background-color: transparent;
     border-radius: 50%;
     margin-left: 0.25rem;
@@ -72,7 +86,7 @@ li{
 }
 .listBtn i{
     
-    color: #0198E1;
+    color: #74b9ff;
 }
 
 .firstBtn{
