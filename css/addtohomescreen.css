@@ -37,10 +37,8 @@
 	z-index: 2147483641;
 	padding: 0.7em 0.6em;
 	width: 100%;
-
-	background: #eee;
+	background: rgba(0,0,0, 0.3);
 	background-size: 100% auto;
-
 	box-shadow: 0 0.2em 0 #d1d1d1;
 
 	font-family: sans-serif;
@@ -174,8 +172,10 @@
 	padding: 0;
 	position: relative;
 	z-index: 2147483642;
-	text-shadow: 0 0.1em 0 #fff;
-	font-size: 1.1em;
+	font-size: 0.8em;
+        font-family: 'Lato', sans-serif;
+        color: #fff;
+        font-weight: 300;
 }
 
 .ath-ios.ath-phone:after {
@@ -246,4 +246,56 @@
 		z-index: 2147483641;
 		box-shadow: none;
 	}
+}
+
+
+
+
+/*
+Add to homescreen option bar*/
+
+.ath-samsungAndroid {
+	bottom: 1.8em;
+	left: 50%;
+	margin-left: -9em;
+}
+
+.ath-stockAndroid {
+	right: 1.5em;
+	top: 1.8em;
+}
+
+.ath-samsungAndroid:after {
+	content: '';
+	background: #eee;
+	background: -webkit-linear-gradient(135deg, rgba(238,238,238,0) 0%,rgba(238,238,238,0) 50%,rgba(238,238,238,1) 50%,rgba(238,238,238,1) 100%);
+	position: absolute;
+	width: 2em;
+	height: 2em;
+	bottom: -1.5em;
+	left: 0;
+}
+
+.ath-stockAndroid:after {
+	content: '';
+	background: #eee;
+	background: -webkit-linear-gradient(-45deg, rgba(238,238,238,0) 0%,rgba(238,238,238,0) 50%,rgba(238,238,238,1) 50%,rgba(238,238,238,1) 100%);
+	position: absolute;
+	width: 2em;
+	height: 2em;
+	top: -1.5em;
+	right: 0;
+}
+
+.ath-container.ath-stockAndroid:before {
+	float: left;
+	margin: -0.7em 0.5em 0 -0.6em;
+}
+
+.ath-container.ath-stockAndroid.ath-icon:before {
+	position: absolute;
+	right: auto;
+	left: 0;
+	margin: 0;
+	float: none;
 }
