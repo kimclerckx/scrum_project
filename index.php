@@ -119,15 +119,15 @@
 <!--Add to homescreen option bar-->
 <script src="Js/addtohomescreen.js"></script>
 <script>
- 
     var ath = addToHomescreen({
+        debug: 'android',
     skipFirstVisit: false,	// show at first access
-    icon: false,                // Laat in de message geen icoontje van De Oever zien om plaats te besparen
+    icon: false,                // Laat in de message een icoontje van De Oever zien om plaats te besparen
     startDelay: 0,          // display the message right away
     lifespan: 0,            // do not automatically kill the call out
     displayPace: 0,         // do not obey the display pace
     privateModeOverride: true,	// show the message in private mode
-    maxDisplayCount: 0    // do not obey the max display count NOG AANPASSEN NAAR 1 !!!!!!!!
+    maxDisplayCount: 0    // do not obey the max display count 
     });
 </script>
 
