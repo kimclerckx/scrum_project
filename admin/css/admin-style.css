@@ -1,6 +1,10 @@
 .editor-page p {
     display: -webkit-inline-box;
 }
+
+body {
+    font-family: 'Comfortaa', cursive;
+}
 .header {
     display: flex;
     justify-content: space-between;
@@ -12,36 +16,29 @@
 }
 
 /* nodes */
-
-
 p{
     padding: 0;
     margin: 0;
 }
-
-
 li{
-    
+
     margin: 0.5rem;
 }
 
-
-
-/* logs grid*/
 .wrapperLogs {
 	display: grid;
 	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-    background-color:  #F5F5F5;
-	grid-row-gap: 3px;
+    grid-row-gap: 1rem;
 }
 
 .box{
-    
     display: inline-block;
+    background-color:  #F5F5F5;
+    color: #212121;
+    padding: 15px;
+    font-size: 100%;
+    line-height: 26px;
 }
-
-
-
 /* buttons*/
 
 .listBtn{
