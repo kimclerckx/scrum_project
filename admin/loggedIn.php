@@ -9,9 +9,11 @@ if(!isset($_SESSION))
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 } else {
-    echo '<div class="header">';
+    echo '<div class="header text-center">';
         echo "<p>Welkom {$_SESSION['email']} : je bent nu ingelogd als administrator.</p>";
-        echo "<a class='btn-primary' href='logs.php'>Logs</a>";
+        echo "<a class='btn btn-primary' href='logs.php'>Logs</a>";
+        echo "<a class='btn btn-primary' href='contact.php' target='_self'>Pas contactgegevens aan </a>";
+        echo "<a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a>"; 
         echo "<a class='btn btn-primary' href='logout.php'>Logout</a>";
     echo '</div>';
 }
@@ -56,10 +58,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     </div>
     <!-- End of Treeview -->
 
-    <div class="text-center">
-        <a class="btn btn-primary" href="contact.php" target="_self">Pas contactgegevens aan </a>
-        <a class="btn btn-primary" href="passwordChange.php">Wijzig wachtwoord</a>
-    </div>
 
     <!-- Including all the scripts -->
     <?php require_once('include/scripts_footer.php') ?>
