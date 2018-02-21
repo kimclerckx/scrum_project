@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
 
     //3. Check if fields are empty
     if (empty($email)) {
-        $errors[] = "Email is verplicht!";
+        $errors[] = "E-mail is verplicht!";
     }
     if (empty($password)) {
         $errors[] = "Wachtwoord is verplicht!";
@@ -36,14 +36,14 @@ if (isset($_POST['login'])) {
     //4. Validate email when there are no errors
     if (count($errors) == 0) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Email is niet geldig!";
+            $errors[] = "E-mail is niet geldig!";
         } else {
             //5. Check to see if email exists in database
             $sql = "SELECT * FROM users WHERE email = :email";
             $db->executeWithParam($sql, array(array(':email', $email)));
             //6. Check if email is found in database
             if ($db->rowCount() == 0) {
-                $errors[] = "Sorry, gebruiker met emailadres " . $email . " bestaat niet in onze databank.";
+                $errors[] = "Sorry, gebruiker met e-mailadres " . $email . " bestaat niet in onze databank.";
             }
         }
         if (count($errors) == 0) {
