@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../vendors/ionicons/css/ionicons.min.css">
     <!-- OUR STYLE FOR ADMIN -->
     <link rel="stylesheet" href="css/admin-style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     <title> Admin Panel </title>
 </head>

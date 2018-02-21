@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: 'Lato', cursive;
+    font-family: 'Lato', sans-serif;
 }
 .header {
     display: flex;
@@ -27,17 +27,32 @@ li{
 
 .wrapperLogs {
 	display: grid;
-	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-    grid-row-gap: 1rem;
+	grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
+    grid-row-gap: 0.2rem;
 }
 
 .box{
     display: inline-block;
-    background-color:  #F5F5F5;
     color: #212121;
-    padding: 15px;
-    font-size: 100%;
-    line-height: 26px;
+    padding: 5px;
+    /*font-size: 100%;*/
+    /*line-height: 26px;*/
+}
+.col1 {
+    background-color:  #F5F5F5;
+}
+.col2 {
+    background-color: #EEEEEE;
+}
+.col3 {
+    background-color: #E0E0E0;
+}
+.col4 {
+    background-color: #BDBDBD;
+}
+.col5 {
+    background-color: #9E9E9E;
+
 }
 /* buttons*/
 

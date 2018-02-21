@@ -45,18 +45,10 @@ if (!isset($_SESSION['email'])) {
 <div>
     <form action="logs.php" method="post">
         <select name="aantLogs" id="aantLogs">
-            <option value="25"<?php echo ( $_SESSION['aantLogs'] == '25') ? 'selected="selected"' : ''; ?> >
-                25
-            </option>
-            <option value="50"<?php echo ($_SESSION['aantLogs'] == '50') ? 'selected="selected"' : ''; ?> >
-                50
-            </option>
-            <option value="75"<?php echo ($_SESSION['aantLogs'] == '75') ? 'selected="selected"' : ''; ?> >
-                75
-            </option>
-            <option value="100"<?php echo ($_SESSION['aantLogs'] == '100') ? 'selected="selected"' : ''; ?> >
-                100
-            </option>
+            <option value="25"<?php echo ( $_SESSION['aantLogs'] == '25') ? 'selected="selected"' : ''; ?> >25</option>
+            <option value="50"<?php echo ($_SESSION['aantLogs'] == '50') ? 'selected="selected"' : ''; ?> >50</option>
+            <option value="75"<?php echo ($_SESSION['aantLogs'] == '75') ? 'selected="selected"' : ''; ?> >75</option>
+            <option value="100"<?php echo ($_SESSION['aantLogs'] == '100') ? 'selected="selected"' : ''; ?> >100</option>
         </select>
         <input type="submit" value="Toon">
     </form>

@@ -8,13 +8,7 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
-echo '<div class="header text-center">';
-echo "<p>Welkom {$_SESSION['email']}. Je bent nu ingelogd als administrator.</p>";
-echo "<a class='btn btn-primary' href='logs.php'>Logs</a>";
-echo "<a class='btn btn-primary' href='contact.php' target='_self'>Pas contactgegevens aan </a>";
-echo "<a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a>";
-echo "<a class='btn btn-primary' href='logout.php'>Logout</a>";
-echo '</div>';
+require_once 'include/menu.php';
 
 
 // Create new object
@@ -36,7 +30,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $nodeList->deleteNodes($arrToDelete);
 
     echo("<script>
-    window.alert('Item is verwijderd.');
+    window.alert('Item is verwiderd.');
     window.location.href='loggedIn.php';
     </script>");
 }
@@ -62,7 +56,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 <script type='text/javascript'>
     // This function we use in our link to delete item
     function confirmDelete() {
-        return confirm("Ben je zeker dat je dit item wil verwijderen?");
+        return confirm("Are you sure you want to delete this?");
     }
 </script>
 </body>
