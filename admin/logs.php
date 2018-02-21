@@ -77,7 +77,7 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
         <span class="box"><?php print $log['timestampStart']; ?></span>
         <span class="box"><?php print $log['timestampEnd']; ?></span>
         <span class="box"><?php print $duurtijd->format('%hu %im %ss'); ?></span>
-        <span class="box"><?php print $log['lastnode']; ?></span>
+        <span class="box"><?php print $log['content']; ?></span>
 
     <?php } ?>
 
