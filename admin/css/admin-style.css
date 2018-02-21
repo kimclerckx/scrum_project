@@ -44,4 +44,7 @@ li{
 .listBtn{
 
     border-radius: 50%;
+    margin-left: 0.25rem;
+    padding: 0.25rem;
 }
+
