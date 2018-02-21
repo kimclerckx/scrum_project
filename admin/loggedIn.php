@@ -49,7 +49,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 <body>
     <!-- Treeview -->
     <div class="jumbotron">
-        <a class="btn btn-primary" href="NodeEdit.php?action=add&id=1">Add root node </a>
+        <a class="btn btn-primary listBtn" href="NodeEdit.php?action=add&id=1"><i class="ion-plus-round"></i></a>
         <?php
             echo $nodeList->buildTree($nodeList->getAllNodes());
         ?>
