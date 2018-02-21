@@ -12,6 +12,14 @@ class Database
     private $pass = "1111";
     private $dbname = "fontonova"; */
     
+<<<<<<< HEAD
+=======
+      
+    
+
+    
+
+>>>>>>> d556d9c521ecacb0f818f06ae91cc9772a8165db
     private $dbh;
     private $error;
     private $stmt;
