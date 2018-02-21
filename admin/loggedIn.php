@@ -1,23 +1,20 @@
 <?php
 require_once 'NodeList.php';
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // Check if user is logged in
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
-} else {
-    echo '<div class="header text-center">';
-        echo "<p>Welkom {$_SESSION['email']} : je bent nu ingelogd als administrator.</p>";
-        echo "<a class='btn btn-primary' href='logs.php'>Logs</a>";
-        echo "<a class='btn btn-primary' href='contact.php' target='_self'>Pas contactgegevens aan </a>";
-        echo "<a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a>"; 
-        echo "<a class='btn btn-primary' href='logout.php'>Logout</a>";
-    echo '</div>';
 }
-
+echo '<div class="header text-center">';
+echo "<p>Welkom {$_SESSION['email']} : je bent nu ingelogd als administrator.</p>";
+echo "<a class='btn btn-primary' href='logs.php'>Logs</a>";
+echo "<a class='btn btn-primary' href='contact.php' target='_self'>Pas contactgegevens aan </a>";
+echo "<a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a>";
+echo "<a class='btn btn-primary' href='logout.php'>Logout</a>";
+echo '</div>';
 
 
 // Create new object
@@ -38,7 +35,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     // Delete nodes
     $nodeList->deleteNodes($arrToDelete);
 
-    echo ("<script>
+    echo("<script>
     window.alert('Item is verwiderd.');
     window.location.href='loggedIn.php';
     </script>");
@@ -47,27 +44,26 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 ?>
 
 <!-- Including header -->
-<?php require_once ('include/header.php'); ?>
+<?php require_once('include/header.php'); ?>
 <body>
-    <!-- Treeview -->
-    <div class="jumbotron">
-        <a class="btn btn-primary listBtn" href="NodeEdit.php?action=add&id=1"><i class="ion-plus-round"></i></a>
-        <?php
-            echo $nodeList->buildTree($nodeList->getAllNodes());
-        ?>
-    </div>
-    <!-- End of Treeview -->
+<!-- Treeview -->
+<div class="jumbotron">
+    <a class="btn btn-primary listBtn" href="NodeEdit.php?action=add&id=1"><i class="ion-plus-round"></i></a>
+    <?php
+    echo $nodeList->buildTree($nodeList->getAllNodes());
+    ?>
+</div>
+<!-- End of Treeview -->
 
 
-    <!-- Including all the scripts -->
-    <?php require_once('include/scripts_footer.php') ?>
+<!-- Including all the scripts -->
+<?php require_once('include/scripts_footer.php') ?>
 
-    <script type='text/javascript'>
+<script type='text/javascript'>
     // This function we use in our link to delete item
-        function confirmDelete()
-        {
-            return confirm("Are you sure you want to delete this?");
-        }
-    </script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this?");
+    }
+</script>
 </body>
 </html>

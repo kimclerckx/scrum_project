@@ -32,6 +32,16 @@ if (!isset($_SESSION['email'])) {
         <a class='btn btn-primary' href='logout.php'>Logout</a>
     </div>
 <?php } ?>
+<div>
+    <form class="form-horizontal" action="exportToCSV.php" method="post" name="upload_excel"
+          enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-4">
+                <input type="submit" name="Export" class="btn btn-success" value="export to excel"/>
+            </div>
+        </div>
+    </form>
+</div>
 <!--Show log records-->
 <div>
     <form action="logs.php" method="post">
@@ -56,30 +66,20 @@ if (!isset($_SESSION['email'])) {
 <?php
 $ll = new LogList();
 $logCount = $ll->getLogCount();
-
-echo $logCount;
 $aantPages = ceil($logCount / $aantLogs);
 $list = $ll->getLogs($aantLogs, $_GET['page']);
-
-echo '<br>' . $aantPages;
-
 ?>
 <div class="wrapperLogs">
-
-
     <span class="box">#</span>
     <span class="box">Start</span>
     <span class="box">Einde</span>
     <span class="box">Totale tijd</span>
     <span class="box">Laatste element</span>
 
-
     <?php foreach ($list as $log) {
-
         $datetime1 = new DateTime($log['timestampStart']);
         $datetime2 = new DateTime($log['timestampEnd']);
         $duurtijd = $datetime2->diff($datetime1);
-
         ?>
 
         <span class="box"><?php print $log['ID']; ?></span>
