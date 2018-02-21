@@ -151,8 +151,6 @@ body {
     background-color: #cccc00;
 }
 
-
-
 /* --------------- BACK AND HOME BUTTON ------------------------ */
 .navigation {
     display: none;
@@ -215,8 +213,6 @@ body {
   .btn-default:hover::after, .btn-default:active::after, .btn-default:focus::after {
     border-left: 10px solid #8c8c8c !important;
   }
-
-
 
   .btn-breadcrumb .btn:before {
     content: " ";

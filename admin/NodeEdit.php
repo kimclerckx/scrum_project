@@ -39,7 +39,7 @@ if (isset($_POST['add'])) {
     $parentid = $_POST['id'];
     $nodeList->addNode($parentid, $add_content, $button);
     echo "<script>
-    window.alert('Saved');
+    window.alert('Opgeslagen');
     window.location.href='loggedIn.php';
     </script>";
 }

@@ -28,7 +28,6 @@ if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 } else { ?>
     <div class="header">
-        <p>Welkom <?= $_SESSION['email'] ?> : je bent nu ingelogd als administrator.</p>
         <a class='btn btn-primary' href='logout.php'>Logout</a>
     </div>
 <?php } ?>
@@ -37,7 +36,7 @@ if (!isset($_SESSION['email'])) {
           enctype="multipart/form-data">
         <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
-                <input type="submit" name="Export" class="btn btn-success" value="export to excel"/>
+                <input type="submit" name="Export" class="btn btn-success" value="Exporteer naar Excel"/>
             </div>
         </div>
     </form>
@@ -59,7 +58,7 @@ if (!isset($_SESSION['email'])) {
                 100
             </option>
         </select>
-        <input type="submit">
+        <input type="submit" value="Toon">
     </form>
 </div>
 
@@ -74,7 +73,7 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
     <span class="box">Start</span>
     <span class="box">Einde</span>
     <span class="box">Totale tijd</span>
-    <span class="box">Laatste element</span>
+    <span class="box">Laatst bezochte element</span>
 
     <?php foreach ($list as $log) {
         $datetime1 = new DateTime($log['timestampStart']);
@@ -85,7 +84,7 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
         <span class="box"><?php print $log['ID']; ?></span>
         <span class="box"><?php print $log['timestampStart']; ?></span>
         <span class="box"><?php print $log['timestampEnd']; ?></span>
-        <span class="box"><?php print $duurtijd->format('%h uur %i minuten %s seconden'); ?></span>
+        <span class="box"><?php print $duurtijd->format('%hu %im %ss'); ?></span>
         <span class="box"><?php print $log['lastnode']; ?></span>
 
     <?php } ?>
