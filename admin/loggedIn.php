@@ -30,7 +30,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $nodeList->deleteNodes($arrToDelete);
 
     echo("<script>
-    window.alert('Item is verwiderd.');
+    window.alert('Item is verwijderd.');
     window.location.href='loggedIn.php';
     </script>");
 }

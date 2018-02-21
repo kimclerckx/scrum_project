@@ -61,11 +61,11 @@ $aantPages = ceil($logCount / $aantLogs);
 $list = $ll->getLogs($aantLogs, $_GET['page']);
 ?>
 <div class="wrapperLogs">
-    <span class="box">#</span>
-    <span class="box">Start</span>
-    <span class="box">Einde</span>
-    <span class="box">Totale tijd</span>
-    <span class="box">Laatst bezochte element</span>
+    <span class="box colH">#</span>
+    <span class="box colH">Start</span>
+    <span class="box colH">Einde</span>
+    <span class="box colH">Totale tijd</span>
+    <span class="box colH">Laatst bezochte element</span>
 
     <?php foreach ($list as $log) {
         $datetime1 = new DateTime($log['timestampStart']);
@@ -73,11 +73,11 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
         $duurtijd = $datetime2->diff($datetime1);
         ?>
 
-        <span class="box"><?php print $log['ID']; ?></span>
-        <span class="box"><?php print $log['timestampStart']; ?></span>
-        <span class="box"><?php print $log['timestampEnd']; ?></span>
-        <span class="box"><?php print $duurtijd->format('%hu %im %ss'); ?></span>
-        <span class="box"><?php print $log['content']; ?></span>
+        <span class="box col1"><?php print $log['ID']; ?></span>
+        <span class="box col2"><?php print $log['timestampStart']; ?></span>
+        <span class="box col3"><?php print $log['timestampEnd']; ?></span>
+        <span class="box col4"><?php print $duurtijd->format('%hu %im %ss'); ?></span>
+        <span class="box col5"><?php print $log['content']; ?></span>
 
     <?php } ?>
 

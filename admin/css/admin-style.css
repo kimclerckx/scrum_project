@@ -25,6 +25,8 @@ li{
     margin: 0.5rem;
 }
 
+/* logs */
+
 .wrapperLogs {
 	display: grid;
 	grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
@@ -37,6 +39,11 @@ li{
     padding: 5px;
     /*font-size: 100%;*/
     /*line-height: 26px;*/
+}
+.colH{
+    border-bottom: 2px solid black;
+    font-weight: bold;
+
 }
 .col1 {
     background-color:  #F5F5F5;
