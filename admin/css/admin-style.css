@@ -30,20 +30,23 @@ li {
 /*menu buttons */
 
 .btn {
-   
     border: 1px solid #74b9ff;
     background-color: transparent;
     color: #74b9ff;
 }
-.header .btn:hover{
-    
-    background-color: #007bff;
+
+.header .btn:hover { 
+    background-color: #74b9ff;
     color:white;
 }
-.header div{
-    
-    display:inline-block;
+
+.header div {
+    display: inline-block;
 }
+
+.header span {
+    color: #74b9ff;
+} 
 
 /* buttons loggedIn*/
 
@@ -69,6 +72,10 @@ li {
 
 .listBtn i {
     color: #74b9ff;
+}
+
+.listBtn:hover i {
+    color: white;
 }
 
 .btn-verwerk-group {
