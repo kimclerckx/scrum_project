@@ -78,7 +78,11 @@ li {
 .btn-verwerk-group-3 {
     display: flex;
 }
+/********** ckeditor form **********/
 
+#cke_ckeditor {
+    margin-bottom: 15px;
+}
 
 
 
