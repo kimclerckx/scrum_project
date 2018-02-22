@@ -13,7 +13,7 @@ if (isset($_POST['aantLogs']) || (isset($_SESSION['aantLogs']))) {
     $_SESSION['aantLogs'] = 25;
 }
 $aantLogs = $_SESSION['aantLogs'];
-require_once 'include/menu.php';
+
 ?>
 <!-- Including header -->
 <?php require_once('include/header.php'); ?>
@@ -23,6 +23,8 @@ require_once 'include/menu.php';
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 } ?>
+<div class="wrapperHeaderLogs">
+<?php require_once 'include/menu.php';?>
 <div>
     <form class="form-horizontal" action="exportToCSV.php" method="post" name="upload_excel"
           enctype="multipart/form-data">
@@ -43,7 +45,7 @@ if (!isset($_SESSION['email'])) {
         <input class='btn btn-primary' type="submit" value="Toon">
     </form>
 </div>
-
+</div>
 <?php
 $ll = new LogList();
 $logCount = $ll->getLogCount();
