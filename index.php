@@ -55,6 +55,8 @@
     <!--set a web app capable website-->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application"
   
     <link rel="manifest" href="/manifest.json">
     <!-- END -> LINKS AND META FOR THE APP VERSION -->
