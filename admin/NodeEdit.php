@@ -17,7 +17,7 @@ if(isset($_POST['red']) && isset($_POST['yellow'])){
     $button = 3;
 } elseif(isset($_POST['red']) && !isset($_POST['yellow'])){
     $button = 1;
-} else {
+} elseif(!isset($_POST['red']) && isset($_POST['yellow'])) {
     $button = 2;
 }
 
