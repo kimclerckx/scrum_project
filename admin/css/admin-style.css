@@ -29,8 +29,8 @@ li{
 
 /*menu buttons */
 
-.header .btn{
-    
+.btn{
+   
     border: 1px solid #74b9ff;
     background-color: transparent;
     color: #74b9ff;
@@ -38,16 +38,42 @@ li{
 .header .btn:hover{
     
     background-color: #007bff;
+    color:white;
+}
+.header div{
+    
+    display:inline-block;
 }
 
-/* logs */
-.wrapperHeaderLogs{
+/* buttons loggedIn*/
+
+.listBtn{
+    border: 1px solid #74b9ff;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-left: 0.25rem;
+    padding: 0.25rem;
+}
+.listBtn i{
+    
+    color: #74b9ff;
+}
+
+.firstBtn{
+    margin-left: 1rem;
+}
+
+
+
+
+/********** logs **********/
+
+.headWrapper{
     display: grid;
-	grid-template-columns: 7fr 1fr;
+	grid-template-columns: 1fr 5fr;
     grid-row-gap: 0.2rem;
     
 }
-
 .wrapperLogs {
 	display: grid;
 	grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
@@ -61,6 +87,9 @@ li{
     /*font-size: 100%;*/
     /*line-height: 26px;*/
 }
+
+/* columns logs */
+
 .colH{
     border-bottom: 2px solid black;
     font-weight: bold;
@@ -85,21 +114,4 @@ li{
 
 
 
-/* buttons*/
-
-.listBtn{
-    border: 1px solid #74b9ff;
-    background-color: transparent;
-    border-radius: 50%;
-    margin-left: 0.25rem;
-    padding: 0.25rem;
-}
-.listBtn i{
-    
-    color: #74b9ff;
-}
-
-.firstBtn{
-    margin-left: 1rem;
-}
 
