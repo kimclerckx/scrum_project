@@ -1,0 +1,12 @@
+
+/* For desktops */
+
+    .btn-breadcrumb > *:nth-last-child(-n+6) {
+        display: block;
+    } 
+    .btn-breadcrumb > * div {
+        width: 200px;
+    }
+     .logo {
+    max-width: 7rem;
+    }
