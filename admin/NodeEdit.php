@@ -87,7 +87,7 @@ $content = $nodeList->getContentByID($_GET["id"]);
                 <textarea name="content" id="ckeditor" placeholder="Schrijf hier de nieuwe text"> </textarea>
                 
                 Knop telefoon toevoegen: <input type="checkbox" name="red">
-                Knop chat toevoegen: <input type="checkbox" name="yellow">
+                Knop chat toevoegen:<input type="checkbox" name="yellow">
                 
                 <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
                 
