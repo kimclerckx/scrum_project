@@ -10,7 +10,7 @@
 
 <div class="header text-center">
     
-    <p>Welkom <?= $_SESSION['email'] ?>: je bent nu ingelogd als administrator.</p>
+    <p>Welkom <span><?= $_SESSION['email'] ?></span>: je bent nu ingelogd als administrator.</p>
    
     <div><a class='btn btn-primary' href='contact.php'>Pas contactgegevens aan </a></div>
     <div><a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a></div>
