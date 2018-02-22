@@ -109,44 +109,70 @@ body {
 
 
 /* --------------- Buttons ------------------------ */
-/* Red */
+
+.contacts {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid white;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-top: 1rem;
+}
+
+.contact-div span {
+    text-transform: none;
+    font-size: 1.1rem;
+    text-align: right;
+
+    flex-basis: 60%;
+    text-align: right;
+}
+
+.contact-div .contact-btn {
+    margin-left: 2rem;
+
+    text-decoration: none;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid #fffa65;
+    border-radius: 50%;
+}
+
+.contact-btn:focus, .contact-btn i:focus {
+    outline: none;
+}
+
+.contact-btn:visited i {
+    color: #fffa65;
+}
+
+.contact-btn  i {
+    font-weight: 500;
+    color: #fffa65;
+    font-size: 2rem;
+}
 
 .phone {
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    max-width: 21rem;
-    background-color: #CC0000;
-    padding: 0.15rem 1.5rem;
-    border-radius: 2.5rem;
+    border: 1px solid #ff4d4d !important;
 }
 
-.phone:hover{
-    background-color: #990000;
-}
-
-.phone:active{
-    background-color: #660000;
-}
-
-.phone:visited {
-    background-color: #ff7f7f;
-}
-
-/* Yellow */
-.url {
-    color:  #1f87c1;
-    text-decoration: none;
-    display: inline-block;
-    max-width: 22rem;
-    padding: 0.25rem 1.5rem;
-    margin-left: 1rem;
-    border-radius: 2.5rem;
-    background-color: #FFFF19;
-}
-.url:hover {
-    color: #1f87c1;
-    background-color: #cccc00;
+.phone i, .phone:visited i  {
+    color: #ff4d4d;
 }
 
 /* --------------- BACK AND HOME BUTTON ------------------------ */
@@ -232,6 +258,7 @@ body {
   .btn-breadcrumb .btn {
     padding: 1.1rem 0.3rem 1.1rem 1.7rem;
     border-radius: 0;
+    margin-bottom: 0.2rem;
   }
 
   .btn-breadcrumb .btn:last-child {
@@ -240,7 +267,7 @@ body {
   }
 
   .btn-breadcrumb .btn:first-child {
-    padding: 0.8rem 1rem 0.4rem 1rem !important;
+    padding: 0.2rem 1rem 0.1rem 1rem !important;
   }
 
   /** Default button **/
