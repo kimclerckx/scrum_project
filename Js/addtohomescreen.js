@@ -40,7 +40,7 @@ function ath (options) {
 ath.intl = {
 	
 	nl_nl: {
-		ios: '  Knop op startscherm:<br> %icon + Zet op beginscherm',
+		ios: '  Knop op startscherm:<br><img class="icon-ios" src="images/action-icon-ios7.png">  + Zet op beginscherm',
 		android: 'Knop op startscherm: <small><br> Browserinstellingen %icon <br> Toevoegen aan startscherm</small>'
 	}
 
