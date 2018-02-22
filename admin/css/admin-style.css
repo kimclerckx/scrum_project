@@ -154,9 +154,22 @@ li {
 }
 .col5 {
     background-color: #9E9E9E;
+}
+/* Pagination bottom of logs */
+.pages {
+	 padding: 1rem 0;
+ }
 
+.pageButton {
+	margin-right: 1rem;
 }
 
+.menu {
+	margin-top: 1rem;
+}
 
+.menu .btn {
+	margin-right: 1rem;
+}
 
 

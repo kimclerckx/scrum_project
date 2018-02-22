@@ -8,7 +8,7 @@
 
 <!-- Header menu -->
 
-<div class="header text-center">
+<div class="header text-center menu">
     
     <p>Welkom <span><?= $_SESSION['email'] ?></span>: je bent nu ingelogd als administrator.</p>
    

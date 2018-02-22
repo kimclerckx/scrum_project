@@ -96,6 +96,7 @@ if (isset($_POST['change'])) {
                     <small id="emailHelp" class="form-text text-muted">Voer het nieuw wachtwoord opnieuw in.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="change">Wijzig wachtwoord</button>
+                <button class="btn btn-secondary" name="close">Close</button>
             </form>
         </div>
         <div class="col"></div>
