@@ -71,19 +71,26 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
 <?php
 $i = $_GET['page'];
 echo "<a class='btn btn-primary' href='logs.php?page=" . 1 . "'>Eerste</a>";
-echo "<a class='btn btn-primary' href='logs.php?page=" . ($i - 1) . "'>Vorige</a>";
-if ($i < 3) {
+if (($i - 1) > 0) {
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i - 1) . "'>Vorige</a>";
+}
+if (($i - 2) > 0) {
     echo "<a class='btn btn-primary' href='logs.php?page=" . ($i - 2) . "'>" . ($i - 2) . "</a>";
+}
+if (($i - 1) > 0) {
     echo "<a class='btn btn-primary' href='logs.php?page=" . ($i - 1) . "'>" . ($i - 1) . "</a>";
 }
 echo "<a class='btn btn-primary' href='logs.php?page=" . $i . "'>" . $i . "</a>";
-echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 1) . "'>" . ($i + 1) . "</a>";
-echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 2) . "'>" . ($i + 2) . "</a>";
-if ($i < 3) {
-    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 3) . "'>" . ($i + 3) . "</a>";
-    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 4) . "'>" . ($i + 4) . "</a>";
+if (($i + 1) <= $aantPages) {
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 1) . "'>" . ($i + 1) . "</a>";
 }
-echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 1) . "'>Volgende</a>";
+if (($i + 2) <= $aantPages) {
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 2) . "'>" . ($i + 2) . "</a>";
+}
+
+if (($i + 1) <= $aantPages) {
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 1) . "'>Volgende</a>";
+}
 echo "<a class='btn btn-primary' href='logs.php?page=" . $aantPages . "'>Laatste</a>";
 ?>
 </body>
