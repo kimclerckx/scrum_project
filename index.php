@@ -55,6 +55,8 @@
     <!--set a web app capable website-->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application"
   
     <link rel="manifest" href="/manifest.json">
     <!-- END -> LINKS AND META FOR THE APP VERSION -->
@@ -136,8 +138,9 @@
         phone = <?php echo $result['phone']; ?>;
         link = "<?php echo $result['link']; ?>";
 
-        ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
-        url = '<a href="'+ link +'" class="url" target="_blank"> Chat met een medewerker </a>';
+        ph = '<div class="contact-div"><span><i>Nog algemene vragen?</i></span><a href="tel:'+ phone +'" class="phone contact-btn"> <i class="ion-ios-telephone"></i></a></div>';
+
+        url = '<div class="contact-div"><span><i>Vragen over solliciteren?</i></span> <a href="'+ link +'" class="url contact-btn"> <i class="ion-chatbox"></i></a></div>';
 
        
         /* ---------- Clicking on MENU DIVS  ---------- */
@@ -219,11 +222,11 @@
                     if (element.button == 0) {
                         string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '</div>';
                     } else if (element.button == 1) {
-                        string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + '</div>';
+                        string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '<div class="contacts">' + ph + '</div>' + '</div>';
                     } else if (element.button == 2) {
-                         string += '<div class= "text" id ="'+ element.ID + '">' + element.content + url + '</div>';
+                         string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '<div class="contacts">' + url + '</div>' + '</div>';
                     } else {
-                        string += '<div class= "text" id ="'+ element.ID + '">' + element.content + ph + url + '</div>';      
+                        string += '<div class= "text" id ="'+ element.ID + '">' + element.content + '<div class="contacts">' + ph + url + '</div>' + '</div>';      
                     }    
                 }
             });
