@@ -137,7 +137,7 @@
         link = "<?php echo $result['link']; ?>";
 
         ph = '<a href="tel:'+ phone +'" class="phone"> Bel met een medewerker </a>';
-        url = '<a href="'+ link +'" class="url"> Chat met een medewerker </a>';
+        url = '<a href="'+ link +'" class="url" target="_blank"> Chat met een medewerker </a>';
 
        
         /* ---------- Clicking on MENU DIVS  ---------- */
