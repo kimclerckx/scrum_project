@@ -17,33 +17,36 @@ body {
 }
 
 /* nodes */
-p{
+p, ol {
     padding: 0;
     margin: 0;
 }
-li{
 
+li {
     margin: 0.5rem;
 }
 
 
 /*menu buttons */
 
-.btn{
-   
+.btn {
     border: 1px solid #74b9ff;
     background-color: transparent;
     color: #74b9ff;
 }
-.header .btn:hover{
-    
-    background-color: #007bff;
+
+.header .btn:hover { 
+    background-color: #74b9ff;
     color:white;
 }
-.header div{
-    
-    display:inline-block;
+
+.header div {
+    display: inline-block;
 }
+
+.header span {
+    color: #74b9ff;
+} 
 
 /* buttons loggedIn*/
 
@@ -54,15 +57,38 @@ li{
     background-color: transparent;
     border-radius: 50%;
 
+    padding: 0;
+    margin: 0;
+    margin-left: 0.2rem;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.listBtn i{
-    
+
+.listBtn:first-child {
+    margin-left: 1rem;
+}
+
+.listBtn i {
     color: #74b9ff;
 }
 
-.firstBtn{
-    margin-left: 1rem;
+.listBtn:hover i {
+    color: white;
+}
+
+.btn-verwerk-group {
+    display: inline-block;
+}
+
+.btn-verwerk-group-3 {
+    display: flex;
+}
+/********** ckeditor form **********/
+
+#cke_ckeditor {
+    margin-bottom: 15px;
 }
 
 

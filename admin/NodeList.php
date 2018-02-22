@@ -20,9 +20,10 @@ class NodeList
         foreach ($elements as $element) {
             if ($element['parentID'] == $parentID) {
                 $structure .= "<li>" . $element['content']
-                    . '<a class="btn btn-primary listBtn firstBtn" href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>' . ' '
+                    . '<div class="btn-verwerk-group"><div class="btn-verwerk-group-3"><a class="btn btn-primary listBtn" href="NodeEdit.php?action=add&id=' . $element['ID'] . '"><i class="ion-plus-round"></i></a>' . ' '
                     . '<a class="btn btn-primary listBtn" href="NodeEdit.php?action=edit&id=' . $element['ID'] . '"><i class="ion-edit"></i></a>' . ' '
-                    . '<a class="btn btn-primary listBtn" onclick="return confirmDelete()" href="loggedIn.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a>';
+                    . '<a class="btn btn-primary listBtn" onclick="return confirmDelete()" href="loggedIn.php?action=delete&id=' . $element['ID'] . '"><i class="ion-close-round"></i></a></div></div>';
+
                 if ($element['hasChild'] == 1) {
                     $structure .= $this->buildTree($elements, $element['ID']);
                 }
