@@ -47,12 +47,14 @@ li{
 
 /* buttons loggedIn*/
 
-.listBtn{
+.listBtn {
+    width: 30px;
+    height: 30px;
     border: 1px solid #74b9ff;
     background-color: transparent;
     border-radius: 50%;
-    margin-left: 0.25rem;
-    padding: 0.25rem;
+
+
 }
 .listBtn i{
     
