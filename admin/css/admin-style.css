@@ -5,6 +5,7 @@
 body {
     font-family: 'Lato', sans-serif;
 }
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -13,74 +14,45 @@ body {
 
 .header p {
     text-align: center;
-    margin:auto;
+    margin: auto;
 }
 
 /* nodes */
-p{
+p {
     padding: 0;
     margin: 0;
 }
-li{
 
+li {
     margin: 0.5rem;
 }
 
+a.btn.btn-primary {
+    margin-right: 15px;
+}
 
 /*menu buttons */
 
-.btn{
-   
+.btn {
     border: 1px solid #74b9ff;
     background-color: transparent;
     color: #74b9ff;
 }
-.header .btn:hover{
-    
+
+.header .btn:hover {
     background-color: #007bff;
-    color:white;
-}
-.header div{
-    
-    display:inline-block;
+    color: white;
 }
 
-/* buttons loggedIn*/
+/* logs */
 
-.listBtn{
-    border: 1px solid #74b9ff;
-    background-color: transparent;
-    border-radius: 50%;
-    margin-left: 0.25rem;
-    padding: 0.25rem;
-}
-.listBtn i{
-    
-    color: #74b9ff;
-}
-
-.firstBtn{
-    margin-left: 1rem;
-}
-
-
-
-
-/********** logs **********/
-
-.headWrapper{
-    display: grid;
-	grid-template-columns: 1fr 5fr;
-    grid-row-gap: 0.2rem;
-    
-}
 .wrapperLogs {
-	display: grid;
-	grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
     grid-row-gap: 0.2rem;
 }
 
-.box{
+.box {
     display: inline-block;
     color: #212121;
     padding: 5px;
@@ -88,15 +60,13 @@ li{
     /*line-height: 26px;*/
 }
 
-/* columns logs */
-
-.colH{
+.colH {
     border-bottom: 2px solid black;
     font-weight: bold;
 
 }
 .col1 {
-    background-color:  #F5F5F5;
+    background-color: #F5F5F5;
 }
 .col2 {
     background-color: #EEEEEE;
@@ -109,9 +79,23 @@ li{
 }
 .col5 {
     background-color: #9E9E9E;
-
 }
 
+/* buttons*/
 
+.listBtn {
+    border: 1px solid #74b9ff;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-left: 0.25rem;
+    /*padding: 0.25rem;*/
+}
 
+.listBtn i {
+    color: #74b9ff;
+}
+
+.firstBtn {
+    margin-left: 1rem;
+}
 

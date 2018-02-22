@@ -69,7 +69,7 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
 </div>
 <?php
 for ($i = 1; $i <= $aantPages; $i++) {
-    echo "<a class='btn btn-primary' href='logs.php?page=" . $i . "'>" . ($aantLogs * ($i - 1)) . '-' . ($aantLogs * $i) . "</a>";
+    echo "<a class='btn btn-primary' href='logs.php?page=" . $i . "'>" . $i . "</a>";
 }
 ?>
 </body>
