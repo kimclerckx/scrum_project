@@ -105,14 +105,13 @@
 <script src="Js/addtohomescreen.js"></script>
 <script>
     var ath = addToHomescreen({
-    debug: 'ios',
     skipFirstVisit: false,              // show at first access
     icon: false,                           // laat in de message een icoontje van De Oever zien
     startDelay: 0,                        // display the message right away
     lifespan: 0,                            // do not automatically kill the call out
     displayPace: 0,                     // do not obey the display pace
     privateModeOverride: true,     // show the message in private mode
-    maxDisplayCount: 1              // do not obey the max display count
+    maxDisplayCount: 1             // do not obey the max display count
     });
 </script>
 
