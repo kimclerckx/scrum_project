@@ -2,6 +2,22 @@
     display: -webkit-inline-box;
 }
 
+.editor-page ul li li li li li {
+    background-color: #f3f3f3;
+}
+.editor-page ul li li li li{
+    background-color: #fbfbfb;
+}
+.editor-page ul li li li {
+    background-color: #f3f3f3;
+}
+.editor-page ul li li {
+    background-color: #fbfbfb;
+}
+.editor-page ul li {
+    background-color: #f3f3f3;
+}
+
 body {
     font-family: 'Lato', sans-serif;
 }
