@@ -20,8 +20,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favico.png">
     <meta property="og:url"                content="" />
     <meta property="og:type"               content="" />
-    <meta property="og:title"              content="De Oever" />
-    <meta property="og:description"        content="facebook description" />
+    <meta property="og:title"              content="De wegwijzer voor jobs/studies voor vluchtelingen" />
+    <meta property="og:description"        content="Ben jij een vluchteling en heb je vragen over hoe je kan beginnen te studeren of aan een job geraakt? De wegwijzer is een mobiele applicatie die je stapsgewijs meer informatie aanreikt omtrent deze vragen." />
     <meta property="og:image"              content="http://image.jpg" />
 
     <!-- FONTS -->
