@@ -4,21 +4,6 @@
     require_once 'logs.php';
 
     $db = new Database();
-    // Select all the nodes with parentID 1 except the first dummy
-     $sql = "SELECT * FROM nodes WHERE parentID = 1 AND ID != 1";
-    $db->executeWithoutParam($sql);
-    $resultSet = $db->resultset();
-?> <script>
-$.ajax({
-    url: 'getContentNodes.php',
-    dataType: 'json',           // we expect JSON array to be returned back
-    method: 'get',              // with get method
-    data: {id: 1, param: 1},   // give id as parametr
-    success: onSuccess
-})</script>
-
-
-<?php
     // Contact data retrieving
     $sql = 'SELECT * FROM contact';
     $db->executeWithoutParam($sql);
@@ -82,7 +67,7 @@ $.ajax({
         <div class="wrapper">
             <div class="top-container">
                 <div class="site-name"> De wegwijzer</div>
-                <div class="logo"><a href=""><img src="images/logo-oeverdef.png"></a></div>
+                <div class="logo"><a href="" name="1"><img src="images/logo-oeverdef.png"></a></div>
             </div>
         </div>
     </div>
