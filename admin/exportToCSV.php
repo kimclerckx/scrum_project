@@ -8,7 +8,7 @@ if (isset($_POST["Export"])) {
     header('Content-Disposition: attachment; filename=log '.$date.'.csv');
     $output = fopen("php://output", "w");
     fputcsv($output, array("sep=,"));
-    fputcsv($output, array('timestampStart', 'timestampEnd', 'lastnode'));
+    fputcsv($output, array('Start sessie', 'Einde sessie', 'Laatst bezochte element'));
     $db = new Database();
     $sql = "SELECT timestampStart, timestampEnd, content
             FROM logs
