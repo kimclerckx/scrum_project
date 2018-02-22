@@ -5,7 +5,6 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    --main-color: #74b9ff;
 }
 
 a,
@@ -33,7 +32,7 @@ body {
 
 /* --------------- Header ------------------------ */
 .top {
-    background: linear-gradient(to left, #fff, var(--main-color) ); 
+    background: linear-gradient(to left, #fff, #74b9ff); 
     margin-bottom: 1.5rem;
 }
 
@@ -83,7 +82,7 @@ body {
     border-radius: 5px;
     box-shadow: 0.2rem 0.2rem 1rem #aaa;
 
-    background-color: var(--main-color);
+    background-color: #74b9ff;
     color: white;
 
     text-align: center;
@@ -192,7 +191,7 @@ body {
     width: 5rem;
     height: 5rem;
 
-    border: 1px solid var(--main-color);
+    border: 1px solid #74b9ff;
     border-radius: 50%;
 
     transition: all .2s;
@@ -200,7 +199,7 @@ body {
 
 .home a i, .back a i {
     font-size: 3rem;
-    color: var(--main-color);
+    color: #74b9ff;
 }
 
 .navigation a:active,

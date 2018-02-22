@@ -56,7 +56,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 <script type='text/javascript'>
     // This function we use in our link to delete item
     function confirmDelete() {
-        return confirm("Are you sure you want to delete this?");
+        return confirm("Ben je zeker dat je dit element wil verwijderen?");
     }
 </script>
 </body>
