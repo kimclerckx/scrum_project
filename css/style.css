@@ -2,10 +2,10 @@
 *,
 *::after,
 *::before {
- margin: 0;
- padding: 0;
- box-sizing: inherit;
- --main-color: #74b9ff;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    --main-color: #74b9ff;
 }
 
 a,
@@ -32,13 +32,13 @@ body {
 }
 
 /* --------------- Header ------------------------ */
-.top{
-    background: linear-gradient(to right, #fff, #3097ff ); 
-    margin-bottom: 2rem;
+.top {
+    background: linear-gradient(to left, #fff, var(--main-color) ); 
+    margin-bottom: 1.5rem;
 }
 
 .wrapper{
-    width: 90%;
+    width: 85%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -49,28 +49,26 @@ body {
 
 .top-container {
     padding: 1rem 0;
-}
+    justify-content: space-between;
+    align-items: flex-end;
+} 
 
 .logo {
-    align-self: flex-start;
-    flex-grow: 1;
-    max-width: 5.5rem;
+    max-width: 4.2rem;
 }
 
 .logo img {
     width: 100%;
-    height:auto;
+    height: auto;
 }
 
 .site-name {
-    align-self: flex-end;
-    flex-grow: 1.5;
-    text-align: right;
-    font-size: 2rem;
-    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.9rem;
     color: #ffffff;
-    font-family: 'Poiret One', cursive;
-    letter-spacing: 2px;
+    margin-top: 1.5rem;
+    margin-bottom: -0.5rem;
+    letter-spacing: 1px;
 }
 
 /* --------------- Content ------------------------ */
@@ -191,13 +189,14 @@ body {
 }
 
 /* --------------- BREADCRUMBS ------------------------ */
-
+#bc1 a i {
+    font-size: 2rem;
+}
 #bc1 a {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 0.9rem;
 }
 
-.btn-breadcrumb .btn:after {
+.btn-breadcrumb .btn:not(:last-child):after {
     content: " ";
     display: block;
     width: 0;
@@ -216,9 +215,7 @@ body {
     border-left: 10px solid #8c8c8c !important;
   }
 
-
-
-  .btn-breadcrumb .btn:before {
+  .btn-breadcrumb .btn:not(:last-child):before {
     content: " ";
     display: block;
     width: 0;
@@ -235,18 +232,17 @@ body {
   }
 
   .btn-breadcrumb .btn {
-    padding: 1.2rem 0.3rem 1.2rem 1.7rem;
+    padding: 1.1rem 0.3rem 1.1rem 1.7rem;
     border-radius: 0;
   }
 
-  .btn-breadcrumb .btn:first-child {
-    padding-right: 0.6rem;
-    padding-left: 1rem;
+  .btn-breadcrumb .btn:last-child {
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
   }
 
-  .btn-breadcrumb .btn:last-child {
-    padding-right: 1rem;
-    padding-left: 1.6rem;
+  .btn-breadcrumb .btn:first-child {
+    padding: 0.3rem 1rem 0.3rem 1rem !important;
   }
 
   /** Default button **/

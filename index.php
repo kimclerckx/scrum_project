@@ -3,10 +3,20 @@
     require_once 'Database.php';
     $db = new Database();
     // Select all the nodes with parentID 1 except the first dummy
-    $sql = "SELECT * FROM nodes WHERE parentID = 1 AND ID != 1";
+     $sql = "SELECT * FROM nodes WHERE parentID = 1 AND ID != 1";
     $db->executeWithoutParam($sql);
     $resultSet = $db->resultset();
+?> <script>
+$.ajax({
+    url: 'getContentNodes.php',
+    dataType: 'json',           // we expect JSON array to be returned back
+    method: 'get',              // with get method
+    data: {id: 1, param: 1},   // give id as parametr
+    success: onSuccess
+})</script>
 
+
+<?php
     // Contact data retrieving
     $sql = 'SELECT * FROM contact';
     $db->executeWithoutParam($sql);
@@ -23,12 +33,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/favico.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favico.png">
+
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    
     <!-- Breadcrumns CSS -->
     <link rel="stylesheet" href="vendors/asBreadcrumbs/css/asBreadcrumbs.css">
     <!-- BOOTSTRAP CSS -->
@@ -38,6 +48,7 @@
     <!-- OUR STYLES -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
+
     <!-- START -> LINKS AND META FOR THE APP VERSION -->
     <link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
@@ -70,8 +81,8 @@
     <div class="top">
         <div class="wrapper">
             <div class="top-container">
-                <div class="logo"><a href="" name="<?php echo $resultSet[0]['ID']; ?>"><img src="images/logo-oeverdef.png"></a></div>
                 <div class="site-name"> De wegwijzer</div>
+                <div class="logo"><a href=""><img src="images/logo-oeverdef.png"></a></div>
             </div>
         </div>
     </div>
@@ -89,12 +100,12 @@
         $id_home = $resultSet[0]['ID'];
 
         //Loop through $resultset and create html for each node with content
-        foreach ($resultSet as $value) {
+        /* foreach ($resultSet as $value) {
             // we create divs with class item and id (from database)
             echo '<div class="item" id="' . $value['ID'] . '">';
             echo $value['content'];
             echo '</div>';
-        } ?>
+        } */ ?>
     </div>
 
     <!-- Create back button -->
@@ -121,13 +132,13 @@
 <script>
     var ath = addToHomescreen({
         debug: 'android',
-    skipFirstVisit: false,	// show at first access
-    icon: false,                // Laat in de message een icoontje van De Oever zien om plaats te besparen
-    startDelay: 0,          // display the message right away
-    lifespan: 0,            // do not automatically kill the call out
-    displayPace: 0,         // do not obey the display pace
-    privateModeOverride: true,	// show the message in private mode
-    maxDisplayCount: 1    // do not obey the max display count
+        skipFirstVisit: false,	// show at first access
+        icon: false,                // Laat in de message een icoontje van De Oever zien om plaats te besparen
+        startDelay: 0,          // display the message right away
+        lifespan: 0,            // do not automatically kill the call out
+        displayPace: 0,         // do not obey the display pace
+        privateModeOverride: true,	// show the message in private mode
+        maxDisplayCount: 1    // do not obey the max display count
     });
 </script>
 
@@ -136,14 +147,6 @@
 <script type="text/javascript">   
     /* If document is ready, perform the code */
     $(document).ready(function () {
-
-   
-
-
-
-
-
-
         var id, string, x, parent, phone, link, ph, url;
 
         /* ---------- Creating buttons for bellen and chatten  ---------- */
@@ -170,8 +173,6 @@
             // to retrieve data from database
 
             id = this.id;
-
-    
 
             // here begins the magic
             $.ajax({
@@ -260,7 +261,7 @@
             $.ajax({
                 url: 'logs.php',
                 method: 'get',            // with get method
-                data: {id: id_parent, param:2},   // give id as parameter and also param is parameter
+                data: {id: id_parent, param: 2},   // give id as parameter and also param is parameter
             });
         }
     });
