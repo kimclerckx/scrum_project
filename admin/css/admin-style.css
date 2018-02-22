@@ -17,19 +17,19 @@ body {
 }
 
 /* nodes */
-p{
+p, ol {
     padding: 0;
     margin: 0;
 }
-li{
 
+li {
     margin: 0.5rem;
 }
 
 
 /*menu buttons */
 
-.btn{
+.btn {
    
     border: 1px solid #74b9ff;
     background-color: transparent;
@@ -54,16 +54,31 @@ li{
     background-color: transparent;
     border-radius: 50%;
 
+    padding: 0;
+    margin: 0;
+    margin-left: 0.2rem;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.listBtn i{
-    
+
+.listBtn:first-child {
+    margin-left: 1rem;
+}
+
+.listBtn i {
     color: #74b9ff;
 }
 
-.firstBtn{
-    margin-left: 1rem;
+.btn-verwerk-group {
+    display: inline-block;
 }
+
+.btn-verwerk-group-3 {
+    display: flex;
+}
+
 
 
 
