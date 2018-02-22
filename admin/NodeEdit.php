@@ -58,26 +58,29 @@ $content = $nodeList->getContentByID($_GET["id"]);
             <?php 
                 if ($_GET['action'] == 'edit') {
             ?>
-            <form action="NodeEdit.php?action=replace&id=<?= $_GET["id"]?>" method="post">
-                <textarea name="content" id="ckeditor">
-                  <?php print $content['content'];?>  
-                </textarea>
-            
-                Knop telefoon toevoegen: <input type="checkbox" name="red"    
+            <form action="NodeEdit.php?action=replace&id=<?= $_GET["id"] ?>" method="post">
+                    <textarea name="content" id="ckeditor">
+                        <?php print $content['content']; ?>  
+                    </textarea>
+
+                    Knop telefoon toevoegen: <input type="checkbox" name="red"    
                     <?php
-                        $bt = $content['button'];
-                        if ($bt == 1 || $bt == 3){
-                            print ("checked");
-                        }
+                    $bt = $content['button'];
+                    if ($bt == 1 || $bt == 3) {
+                        print ("checked");
+                    }
                     ?>>
                     Knop chat toevoegen: <input type="checkbox" name="yellow" 
                     <?php
-                        if ($bt == 2 || $bt == 3){
-                            print ("checked");
-                        }
+                    if ($bt == 2 || $bt == 3) {
+                        print ("checked");
+                    }
                     ?>>
-                <input type="submit" value="Opslaan">
-            </form>
+                    <input class="btn btn-primary" type="submit" value="Opslaan">
+                    <a class="btn btn-primary" href="loggedIn.php"> Cancel </a>
+                    
+                </form>
+         
 
             <?php 
                 } else if ($_GET['action'] == 'add') {
@@ -87,11 +90,12 @@ $content = $nodeList->getContentByID($_GET["id"]);
                 <textarea name="content" id="ckeditor" placeholder="Schrijf hier de nieuwe text"> </textarea>
                 
                 Knop telefoon toevoegen: <input type="checkbox" name="red">
-                Knop chat toevoegen: <input type="checkbox" name="yellow">
+                Knop chat toevoegen:<input type="checkbox" name="yellow">
                 
                 <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
                 
-                <input type="submit" value="Toevoegen" name="add">
+                <input class="btn btn-primary" type="submit" value="Toevoegen" name="add">
+                <a class="btn btn-primary" href="loggedIn.php"> Cancel </a>
             </form> 
             
             <?php 
