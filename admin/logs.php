@@ -29,16 +29,17 @@ if (!isset($_SESSION['email'])) {
 <div class="headWrapper">
     <form action="logs.php" method="post">
         <select name="aantLogs" id="aantLogs">
-            <option value="25"<?php echo ( $_SESSION['aantLogs'] == '25') ? 'selected="selected"' : ''; ?> >25</option>
+            <option value="25"<?php echo ($_SESSION['aantLogs'] == '25') ? 'selected="selected"' : ''; ?> >25</option>
             <option value="50"<?php echo ($_SESSION['aantLogs'] == '50') ? 'selected="selected"' : ''; ?> >50</option>
             <option value="75"<?php echo ($_SESSION['aantLogs'] == '75') ? 'selected="selected"' : ''; ?> >75</option>
-            <option value="100"<?php echo ($_SESSION['aantLogs'] == '100') ? 'selected="selected"' : ''; ?> >100</option>
+            <option value="100"<?php echo ($_SESSION['aantLogs'] == '100') ? 'selected="selected"' : ''; ?> >100
+            </option>
         </select>
         <input class='btn btn-primary' type="submit" value="Toon">
     </form>
-    <?php require_once 'include/menu.php';?>
+    <?php require_once 'include/menu.php'; ?>
 </div>
- 
+
 <?php
 $ll = new LogList();
 $logCount = $ll->getLogCount();
@@ -68,9 +69,22 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
 
 </div>
 <?php
-for ($i = 1; $i <= $aantPages; $i++) {
-    echo "<a class='btn btn-primary' href='logs.php?page=" . $i . "'>" . $i . "</a>";
+$i = $_GET['page'];
+echo "<a class='btn btn-primary' href='logs.php?page=" . 1 . "'>Eerste</a>";
+echo "<a class='btn btn-primary' href='logs.php?page=" . ($i - 1) . "'>Vorige</a>";
+if ($i < 3) {
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i - 2) . "'>" . ($i - 2) . "</a>";
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i - 1) . "'>" . ($i - 1) . "</a>";
 }
+echo "<a class='btn btn-primary' href='logs.php?page=" . $i . "'>" . $i . "</a>";
+echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 1) . "'>" . ($i + 1) . "</a>";
+echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 2) . "'>" . ($i + 2) . "</a>";
+if ($i < 3) {
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 3) . "'>" . ($i + 3) . "</a>";
+    echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 4) . "'>" . ($i + 4) . "</a>";
+}
+echo "<a class='btn btn-primary' href='logs.php?page=" . ($i + 1) . "'>Volgende</a>";
+echo "<a class='btn btn-primary' href='logs.php?page=" . $aantPages . "'>Laatste</a>";
 ?>
 </body>
 </html>
