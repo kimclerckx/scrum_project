@@ -23,16 +23,9 @@ $aantLogs = $_SESSION['aantLogs'];
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 } ?>
-<div class="wrapperHeaderLogs">
+<!--Menu-->
 <?php require_once 'include/menu.php';?>
-<div>
-    <form class="form-horizontal" action="exportToCSV.php" method="post" name="upload_excel"
-          enctype="multipart/form-data">
-        <div class="form-group">
-                <input type="submit" name="Export" class="btn btn-success" value="Exporteer naar Excel"/>
-        </div>
-    </form>
-</div>
+
 <!--Show log records-->
 <div>
     <form action="logs.php" method="post">
@@ -45,7 +38,7 @@ if (!isset($_SESSION['email'])) {
         <input class='btn btn-primary' type="submit" value="Toon">
     </form>
 </div>
-</div>
+
 <?php
 $ll = new LogList();
 $logCount = $ll->getLogCount();
