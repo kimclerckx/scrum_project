@@ -18,6 +18,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/favico.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favico.png">
+    <meta property="og:url"                content="" />
+    <meta property="og:type"               content="" />
+    <meta property="og:title"              content="De Oever" />
+    <meta property="og:description"        content="facebook description" />
+    <meta property="og:image"              content="http://image.jpg" />
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">

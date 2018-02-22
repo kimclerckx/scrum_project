@@ -81,11 +81,13 @@ li {
 /********** ckeditor form **********/
 
 #cke_ckeditor {
-    margin-bottom: 15px;
+    margin-bottom: 1.5em;
+    margin-top: 3em;
 }
-
-
-
+.btn-set{
+    display: inline-block;
+    float: right;
+}
 
 /********** logs **********/
 
