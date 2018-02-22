@@ -76,8 +76,8 @@ $content = $nodeList->getContentByID($_GET["id"]);
                         print ("checked");
                     }
                     ?>>
-                    <input class="btn btn-primary" type="submit" value="Opslaan">
-                    <a class="btn btn-primary" href="loggedIn.php"> Cancel </a>
+                    <div class="btn-set"><input class="btn btn-primary" type="submit" value="Opslaan">
+                        <a class="btn btn-primary" href="loggedIn.php"> Cancel </a></div>
                     
                 </form>
          
