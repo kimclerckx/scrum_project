@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
-require_once 'include/menu.php';
+
 
 
 // Create new object
@@ -38,7 +38,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 ?>
 
 <!-- Including header -->
-<?php require_once('include/header.php'); ?>
+<?php require_once('include/header.php');
+require_once 'include/menu.php';?>
 <body>
 <!-- Treeview -->
 <div class="jumbotron">

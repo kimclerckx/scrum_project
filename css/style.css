@@ -105,6 +105,9 @@ body {
 .item {
 	cursor: pointer;
 }
+.node-container ol {
+    display: inline-block;
+}
 
 
 /* --------------- Buttons ------------------------ */
@@ -301,6 +304,7 @@ body {
     .btn-breadcrumb > * div {
         max-width: 100px;
     }
+   
 }
 
 /* For tablets */
@@ -313,15 +317,6 @@ body {
     }
 }
 
-/* For desktops */
-@media (min-width: 992px) {
-    .btn-breadcrumb > *:nth-last-child(-n+6) {
-        display: block;
-    } 
-    .btn-breadcrumb > * div {
-        width: 200px;
-    }
-}
 
 
 

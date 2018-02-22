@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="vendors/ionicons/css/ionicons.min.css">
     <!-- OUR STYLES -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/large-screen.css" media="only screen and (min-width: 992px)">
     <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
 
     <!-- START -> LINKS AND META FOR THE APP VERSION -->
