@@ -149,8 +149,6 @@ body {
     background-color: #cccc00;
 }
 
-
-
 /* --------------- BACK AND HOME BUTTON ------------------------ */
 .navigation {
     display: none;
@@ -190,7 +188,7 @@ body {
 
 /* --------------- BREADCRUMBS ------------------------ */
 #bc1 a i {
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 #bc1 a {
     font-size: 0.9rem;
@@ -242,7 +240,7 @@ body {
   }
 
   .btn-breadcrumb .btn:first-child {
-    padding: 0.3rem 1rem 0.3rem 1rem !important;
+    padding: 0.8rem 1rem 0.4rem 1rem !important;
   }
 
   /** Default button **/

@@ -1,6 +1,8 @@
 <?php
     // Connection to database
     require_once 'Database.php';
+    require_once 'logs.php';
+
     $db = new Database();
     // Select all the nodes with parentID 1 except the first dummy
      $sql = "SELECT * FROM nodes WHERE parentID = 1 AND ID != 1";
@@ -22,8 +24,6 @@ $.ajax({
     $db->executeWithoutParam($sql);
     $result= $db->single();
     $db = null;
-
-    require_once 'logs.php';
 ?>
 
 <!DOCTYPE html>
@@ -95,18 +95,7 @@ $.ajax({
     </div>
 
     <!-- Generate divs for the main page   -->
-    <div class="node-container">
-        <?php
-        $id_home = $resultSet[0]['ID'];
-
-        //Loop through $resultset and create html for each node with content
-        /* foreach ($resultSet as $value) {
-            // we create divs with class item and id (from database)
-            echo '<div class="item" id="' . $value['ID'] . '">';
-            echo $value['content'];
-            echo '</div>';
-        } */ ?>
-    </div>
+    <div class="node-container"></div>
 
     <!-- Create back button -->
     <div class="navigation">
@@ -131,14 +120,14 @@ $.ajax({
 <script src="Js/addtohomescreen.js"></script>
 <script>
     var ath = addToHomescreen({
-        debug: 'android',
-        skipFirstVisit: false,	// show at first access
-        icon: false,                // Laat in de message een icoontje van De Oever zien om plaats te besparen
-        startDelay: 0,          // display the message right away
-        lifespan: 0,            // do not automatically kill the call out
-        displayPace: 0,         // do not obey the display pace
-        privateModeOverride: true,	// show the message in private mode
-        maxDisplayCount: 1    // do not obey the max display count
+    debug: 'ios',
+    skipFirstVisit: false,              // show at first access
+    icon: false,                           // laat in de message een icoontje van De Oever zien
+    startDelay: 0,                        // display the message right away
+    lifespan: 0,                            // do not automatically kill the call out
+    displayPace: 0,                     // do not obey the display pace
+    privateModeOverride: true,     // show the message in private mode
+    maxDisplayCount: 1              // do not obey the max display count
     });
 </script>
 
@@ -148,6 +137,16 @@ $.ajax({
     /* If document is ready, perform the code */
     $(document).ready(function () {
         var id, string, x, parent, phone, link, ph, url;
+
+        $.ajax({
+            url: 'getContentNodes.php',
+            dataType: 'json',           //we expect JSON array to be returned back
+            method: 'get',              //with get method
+            data: {id: 1, param: 1},   //give id as parameter and also param is parameter
+            // param 1 = clicked on divs & param 2 = clicked on breadcrumb
+            success: onSuccess
+        });
+
 
         /* ---------- Creating buttons for bellen and chatten  ---------- */
         phone = <?php echo $result['phone']; ?>;
@@ -199,10 +198,6 @@ $.ajax({
             
             // Every <a> element has id
             id = this.id;
-            
-            // if 'a' element in breadcrumps was clicked, we need to change name attribute in 'a' elemnt in back button
-            //id_1 = parent.prev().children().attr('id');
-            //$('.back a').attr('name', id);
 
             $.ajax({
                 url: 'getContentNodes.php',
@@ -214,7 +209,7 @@ $.ajax({
         });
 
         /* ---------- CLICKING BACK, HOME, OR LOGO ---------- */
-        $('.wrapper').on('click', '.back a, .home a, .logo .a', function (e) {
+        $('.wrapper').on('click', '.back a, .home a, .logo a', function (e) {
             e.preventDefault();
             // 'a' element in div.back has attribute name met value = id
             // so we take this id and then search for 'a' element with the same id in our breadcrumps

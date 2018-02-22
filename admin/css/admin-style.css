@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: 'Lato', cursive;
+    font-family: 'Lato', sans-serif;
 }
 .header {
     display: flex;
@@ -13,6 +13,7 @@ body {
 
 .header p {
     text-align: center;
+    margin:auto;
 }
 
 /* nodes */
@@ -25,26 +26,74 @@ li{
     margin: 0.5rem;
 }
 
+
+/*menu buttons */
+
+.header .btn{
+    
+    border: 1px solid #74b9ff;
+    background-color: transparent;
+    color: #74b9ff;
+}
+.header .btn:hover{
+    
+    background-color: #007bff;
+}
+
+/* logs */
+
 .wrapperLogs {
 	display: grid;
-	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-    grid-row-gap: 1rem;
+	grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
+    grid-row-gap: 0.2rem;
 }
 
 .box{
     display: inline-block;
-    background-color:  #F5F5F5;
     color: #212121;
-    padding: 15px;
-    font-size: 100%;
-    line-height: 26px;
+    padding: 5px;
+    /*font-size: 100%;*/
+    /*line-height: 26px;*/
 }
+.colH{
+    border-bottom: 2px solid black;
+    font-weight: bold;
+
+}
+.col1 {
+    background-color:  #F5F5F5;
+}
+.col2 {
+    background-color: #EEEEEE;
+}
+.col3 {
+    background-color: #E0E0E0;
+}
+.col4 {
+    background-color: #BDBDBD;
+}
+.col5 {
+    background-color: #9E9E9E;
+
+}
+
+
+
 /* buttons*/
 
 .listBtn{
-
+    border: 1px solid #74b9ff;
+    background-color: transparent;
     border-radius: 50%;
     margin-left: 0.25rem;
     padding: 0.25rem;
+}
+.listBtn i{
+    
+    color: #74b9ff;
+}
+
+.firstBtn{
+    margin-left: 1rem;
 }
 

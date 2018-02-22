@@ -28,29 +28,29 @@ if (isset($_POST['login'])) {
 
     //3. Check if fields are empty
     if (empty($email)) {
-        $errors[] = "Email is required!";
+        $errors[] = "E-mail is verplicht!";
     }
     if (empty($password)) {
-        $errors[] = "Password is required!";
+        $errors[] = "Wachtwoord is verplicht!";
     }
     //4. Validate email when there are no errors
     if (count($errors) == 0) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Email is not valid!";
+            $errors[] = "E-mail is niet geldig!";
         } else {
             //5. Check to see if email exists in database
             $sql = "SELECT * FROM users WHERE email = :email";
             $db->executeWithParam($sql, array(array(':email', $email)));
             //6. Check if email is found in database
             if ($db->rowCount() == 0) {
-                $errors[] = "Sorry, user with email : " . $email . " doesn't exist in our database";
+                $errors[] = "Sorry, gebruiker met e-mailadres " . $email . " bestaat niet in onze databank.";
             }
         }
         if (count($errors) == 0) {
             $results = $db->single();
             //7. Check if passwords match
             if (!password_verify($_POST['password'], $results['password'])) {
-                $errors[] = "Password for " . $email . " is not correct";
+                $errors[] = "Wachtwoord voor " . $email . " is niet correct.";
             } else {
                 $_SESSION['email'] = $results['email'];
                 header("Location:loggedIn.php");
@@ -81,16 +81,16 @@ if (isset($_POST['login'])) {
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="Admin email" name="email">
-                    <small id="emailHelp" class="form-text text-muted">Geef de admin login email in.</small>
+                           placeholder="Admin e-mail" name="email">
+                    <small id="emailHelp" class="form-text text-muted">Typ hier het admin e-mailadres.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Wachtwoord</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Admin wachtwoord"
                            name="password">
-                    <small id="emailHelp" class="form-text text-muted">Geef het admin login wachtwoord in.</small>
+                    <small id="emailHelp" class="form-text text-muted">Typ hier het admin wachtwoord.</small>
                 </div>
-                <button type="submit" class="btn btn-primary" name="login">Login</button>
+                <button type="submit" class="btn btn-primary" name="login">Log in</button>
             </form>
             <br><br>
             <a class="btn btn-primary" href="passwordReset.php">Reset wachtwoord</a>

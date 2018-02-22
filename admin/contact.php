@@ -34,7 +34,7 @@ $contact = new Contact();
 if (isset($_POST['contactEdit'])) {
     $contact->updateContact($_POST['phone'], $_POST['link']);
     echo ("<script>
-    window.alert('Succesfully Updated');
+    window.alert('Wijzigingen opgeslagen');
     window.location.href='loggedIn.php';
     </script>");
 }

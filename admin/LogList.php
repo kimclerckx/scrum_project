@@ -7,7 +7,10 @@ class LogList
     {
         $offset = ($i-1) * $aantLogs;
         $db = new Database();
-        $sql = "SELECT * FROM logs LIMIT $aantLogs OFFSET $offset";
+        $sql = "SELECT logs.ID, timestampStart, timestampEnd, content
+        FROM logs
+        inner join nodes on nodes.ID = logs.lastnode
+        LIMIT $aantLogs OFFSET $offset";
         $db->executeWithoutParam($sql);
         $resultSet = $db->resultset();
         $db = null;

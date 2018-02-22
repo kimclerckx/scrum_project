@@ -30,7 +30,7 @@ if (isset($_POST['reset'])) {
 
             //6. Check if email is found in database
             if ($db->rowCount() == 0) {
-                $errors[] = "De gebruiker met email : " . $email . " bestaat niet in onze database.";
+                $errors[] = "De gebruiker met e-mailadres : " . $email . " bestaat niet in onze database.";
             }
         }
         if (count($errors) == 0) {
@@ -104,7 +104,7 @@ if (isset($_POST['reset'])) {
                     <label for="exampleInputEmail1">Je account email</label>
                     <input type="email" class="form-control" id="exampleInputEmail1"
                            placeholder="Voer je email in" name="email">
-                    <small id="emailHelp" class="form-text text-muted">Voer het email adres van een bestaande account in.
+                    <small id="emailHelp" class="form-text text-muted">Voer het e-mailadres van een bestaande account in.
                     </small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="reset">Reset wachtwoord</button>

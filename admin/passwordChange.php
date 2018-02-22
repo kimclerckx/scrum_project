@@ -19,13 +19,13 @@ if (isset($_POST['change'])) {
 
     //3. Check if fields are empty
     if (empty($password)) {
-        $errors[] = "Wachtwoord is verplicht.";
+        $errors[] = "Huidig wachtwoord is verplicht.";
     }
     if (empty($passwordNew)) {
         $errors[] = "Nieuw wachtwoord is verplicht.";
     }
     if (empty($passwordConfirmNew)) {
-        $errors[] = "Herhaling van nieuw wachtwoord is verplicht.";
+        $errors[] = "Herhaal het nieuw wachtwoord.";
     }
     //4. Check if current password matches user email
     if (count($errors) == 0) {
@@ -36,14 +36,14 @@ if (isset($_POST['change'])) {
 
         //5. Check if current
         if (!password_verify($password, $resultSet['password'])) {
-            $errors[] = "Wachtwoord voor  " . $email . " is niet correct.";
+            $errors[] = "Huidig wachtwoord voor  " . $email . " is niet correct.";
         }
 
         if (count($errors) == 0) {
 
             //7. Check if passwords match
             if ($passwordNew !== $passwordConfirmNew) {
-                $errors[] = "De ingevoerde wachtwoorden zijn niet gelijk, probeer opnieuw.";
+                $errors[] = "De ingevoerde wachtwoorden zijn verschillend, probeer opnieuw.";
             } else {
                 $sql = 'UPDATE users SET password = :password WHERE email = :email';
                 $db->executeWithParam($sql, array(array(':password', password_hash($passwordConfirmNew, PASSWORD_BCRYPT)), array(':email', $_SESSION['email'])));
@@ -78,22 +78,22 @@ if (isset($_POST['change'])) {
                 <div class="form-group">
                     <label for="exampleInputEmail1">Huidig wachtwoord</label>
                     <input type="password" class="form-control" id="exampleInputEmail1"
-                           placeholder="Je huidige wachtwoord" name="password">
-                    <small id="emailHelp" class="form-text text-muted">Voer je huidige wachtwoord in.</small>
+                           placeholder="Huidig wachtwoord" name="password">
+                    <small id="emailHelp" class="form-text text-muted">Voer het huidig wachtwoord in.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Nieuw wachtwoord</label>
                     <input type="password" class="form-control" id="exampleInputPassword1"
-                           placeholder="Je nieuwe wachtwoord"
+                           placeholder="Nieuw wachtwoord"
                            name="newPassword">
-                    <small id="emailHelp" class="form-text text-muted">Voer je nieuwe wachtwoord in.</small>
+                    <small id="emailHelp" class="form-text text-muted">Voer het nieuw wachtwoord in.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Nieuw wachtwoord bevestigen</label>
                     <input type="password" class="form-control" id="exampleInputPassword1"
-                           placeholder="Herhaal je nieuwe wachtwoord"
+                           placeholder="Herhaal nieuw wachtwoord"
                            name="confirmNewPassword">
-                    <small id="emailHelp" class="form-text text-muted">Voer je nieuwe wachtwoord opnieuw in.</small>
+                    <small id="emailHelp" class="form-text text-muted">Voer het nieuw wachtwoord opnieuw in.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="change">Wijzig wachtwoord</button>
             </form>
