@@ -108,7 +108,9 @@ if (isset($_POST['reset'])) {
                     </small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="reset">Reset wachtwoord</button>
+                <a class='btn btn-primary' href='index.php'>Terug</a>
             </form>
+            
         </div>
         <div class="col"></div>
     </div>
