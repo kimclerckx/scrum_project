@@ -35,9 +35,10 @@ if (isset($_POST['register'])) {
             // 6. Check if user with this email already exists
             $db = new Database();
             $sql = 'SELECT * FROM users WHERE email = :email';
-            $db->query($sql);
-            $db->bind(':email', $email);
-            $db->execute();
+          
+            $db->executeWithParam($sql, array(array(':email', $email)));
+            //6. Check if email is found in database
+            $resultSet = $db->resultset();
             if ($db->rowCount() > 0) {
                 $errors[] = "Dit e-mailadres is al in gebruik";
             }
@@ -49,13 +50,10 @@ if (isset($_POST['register'])) {
         //7. If no errors -> Enter the new user in the database
         if (count($errors) == 0) {
             $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
-            $db->query($sql);
-            $db->bind(':email', $email);
-            $db->bind(':password', password_hash($password, PASSWORD_BCRYPT));
-
-            if ($db->execute()) {
+            $result = $db->executeWithParam($sql, array(array(':email', $email), array(':password', $password)));
+         
+            if ($result) {
                 $message = 'Nieuwe gebruiker aangemaakt';
-                header('Location: index.php');
             } else {
                 $message = 'Er is een fout opgetreden bij het aanmaken van een nieuwe gebruiker';
             }
@@ -66,26 +64,26 @@ if (isset($_POST['register'])) {
 ?>
 <!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Registreer een nieuwe gebruiker</title>
-    <link rel="stylesheet" href="css/admin-style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
-    <div class="header">
-        <a href="index.php"><img src="../images/logo-oeverdef.png"></a>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registreer een nieuwe gebruiker</title>
+        <link rel="stylesheet" href="css/admin-style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="header">
+            <a href="index.php"><img src="../images/logo-oeverdef.png"></a>
+        </div>
 
-    <?php if (!empty($message)) : ?>
-        <p><?= $message ?></p>
-    <?php endif; ?>
-    <h2>Registreer een nieuwe gebruiker</h2>
+        <?php if (!empty($message)) : ?>
+            <p><?= $message ?></p>
+        <?php endif; ?>
+        <h2>Registreer een nieuwe gebruiker</h2>
 
-    <div class="container">
-        <div class="row">
-            <div class="col"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
                 <div class="col-4 text-center">
                     <form action="newUser.php" method="post">
                         <div class="form-group">
@@ -103,13 +101,13 @@ if (isset($_POST['register'])) {
                         <button type="submit" class="btn btn-primary" value="register" name="register">Gebruiker aanmaken</button>
                     </form>
                 </div>
-            <div class="col"></div>
+                <div class="col"></div>
+            </div>
         </div>
-    </div>
-    <br/>
-    <a class="btn" href="index.php">Terug</a>
-    <br/>
-    <!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
-    <p><?php echo implode("<br><br>", $errors); ?></p>
-</body>
+        <br/>
+        <a class="btn" href="index.php">Terug</a>
+        <br/>
+        <!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
+        <p><?php echo implode("<br><br>", $errors); ?></p>
+    </body>
 </html>
