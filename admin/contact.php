@@ -39,7 +39,6 @@ if (isset($_POST['contactEdit'])) {
     </script>");
 }
 
-
 ?>
 
 <!-- Including header -->
