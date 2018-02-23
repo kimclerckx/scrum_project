@@ -75,19 +75,23 @@ li {
     color: #74b9ff;
 } 
 
-/* logo */
+/* banner */
 
  .logo img {
-    width: 40px;
+    width: 43px;
     display: flex;
     justify-content: flex-start;
     align-items: stretch;
-    margin:0 10px;
+    margin:1px 17px 0px 45px;
 }
 
 .banner {
     display:flex;
     justify-content: space-between;
+}
+
+.header .form-group, form{
+    margin-bottom: 0;
 }
 /* buttons loggedIn*/
 

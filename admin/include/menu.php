@@ -9,7 +9,7 @@
 <!-- Header menu -->
 
 <div class="banner">
-    <div class="logo"><img src="../images/logo-oeverdef.png"></div>
+    <div class="logo"><a href="../admin/loggedIn.php"><img src="../images/logo-oeverdef.png"></a></div>
     <div class="header text-center">
             <?php 
              if (strpos($_SERVER['REQUEST_URI'],'logs') > 1) { 
