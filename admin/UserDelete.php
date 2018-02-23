@@ -40,9 +40,9 @@ require_once 'include/menu.php';?>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-3"><strong>User ID</strong></div>
-                            <div class="col-3"><strong>Email</strong></div>
-                            <div class="col-6"><strong>Delete</strong></div>
+                            <div class="col-3"><strong>Gebruiker #</strong></div>
+                            <div class="col-3"><strong>E-mail</strong></div>
+                            <div class="col-6"><strong>Verwijderen</strong></div>
                         </div>
                     </li>
                     <?php
@@ -53,14 +53,14 @@ require_once 'include/menu.php';?>
                                 <div class="row">
                                     <div class="col-3"><?php print $value['ID']; ?></div>
                                     <div class="col-3"><?php print $value['email']; ?></div>
-                                    <div class="col-6"><a class="btn btn-primary" href="UserDelete.php?delete=<?php print $value['ID']; ?>" onclick="return confirm('Ben je zeker dat je dit user wil verwijderen?');">Delete account</a></div>
+                                    <div class="col-6"><a class="btn btn-primary" href="UserDelete.php?delete=<?php print $value['ID']; ?>" onclick="return confirm('Ben je zeker dat je deze gebruiker wil verwijderen?');">Delete account</a></div>
                                 </div>
                             </li>
                             <?php
                         }
                     } else {
                         ?>
-                        <li class="list-group-item">No accounts to be deleted</li>
+                        <li class="list-group-item">Geen gebruikers om te verwijderen</li>
                         <?php
                     }
                     ?>
