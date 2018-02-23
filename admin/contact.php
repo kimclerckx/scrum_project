@@ -39,13 +39,7 @@ if (isset($_POST['contactEdit'])) {
     </script>");
 }
 
-if (isset($_POST['close'])){
 
-            echo ("<script>
-              window.location.href='loggedIn.php';
-              </script>");
-
-}
 ?>
 
 <!-- Including header -->
@@ -56,9 +50,10 @@ require_once 'include/menu.php';?>
     <div class="container">
         <div class="col-4 mx-auto text-center">
             <?php
+                $url = $_GET['url'];
                 $result = $contact->getContact();
             ?>
-            <form action="contact.php" method="post">
+            <form action="contact.php?url=<?php echo $url; ?>" method="post">
                 <div class="form-group">
                     Telefoon: <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
                 </div>
@@ -66,7 +61,8 @@ require_once 'include/menu.php';?>
                     Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
-                <button class="btn btn-secondary" name="close">Terug</button>
+                <a href="loggedIn.php" class="btn btn-primary">Terug</a>
+
             </form>
         </div>
     </div>
