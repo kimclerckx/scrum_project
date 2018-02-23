@@ -8,11 +8,10 @@ class Database
     private $dbname = "fontonova";
 
 
-//    private $host = "localhost:3306";
-//    private $user = "root";
-//    private $pass = "";
-//    private $dbname = "fontonova";
-
+    /* private $host = "localhost:3306";
+    private $user = "root";
+    private $pass = "1111";
+    private $dbname = "fontonova"; */
 
 
     private $dbh;

@@ -8,6 +8,7 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
+
 class Contact {
 
     public function getContact() {
@@ -40,8 +41,10 @@ if (isset($_POST['contactEdit'])) {
 ?>
 
 <!-- Including header -->
-<?php require_once('include/header.php');
-require_once 'include/menu.php';?>
+<?php 
+    require_once('include/header.php');
+    require_once ('include/menu.php');
+?>
 <body>
     <h2>Pas contactgegevens aan</h2>
     <div class="container">
@@ -51,7 +54,7 @@ require_once 'include/menu.php';?>
             ?>
             <form action="contact.php" method="post">
                 <div class="form-group">
-                    Telefoon: (xxxx-xx-xxx) <input type="tel" pattern="[0-9]{4}-[0-9]{2}-[0-9]{3}" classghfg="form-control" id="phoneEdit" name="phone" required value="<?= $result['phone'] ?>">
+                    Telefoon: (xxxx-xx-xxx) <input type="tel" pattern="[0-9]{4}-[0-9]{2}-[0-9]{3}" class="form-control" id="phoneEdit" name="phone" required value="<?= $result['phone'] ?>">
                 <span class="validity"></span>
                 </div>
                 <div class="form-group">
