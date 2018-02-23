@@ -8,6 +8,7 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
+
 class Contact {
 
     public function getContact() {
@@ -40,8 +41,10 @@ if (isset($_POST['contactEdit'])) {
 ?>
 
 <!-- Including header -->
-<?php require_once('include/header.php');
-require_once 'include/menu.php';?>
+<?php 
+    require_once('include/header.php');
+    require_once ('include/menu.php');
+?>
 <body>
     <h2>Pas contactgegevens aan</h2>
     <div class="container">

@@ -67,10 +67,10 @@ if (isset($_POST['reset'])) {
             $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&t=' . $token;
 
             //Print out the email for the sake of this tutorial.
-            echo $linkToSend;
+            //echo $linkToSend;
 
-            $to      = 'kim.clerckx@gmail.com';
-            $subject = 'the subject';
+            $to      = $email;
+            $subject = 'Email FontoNova wachtwoord opnieuw aanmaken';
             $message = $linkToSend;
             $headers = 'From: webmaster@example.com' . "\r\n" .
                 'Reply-To: webmaster@example.com' . "\r\n" .

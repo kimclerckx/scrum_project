@@ -1,8 +1,7 @@
 <?php
 
 require_once 'NodeList.php';
-if(!isset($_SESSION)) 
-{ 
+if(!isset($_SESSION)) { 
     session_start(); 
 } 
 
@@ -10,34 +9,10 @@ if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
 
-
-
-
-/******** check if textarea isn't empty **********/
-$errors = [];
-$nodeList = new NodeList();
-
-if(isset($_POST['add'])){
-    
-    
-    if (empty($_POST['content'])) {
-        $errors[] = "Vul het veld in!";
-    }    // Add node
-
-    if (count($errors) == 0) {
-        $add_content = $_POST['content'];
-        $parentid = $_POST['id'];
-        $nodeList->addNode($parentid, $add_content, $button);
-        echo "<script>
-        window.alert('Opgeslagen');
-        window.location.href='loggedIn.php';
-        </script>";
-
-    }
-    
-    
+if (!isset($_SESSION['message'])) {
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
 }
-
 
 
 /* Controleren welke button(s) er moeten toegevoegd worden. (checkboxes) */
@@ -53,6 +28,31 @@ if(isset($_POST['red']) && isset($_POST['yellow'])){
 
 
 
+/******** check if textarea isn't empty **********/
+$errors = [];
+$nodeList = new NodeList();
+
+if(isset($_POST['add'])){
+    
+    if (empty($_POST['content'])) {
+        $errors[] = "Vul het veld in!";
+    }    // Add node
+
+    if (count($errors) == 0) {
+        $add_content = $_POST['content'];
+        $parentid = $_POST['id'];
+        $nodeList->addNode($parentid, $add_content, $button);
+        echo "<script>
+        window.alert('Opgeslagen');
+        window.location.href='loggedIn.php';
+        </script>";
+
+    } else {
+        $_SESSION['message'] = 'Inhoud mag niet leeg zijn';
+        header ('Location: NodeEdit.php?action=add&id=' . $_POST['id'] . '');
+    }
+}
+
 // Update node
 if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
     $edit_data = $_POST['content'];
@@ -65,7 +65,7 @@ if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
 
 
 //Object aanmaken
-$content = $nodeList->getContentByID($_GET["id"]);
+ $content = $nodeList->getContentByID($_GET["id"]);
 
 ?>
 
@@ -79,12 +79,12 @@ $content = $nodeList->getContentByID($_GET["id"]);
                 if ($_GET['action'] == 'edit') {
             ?>
             <form action="NodeEdit.php?action=replace&id=<?= $_GET["id"] ?>" method="post">
-                    <textarea name="content" id="ckeditor">
-                        <?php print $content['content']; ?>  
-                    </textarea>
+                <textarea name="content" id="ckeditor">
+                    <?php print $content['content']; ?>  
+                </textarea>
 
-                    Knop telefoon toevoegen: <input type="checkbox" name="red"    
-                    <?php
+                Knop telefoon toevoegen: <input type="checkbox" name="red"    
+                <?php
                     $bt = $content['button'];
                     if ($bt == 1 || $bt == 3) {
                         print ("checked");
@@ -99,7 +99,7 @@ $content = $nodeList->getContentByID($_GET["id"]);
                     <div class="btn-set"><input class="btn btn-primary" type="submit" value="Opslaan">
                         <a class="btn btn-primary" href="loggedIn.php">Annuleer</a></div>
                     
-                </form>
+            </form>
          
 
             <?php 
