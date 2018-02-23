@@ -42,6 +42,7 @@ if (isset($_POST['create'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Nieuw wachtwoord</title>
+    <link rel="stylesheet" href="css/admin-style.css">
 </head>
 <body>
 <br><br>

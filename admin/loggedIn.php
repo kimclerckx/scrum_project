@@ -36,7 +36,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 }
 
 ?>
-
+<html>
 <!-- Including header -->
 <?php require_once('include/header.php');
 require_once 'include/menu.php';?>
