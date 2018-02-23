@@ -47,11 +47,14 @@ if (isset($_POST['close'])){
       echo ("<script>
         window.location.href='logs.php';
         </script>");
-  }elseif($_GET['url'] == 'loggedIn') {
+}   elseif($_GET['url'] == 'loggedIn') {
       echo ("<script>
         window.location.href='loggedIn.php';
         </script>");
-}
+}   elseif($_GET['url'] == 'newUser') {
+      echo ("<script>
+        window.location.href='newUser.php';
+        </script>");
 }
 
 ?>
