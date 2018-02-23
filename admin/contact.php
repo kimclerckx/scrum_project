@@ -76,7 +76,7 @@ if (isset($_POST['close'])){
                     Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
-                <button class="btn btn-secondary" name="close">Close</button>
+                <button class="btn btn-secondary" name="close">Sluiten</button>
             </form>
         </div>
     </div>
