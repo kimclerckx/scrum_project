@@ -63,6 +63,12 @@ li {
     color: #74b9ff;
 } 
 
+/* logo */
+
+.header .logo img {
+    width: 3rem;
+}
+
 /* buttons loggedIn*/
 
 .listBtn {

@@ -10,7 +10,6 @@
 
 <div class="header text-center">
     <div class="logo"><img src="../images/logo-oeverdef.png"></div>
-    <p>Welkom <span><?= $_SESSION['email'] ?></span>: je bent nu ingelogd als administrator.</p>
     <div><a class='btn btn-primary' href='newUser.php'>Nieuwe gebruiker</a></div>
     <div><a class='btn btn-primary' href='contact.php'>Pas contactgegevens aan</a></div>
     <div><a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a></div>

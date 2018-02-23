@@ -74,9 +74,8 @@ if (isset($_POST['register'])) {
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <div class="header logo">
-            <a href="index.php"><img src="../images/logo-oeverdef.png"></a>
-        </div>
+         <?php require_once('include/header.php');
+             require_once 'include/menu.php';?>
 
         <?php if (!empty($message)) : ?>
             <p><?= $message ?></p>
