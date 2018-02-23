@@ -55,14 +55,12 @@ if (isset($_POST['create'])) {
                     <input type="password" class="form-control" id="exampleInputPassword1"
                            placeholder="Nieuw wachtwoord"
                            name="newPassword">
-                    <small id="emailHelp" class="form-text text-muted">Voer het nieuw wachtwoord in.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Nieuw wachtwoord bevestigen</label>
                     <input type="password" class="form-control" id="exampleInputPassword1"
                            placeholder="Herhaal het nieuw wachtwoord"
                            name="confirmNewPassword">
-                    <small id="emailHelp" class="form-text text-muted">Bevestig het nieuw wachtwoord.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" name="create">Maak nieuw wachtwoord</button>
             </form>

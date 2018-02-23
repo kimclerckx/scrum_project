@@ -60,7 +60,6 @@ require_once 'include/menu.php';?>
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
                 <a href="loggedIn.php" class="btn btn-primary">Terug</a>
-
             </form>
         </div>
     </div>

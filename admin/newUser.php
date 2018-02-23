@@ -50,7 +50,7 @@ if (isset($_POST['register'])) {
         //7. If no errors -> Enter the new user in the database
         if (count($errors) == 0) {
             $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
-            $result = $db->executeWithParam($sql, array(array(':email', $email), array(':password', $password)));
+            $result = $db->executeWithParam($sql, array(array(':email', $email), array(':password', password_hash($password, PASSWORD_BCRYPT))));
          
             if ($result) {
                 echo ("<script>
@@ -62,13 +62,7 @@ if (isset($_POST['register'])) {
             $db = null;
         }
     }
-} else if (isset($_POST['close'])){
-
-            echo ("<script>
-              window.location.href='loggedIn.php';
-              </script>");
-
-        }   
+}
 ?>
 <!doctype html>
 <html>
@@ -103,8 +97,8 @@ if (isset($_POST['register'])) {
                             <label for="passwordCheck">Wachtwoord bevestigen</label>
                             <input type="password" class="form-control" id="passwordConfirm" placeholder="Herhaal wachtwoord" name="passwordConfirm">
                         </div>
-                        <button type="submit" class="btn btn-primary" value="register" name="register">Gebruiker aanmaken</button>
-                        <button  class="btn btn-secondary" name="close">Terug</button>
+                        <button type="submit" class="btn btn-primary" value="register" name="register">Registreren</button>
+                        <a href="loggedIn.php" class="btn btn-primary">Terug</a>
                     </form>
                 </div>
                 <div class="col"></div>
