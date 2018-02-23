@@ -13,7 +13,7 @@ class Database
    // private $pass = "";
    // private $dbname = "fontonova";
 
-
+    
 
     private $dbh;
     private $error;
