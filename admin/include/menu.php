@@ -25,7 +25,8 @@
             echo ("<div><a class='btn btn-primary' href='contact.php?url=loggedIn'>Wijzig contactgegevens</a></div>");
         } elseif(strpos($_SERVER['REQUEST_URI'],'newUser') > 1){
          echo ("<div><a class='btn btn-primary' href='contact.php?url=newUser'>Wijzig contactgegevens</a></div>");
-        }
+        } elseif(strpos($_SERVER['REQUEST_URI'],'passwordChange') > 1){
+        echo ("<div><a class='btn btn-primary' href='contact.php?url=passwordChange'>Wijzig contactgegevens</a></div>");}
     ?>
 
     <div><a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a></div>

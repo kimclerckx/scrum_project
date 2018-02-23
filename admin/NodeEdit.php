@@ -77,7 +77,7 @@ $content = $nodeList->getContentByID($_GET["id"]);
                     }
                     ?>>
                     <div class="btn-set"><input class="btn btn-primary" type="submit" value="Opslaan">
-                        <a class="btn btn-primary" href="loggedIn.php"> Cancel </a></div>
+                        <a class="btn btn-primary" href="loggedIn.php">Annuleer</a></div>
                     
                 </form>
          

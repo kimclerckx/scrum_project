@@ -51,6 +51,12 @@ if (isset($_POST['change'])) {
             }
         }
     }
+} else if (isset($_POST['close'])){
+
+            echo ("<script>
+              window.location.href='loggedIn.php';
+              </script>");
+
 }
 ?>
 <!doctype html>
@@ -68,6 +74,7 @@ if (isset($_POST['change'])) {
 <?php require_once('include/header.php');
 require_once 'include/menu.php';?>
 <body>
+    <h2>Wachtwoord wijzigen</h2>
     <div class="container">
         <div class="row">
             <div class="col"></div>

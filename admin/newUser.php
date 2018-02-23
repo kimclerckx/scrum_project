@@ -62,7 +62,13 @@ if (isset($_POST['register'])) {
             $db = null;
         }
     }
-}
+} else if (isset($_POST['close'])){
+
+            echo ("<script>
+              window.location.href='loggedIn.php';
+              </script>");
+
+        }   
 ?>
 <!doctype html>
 <html>
@@ -80,7 +86,6 @@ if (isset($_POST['register'])) {
             <p><?= $message ?></p>
         <?php endif; ?>
         <h2>Registreer een nieuwe gebruiker</h2>
-
         <div class="container">
             <div class="row">
                 <div class="col"></div>
@@ -99,7 +104,7 @@ if (isset($_POST['register'])) {
                             <input type="password" class="form-control" id="passwordConfirm" placeholder="Herhaal wachtwoord" name="passwordConfirm">
                         </div>
                         <button type="submit" class="btn btn-primary" value="register" name="register">Gebruiker aanmaken</button>
-                        <button  class="btn btn-secondary" name="close"><a href="index.php">Terug</a></button>
+                        <button  class="btn btn-secondary" name="close">Terug</button>
                     </form>
                 </div>
                 <div class="col"></div>
