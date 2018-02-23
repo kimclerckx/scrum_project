@@ -78,21 +78,18 @@ require_once 'include/menu.php';?>
                         <label for="exampleInputEmail1">Huidig wachtwoord</label>
                         <input type="password" class="form-control" id="exampleInputEmail1"
                                placeholder="Huidig wachtwoord" name="password">
-                        <small id="emailHelp" class="form-text text-muted">Voer het huidig wachtwoord in.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Nieuw wachtwoord</label>
                         <input type="password" class="form-control" id="exampleInputPassword1"
                                placeholder="Nieuw wachtwoord"
                                name="newPassword">
-                        <small id="emailHelp" class="form-text text-muted">Voer het nieuw wachtwoord in.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Nieuw wachtwoord bevestigen</label>
                         <input type="password" class="form-control" id="exampleInputPassword1"
                                placeholder="Herhaal nieuw wachtwoord"
                                name="confirmNewPassword">
-                        <small id="emailHelp" class="form-text text-muted">Voer het nieuw wachtwoord opnieuw in.</small>
                     </div>
                     <button type="submit" class="btn btn-primary" name="change">Wijzig wachtwoord</button>
                     <button class="btn btn-secondary" name="close">Terug</button>
