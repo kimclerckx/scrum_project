@@ -9,8 +9,10 @@ if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
 
-if (!isset($_SESSION['message'])) {
-    echo $_SESSION['message'];
+if (isset($_SESSION['message'])) {
+     echo "<script>
+        window.alert('Inhoud mag niet leeg zijn');
+        </script>";
     unset($_SESSION['message']);
 }
 
