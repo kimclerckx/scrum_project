@@ -92,7 +92,7 @@ if (isset($_POST['login'])) {
             <br>
             <a class="btn btn-primary" href="passwordReset.php">Reset wachtwoord</a>
             <br><br>
-            <p class ="text-center errrors"><?php echo implode("<br><br>", $errors);?></p>
+            <p class ="text-center errors"><?php echo implode("<br><br>", $errors);?></p>
         </div>
         <div class="col"></div>
     </div>

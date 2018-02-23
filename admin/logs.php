@@ -8,7 +8,7 @@ if (!isset($_GET['page'])) {
 }
 
 if (isset($_GET['goToPage'])) {
-    $_GET['page'] = $_GET['goToPage'];
+        $_GET['page'] = $_GET['goToPage'];
 }
 
 if (isset($_POST['aantLogs']) || (isset($_SESSION['aantLogs']))) {

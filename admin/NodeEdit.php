@@ -10,6 +10,36 @@ if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 }
 
+
+
+
+/******** check if textarea isn't empty **********/
+$errors = [];
+$nodeList = new NodeList();
+
+if(isset($_POST['add'])){
+    
+    
+    if (empty($_POST['content'])) {
+        $errors[] = "Vul het veld in!";
+    }    // Add node
+
+    if (count($errors) == 0) {
+        $add_content = $_POST['content'];
+        $parentid = $_POST['id'];
+        $nodeList->addNode($parentid, $add_content, $button);
+        echo "<script>
+        window.alert('Opgeslagen');
+        window.location.href='loggedIn.php';
+        </script>";
+
+    }
+    
+    
+}
+
+
+
 /* Controleren welke button(s) er moeten toegevoegd worden. (checkboxes) */
 $button= 0;
 
@@ -21,7 +51,7 @@ if(isset($_POST['red']) && isset($_POST['yellow'])){
     $button = 2;
 }
 
-$nodeList = new NodeList();
+
 
 // Update node
 if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
@@ -33,16 +63,6 @@ if (isset($_GET["action"]) && ($_GET["action"] == "replace")) {
    </script>";
 }
 
-// Add node
-if (isset($_POST['add'])) {
-    $add_content = $_POST['content'];
-    $parentid = $_POST['id'];
-    $nodeList->addNode($parentid, $add_content, $button);
-    echo "<script>
-    window.alert('Opgeslagen');
-    window.location.href='loggedIn.php';
-    </script>";
-}
 
 //Object aanmaken
 $content = $nodeList->getContentByID($_GET["id"]);
@@ -96,6 +116,7 @@ $content = $nodeList->getContentByID($_GET["id"]);
                 
                 <input class="btn btn-primary" type="submit" value="Toevoegen" name="add">
                 <a class="btn btn-primary" href="loggedIn.php"> Cancel </a>
+                <p><?php echo implode("<br><br>", $errors);?></p>
             </form> 
             
             <?php 
