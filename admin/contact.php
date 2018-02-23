@@ -40,18 +40,21 @@ if (isset($_POST['contactEdit'])) {
 }
 
 if (isset($_POST['close'])){
-    
-    
-  if (isset($_GET['url']) && $_GET['url'] == 'logs') {
-      
-      echo ("<script>
-        window.location.href='logs.php';
-        </script>");
-  }elseif($_GET['url'] == 'loggedIn') {
-      echo ("<script>
-        window.location.href='loggedIn.php';
-        </script>");
-}
+
+        if (isset($_GET['url']) && $_GET['url'] == 'logs') {
+
+            echo ("<script>
+              window.location.href='logs.php';
+              </script>");
+      }   elseif($_GET['url'] == 'loggedIn') {
+            echo ("<script>
+              window.location.href='loggedIn.php';
+              </script>");
+      }   elseif($_GET['url'] == 'newUser') {
+            echo ("<script>
+              window.location.href='newUser.php';
+              </script>");
+      }
 }
 
 ?>
