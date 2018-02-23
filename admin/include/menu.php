@@ -10,6 +10,13 @@
 
 <div class="header text-center">
     <div class="logo"><img src="../images/logo-oeverdef.png"></div>
+       <?php 
+        if (strpos($_SERVER['REQUEST_URI'],'logs') > 1) { 
+            echo ("<div><a class='btn btn-primary' href='loggedIn.php'>Bewerk inhoud</a></div>");            
+        } else { 
+            echo ("<div><a class='btn btn-primary' href='logs.php'>Logs</a></div>");
+        }
+    ?>
     <div><a class='btn btn-primary' href='newUser.php'>Nieuwe gebruiker</a></div>
    <?php
      if (strpos($_SERVER['REQUEST_URI'],'logs') > 1) { 
@@ -18,20 +25,8 @@
             echo ("<div><a class='btn btn-primary' href='contact.php?url=loggedIn'>Pas contact gegevens aan</a></div>");
         }
     ?>
- 
-    
 
-
- 
     <div><a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a></div>
-    
-   <?php 
-        if (strpos($_SERVER['REQUEST_URI'],'logs') > 1) { 
-            echo ("<div><a class='btn btn-primary' href='loggedIn.php'>Bewerk</a></div>");            
-        } else { 
-            echo ("<div><a class='btn btn-primary' href='logs.php'>Logs</a></div>");
-        }
-    ?>
     <form class="form-horizontal" action="exportToCSV.php" method="post" name="upload_excel"
           enctype="multipart/form-data">
         <div class="form-group">

@@ -54,14 +54,11 @@ if (isset($_POST['close'])){
 }
 }
 
-
-   echo $_GET['url'];
-
-  
 ?>
 
 <!-- Including header -->
-<?php require_once ('include/header.php'); ?>
+<?php require_once('include/header.php');
+require_once 'include/menu.php';?>
 <body>
     <div class="container">
         <div class="col-4 mx-auto text-center">

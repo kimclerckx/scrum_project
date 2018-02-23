@@ -40,25 +40,25 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 <!-- Including header -->
 <?php require_once('include/header.php');
 require_once 'include/menu.php';?>
-<body>
-<!-- Treeview -->
-<div class="jumbotron">
-    <a class="btn btn-primary listBtn" href="NodeEdit.php?action=add&id=1"><i class="ion-plus-round"></i></a>
-    <?php
-    echo $nodeList->buildTree($nodeList->getAllNodes());
-    ?>
-</div>
-<!-- End of Treeview -->
+    <body>
+        <!-- Treeview -->
+        <div class="jumbotron">
+            <a class="btn btn-primary listBtn" href="NodeEdit.php?action=add&id=1"><i class="ion-plus-round"></i></a>
+            <?php
+            echo $nodeList->buildTree($nodeList->getAllNodes());
+            ?>
+        </div>
+        <!-- End of Treeview -->
 
 
-<!-- Including all the scripts -->
-<?php require_once('include/scripts_footer.php') ?>
+        <!-- Including all the scripts -->
+        <?php require_once('include/scripts_footer.php') ?>
 
-<script type='text/javascript'>
-    // This function we use in our link to delete item
-    function confirmDelete() {
-        return confirm("Ben je zeker dat je dit element wil verwijderen?");
-    }
-</script>
-</body>
+        <script type='text/javascript'>
+            // This function we use in our link to delete item
+            function confirmDelete() {
+                return confirm("Ben je zeker dat je dit element wil verwijderen?");
+            }
+        </script>
+    </body>
 </html>
