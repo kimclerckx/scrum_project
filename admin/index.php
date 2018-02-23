@@ -81,21 +81,18 @@ if (isset($_POST['login'])) {
             <form action="index.php" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="Admin e-mail" name="email">
-                    <small id="emailHelp" class="form-text text-muted">Typ hier het admin e-mailadres.</small>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Admin e-mail" name="email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Wachtwoord</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Admin wachtwoord"
-                           name="password">
-                    <small id="emailHelp" class="form-text text-muted">Typ hier het admin wachtwoord.</small>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Admin wachtwoord" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary" name="login">Log in</button>
             </form>
-            <br><br>
+            <br>
             <a class="btn btn-primary" href="passwordReset.php">Reset wachtwoord</a>
-            <p><?php echo implode("<br><br>", $errors);?></p>
+            <br><br>
+            <p class ="text-center errrors"><?php echo implode("<br><br>", $errors);?></p>
         </div>
         <div class="col"></div>
     </div>

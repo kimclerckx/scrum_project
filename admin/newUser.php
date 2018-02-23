@@ -107,6 +107,6 @@ if (isset($_POST['register'])) {
         <br/>
         <br/>
         <!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
-        <p><?php echo implode("<br><br>", $errors); ?></p>
+        <p class="text-center errors"><?php echo implode("<br><br>", $errors); ?></p>
     </body>
 </html>

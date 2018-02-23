@@ -32,6 +32,10 @@ body {
     margin:auto;
 }
 
+.errors {
+    color: red;
+}
+
 /* nodes */
 p, ol {
     padding: 0;

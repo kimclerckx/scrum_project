@@ -53,7 +53,7 @@ require_once 'include/menu.php';?>
                                 <div class="row">
                                     <div class="col-3"><?php print $value['ID']; ?></div>
                                     <div class="col-3"><?php print $value['email']; ?></div>
-                                    <div class="col-6"><a class="btn btn-primary" href="UserDelete.php?delete=<?php print $value['ID']; ?>" onclick="return confirm('Ben je zeker dat je deze gebruiker wil verwijderen?');">Delete account</a></div>
+                                    <div class="col-6"><a class="btn btn-primary" href="UserDelete.php?delete=<?php print $value['ID']; ?>" onclick="return confirm('Ben je zeker dat je deze gebruiker wil verwijderen?');">Verwijder gebruiker</a></div>
                                 </div>
                             </li>
                             <?php
