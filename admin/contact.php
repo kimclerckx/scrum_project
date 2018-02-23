@@ -1,10 +1,13 @@
 <?php
 require_once '../Database.php';
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
+if (!isset($_SESSION)) {
+    session_start();
+}
 
+// Check if user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location:index.php");
+}
 class Contact {
 
     public function getContact() {
@@ -18,15 +21,10 @@ class Contact {
 
     public function updateContact($phone, $link) {
         $db = new Database();
-        $sql = 'UPDATE contact set phone = :phone, link = :link where ID = 1';
+        $sql = 'UPDATE contact SET phone = :phone, link = :link WHERE ID = 3';
         $db->executeWithParam($sql, array(array(':phone', $phone), array(':link', $link)));
         $db = null;
     }
-
-}
-
-if (!isset($_SESSION['email'])) {
-    header("Location:index.php");
 }
 
 $contact = new Contact();
@@ -49,19 +47,18 @@ require_once 'include/menu.php';?>
     <div class="container">
         <div class="col-4 mx-auto text-center">
             <?php
-                $url = $_GET['url'];
                 $result = $contact->getContact();
             ?>
-            <form action="contact.php?url=<?php echo $url; ?>" method="post">
+            <form action="contact.php" method="post">
                 <div class="form-group">
-                    Telefoon: <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
+                    Telefoon: (xxxx-xx-xxx) <input type="tel" pattern="[0-9]{4}-[0-9]{2}-[0-9]{3}" classghfg="form-control" id="phoneEdit" name="phone" required value="<?= $result['phone'] ?>">
+                <span class="validity"></span>
                 </div>
                 <div class="form-group">
-                    Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
+                    Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link" required>
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
                 <a href="loggedIn.php" class="btn btn-primary">Terug</a>
-
             </form>
         </div>
     </div>
