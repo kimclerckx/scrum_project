@@ -32,6 +32,14 @@ body {
     margin:auto;
 }
 
+h2 {
+    text-align: center;
+    margin: 3rem 0;
+    border: 1px solid silver;
+    background-color: transparent;
+    padding: 3rem;
+}
+
 .errors {
     color: red;
 }
@@ -124,9 +132,9 @@ li {
 /********** logs **********/
 
 .headWrapper{
-    display: grid;
+/*    display: grid;
 	grid-template-columns: 1fr 5fr;
-    grid-row-gap: 0.2rem;
+    grid-row-gap: 0.2rem;*/
     
 }
 .wrapperLogs {
