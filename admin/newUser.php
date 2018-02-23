@@ -13,7 +13,6 @@ if (isset($_POST['register'])) {
     $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
     $password = !empty($_POST['password']) ? trim($_POST['password']) : null;
     $passwordConfirm = !empty($_POST['passwordConfirm']) ? trim($_POST['passwordConfirm']) : null;
-    $adminCheck = !empty($_POST['adminCheck']) ? trim($_POST['adminCheck']) : null;
 
     //3. Check if fields are empty
 
@@ -24,7 +23,7 @@ if (isset($_POST['register'])) {
         $errors[] = "Wachtwoord is verplicht";
     }
     if (empty($passwordConfirm)) {
-        $errors[] = "Bevestig je wachtwoord";
+        $errors[] = "Herhaal je wachtwoord";
     }
     //only continue when there are no errors
     if (count($errors) == 0) {
@@ -56,6 +55,7 @@ if (isset($_POST['register'])) {
 
             if ($db->execute()) {
                 $message = 'Nieuwe gebruiker aangemaakt';
+                header('Location: index.php');
             } else {
                 $message = 'Er is een fout opgetreden bij het aanmaken van een nieuwe gebruiker';
             }
@@ -69,28 +69,47 @@ if (isset($_POST['register'])) {
 <head>
     <meta charset="UTF-8">
     <title>Registreer een nieuwe gebruiker</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div class="header">
-    <a href="index.php">Adminpagina</a>
-</div>
+    <div class="header">
+        <a href="index.php"><img src="../images/logo-oeverdef.png"></a>
+    </div>
 
-<?php if (!empty($message)) : ?>
-    <p><?= $message ?></p>
-<?php endif; ?>
-<h1>Registreer een nieuwe gebruiker</h1>
-<form action="newUser.php" method="post">
-    <input type="text" placeholder="Voer een geldig e-mailadres in" name="email">
-    <input type="password" placeholder="Kies een wachtwoord" name="password">
-    <input type="password" placeholder="Herhaal het wachtwoord" name="passwordConfirm">
-    <br/><br/>
-    <input type="submit" name="register" value="Registreren">
-</form>
-<br/>
-<a class="btn" href="index.php">Return Home</a>
-<br/>
-<!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
-<p><?php echo implode("<br><br>", $errors); ?></p>
+    <?php if (!empty($message)) : ?>
+        <p><?= $message ?></p>
+    <?php endif; ?>
+    <h2>Registreer een nieuwe gebruiker</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+                <div class="col-4 text-center">
+                    <form action="newUser.php" method="post">
+                        <div class="form-group">
+                            <label for="email">E-mailadres</label>
+                            <input type="text" class="form-control" id="email" placeholder="Voer een geldig e-mailadres in" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Wachtwoord</label>
+                            <input type="password" class="form-control" id="password" placeholder="Kies wachtwoord" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordCheck">Wachtwoord bevestigen</label>
+                            <input type="password" class="form-control" id="passwordConfirm" placeholder="Herhaal wachtwoord" name="passwordConfirm">
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="register" name="register">Gebruiker aanmaken</button>
+                    </form>
+                </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <br/>
+    <a class="btn" href="index.php">Terug</a>
+    <br/>
+    <!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
+    <p><?php echo implode("<br><br>", $errors); ?></p>
 </body>
 </html>
