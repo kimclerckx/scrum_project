@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="images/favico.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favico.png">
     <meta property="og:url"                content="" />
-    <meta property="og:type"               content="" />
+    <meta property="og:type"               content="website" />
     <meta property="og:title"              content="De wegwijzer voor jobs/studies voor vluchtelingen" />
     <meta property="og:description"        content="Ben jij een vluchteling en heb je vragen over hoe je kan beginnen te studeren of aan een job geraakt? De wegwijzer is een mobiele applicatie die je stapsgewijs meer informatie aanreikt omtrent deze vragen." />
     <meta property="og:image"              content="http://image.jpg" />
@@ -253,6 +253,13 @@
             });
         }
     });
+
+
+    // og:url metatag.
+    $('meta[property=og\\:url]').attr('content', window.location.href);
+    
+
+
 </script>
 </body>
 </html>
