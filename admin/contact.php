@@ -60,6 +60,7 @@ if (isset($_POST['close'])){
 <?php require_once('include/header.php');
 require_once 'include/menu.php';?>
 <body>
+    <h2>Pas contactgegevens aan</h2>
     <div class="container">
         <div class="col-4 mx-auto text-center">
             <?php
@@ -73,7 +74,7 @@ require_once 'include/menu.php';?>
                     Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
-                <button class="btn btn-secondary" name="close">Sluiten</button>
+                <button class="btn btn-secondary" name="close">Terug</button>
             </form>
         </div>
     </div>

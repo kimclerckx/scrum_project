@@ -100,13 +100,13 @@ if (isset($_POST['register'])) {
                             <input type="password" class="form-control" id="passwordConfirm" placeholder="Herhaal wachtwoord" name="passwordConfirm">
                         </div>
                         <button type="submit" class="btn btn-primary" value="register" name="register">Gebruiker aanmaken</button>
+                        <button  class="btn btn-secondary" name="close"><a href="index.php">Terug</a></button>
                     </form>
                 </div>
                 <div class="col"></div>
             </div>
         </div>
         <br/>
-        <a class="btn" href="index.php">Terug</a>
         <br/>
         <!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
         <p><?php echo implode("<br><br>", $errors); ?></p>
