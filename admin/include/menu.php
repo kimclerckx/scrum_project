@@ -20,11 +20,11 @@
     <div><a class='btn btn-primary' href='newUser.php'>Nieuwe gebruiker</a></div>
    <?php
      if (strpos($_SERVER['REQUEST_URI'],'logs') > 1) { 
-            echo ("<div><a class='btn btn-primary' href='contact.php?url=logs'>Pas contact gegevens aan</a></div>");            
+            echo ("<div><a class='btn btn-primary' href='contact.php?url=logs'>Wijzig contactgegevens</a></div>");            
         } elseif(strpos($_SERVER['REQUEST_URI'],'loggedIn') > 1){ 
-            echo ("<div><a class='btn btn-primary' href='contact.php?url=loggedIn'>Pas contact gegevens aan</a></div>");
+            echo ("<div><a class='btn btn-primary' href='contact.php?url=loggedIn'>Wijzig contactgegevens</a></div>");
         } elseif(strpos($_SERVER['REQUEST_URI'],'newUser') > 1){
-         echo ("<div><a class='btn btn-primary' href='contact.php?url=newUser'>Pas contact gegevens aan</a></div>");
+         echo ("<div><a class='btn btn-primary' href='contact.php?url=newUser'>Wijzig contactgegevens</a></div>");
         }
     ?>
 

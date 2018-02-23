@@ -14,5 +14,5 @@
     <link rel="stylesheet" href="css/admin-style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-    <title> Admin Panel </title>
+    <title>De Wegwijzer Administratie</title>
 </head>
