@@ -11,7 +11,18 @@
 <div class="header text-center">
     <div class="logo"><img src="../images/logo-oeverdef.png"></div>
     <div><a class='btn btn-primary' href='newUser.php'>Nieuwe gebruiker</a></div>
-    <div><a class='btn btn-primary' href='contact.php'>Pas contactgegevens aan</a></div>
+   <?php
+     if (strpos($_SERVER['REQUEST_URI'],'logs') > 1) { 
+            echo ("<div><a class='btn btn-primary' href='contact.php?url=logs'>Pas contact gegevens aan</a></div>");            
+        } else { 
+            echo ("<div><a class='btn btn-primary' href='contact.php?url=loggedIn'>Pas contact gegevens aan</a></div>");
+        }
+    ?>
+ 
+    
+
+
+ 
     <div><a class='btn btn-primary' href='passwordChange.php'>Wijzig wachtwoord</a></div>
     
    <?php 
