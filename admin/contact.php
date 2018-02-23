@@ -55,14 +55,13 @@ require_once 'include/menu.php';?>
             ?>
             <form action="contact.php?url=<?php echo $url; ?>" method="post">
                 <div class="form-group">
-                    Telefoon: <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
+                    Telefoon <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
                 </div>
                 <div class="form-group">
                     Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
                 <a href="loggedIn.php" class="btn btn-primary">Terug</a>
-
             </form>
         </div>
     </div>

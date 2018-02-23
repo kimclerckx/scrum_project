@@ -51,13 +51,8 @@ if (isset($_POST['change'])) {
             }
         }
     }
-} else if (isset($_POST['close'])){
-
-            echo ("<script>
-              window.location.href='loggedIn.php';
-              </script>");
-
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -97,8 +92,8 @@ require_once 'include/menu.php';?>
                                placeholder="Herhaal nieuw wachtwoord"
                                name="confirmNewPassword">
                     </div>
-                    <button type="submit" class="btn btn-primary" name="change">Wijzig wachtwoord</button>
-                    <button class="btn btn-secondary" name="close">Terug</button>
+                    <button type="submit" class="btn btn-primary" name="change">Wijzigen</button>
+                    <a href="loggedIn.php" class="btn btn-primary">Terug</a>
                 </form>
             </div>
             <div class="col"></div>
