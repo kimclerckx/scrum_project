@@ -17,13 +17,13 @@ if (isset($_POST['change'])) {
 
     //3. Check if fields are empty
     if (empty($password)) {
-        $errors[] = "Huidig wachtwoord is verplicht.";
+        $errors[] = "Huidig wachtwoord is verplicht";
     }
     if (empty($passwordNew)) {
-        $errors[] = "Nieuw wachtwoord is verplicht.";
+        $errors[] = "Nieuw wachtwoord is verplicht";
     }
     if (empty($passwordConfirmNew)) {
-        $errors[] = "Herhaal het nieuw wachtwoord.";
+        $errors[] = "Herhaal het nieuw wachtwoord";
     }
     //4. Check if current password matches user email
     if (count($errors) == 0) {
@@ -34,14 +34,14 @@ if (isset($_POST['change'])) {
 
         //5. Check if current
         if (!password_verify($password, $resultSet['password'])) {
-            $errors[] = "Huidig wachtwoord voor  " . $email . " is niet correct.";
+            $errors[] = "Huidig wachtwoord voor  " . $email . " is niet correct";
         }
 
         if (count($errors) == 0) {
 
             //7. Check if passwords match
             if ($passwordNew !== $passwordConfirmNew) {
-                $errors[] = "De ingevoerde wachtwoorden zijn verschillend, probeer opnieuw.";
+                $errors[] = "De ingevoerde wachtwoorden zijn verschillend, probeer opnieuw";
             } else {
                 $sql = 'UPDATE users SET password = :password WHERE email = :email';
                 $db->executeWithParam($sql, array(array(':password', password_hash($passwordConfirmNew, PASSWORD_BCRYPT)), array(':email', $_SESSION['email'])));
@@ -101,6 +101,6 @@ require_once 'include/menu.php';?>
     </div>
     <br/>
     <!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
-    <p class="text-center"><?php echo implode("<br><br>", $errors); ?></p>
+    <p class="text-center errors"><?php echo implode("<br><br>", $errors); ?></p>
 </body>
 </html>

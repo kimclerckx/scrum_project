@@ -29,8 +29,9 @@ if (!isset($_SESSION['email'])) {
 } ?>
 <!--Menu-->
 <?php require_once 'include/menu.php'; ?>
+<h2>Logs bezoekers</h2>
 <!--Show log records-->
-<div class="headWrapper">
+<div class="headWrapper text-center">
     <form action="logs.php" method="post">
         <select name="aantLogs" id="aantLogs">
             <option value="25"<?php echo ($_SESSION['aantLogs'] == '25') ? 'selected="selected"' : ''; ?> >25</option>

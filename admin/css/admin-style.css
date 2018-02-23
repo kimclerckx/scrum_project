@@ -23,13 +23,25 @@ body {
 }
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: stretch;
 }
 
 .header p {
     text-align: center;
     margin:auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 3rem 0;
+    border: 1px solid silver;
+    background-color: transparent;
+    padding: 3rem;
+}
+
+.errors {
+    color: red;
 }
 
 /* nodes */
@@ -65,10 +77,18 @@ li {
 
 /* logo */
 
-.header .logo img {
+ .logo img {
     width: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin:0 10px;
 }
 
+.banner {
+    display:flex;
+    justify-content: space-between;
+}
 /* buttons loggedIn*/
 
 .listBtn {
@@ -120,14 +140,14 @@ li {
 /********** logs **********/
 
 .headWrapper{
-    display: grid;
-	grid-template-columns: 1fr 5fr;
-    grid-row-gap: 0.2rem;
+/*    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-row-gap: 0.2rem;*/
     
 }
 .wrapperLogs {
-	display: grid;
-	grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
     grid-row-gap: 0.2rem;
 }
 
