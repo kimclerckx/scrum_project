@@ -23,7 +23,7 @@ body {
 }
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: stretch;
 }
 
@@ -75,12 +75,24 @@ li {
     color: #74b9ff;
 } 
 
-/* logo */
+/* banner */
 
-.header .logo img {
-    width: 40px;
+ .logo img {
+    width: 43px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin:1px 17px 0px 5px;
 }
 
+.banner {
+    display:flex;
+    justify-content: space-between;
+}
+
+.header .form-group, form{
+    margin-bottom: 0;
+}
 /* buttons loggedIn*/
 
 .listBtn {
@@ -133,13 +145,13 @@ li {
 
 .headWrapper{
 /*    display: grid;
-	grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 5fr;
     grid-row-gap: 0.2rem;*/
     
 }
 .wrapperLogs {
-	display: grid;
-	grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 4fr;
     grid-row-gap: 0.2rem;
 }
 
