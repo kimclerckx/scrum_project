@@ -7,15 +7,21 @@ class LogList
     {
         $offset = ($i-1) * $aantLogs;
         $db = new Database();
+
+
         $sql = "SELECT logs.ID, timestampStart, timestampEnd, content
         FROM logs
-        inner join nodes on nodes.ID = logs.lastnode
+        left join nodes on nodes.ID = logs.lastnode
         LIMIT $aantLogs OFFSET $offset";
         $db->executeWithoutParam($sql);
         $resultSet = $db->resultset();
         $db = null;
         $logList = array();
         foreach ($resultSet as $value) {
+            if (is_null($value['content'])) {
+                $value['content'] = 'Dit element is verwijderd.';
+            }
+
             array_push($logList, $value);
         }
         return $logList;
