@@ -2,6 +2,22 @@
     display: -webkit-inline-box;
 }
 
+.editor-page ul li li li li li {
+    background-color: #f3f3f3;
+}
+.editor-page ul li li li li{
+    background-color: #fbfbfb;
+}
+.editor-page ul li li li {
+    background-color: #f3f3f3;
+}
+.editor-page ul li li {
+    background-color: #fbfbfb;
+}
+.editor-page ul li {
+    background-color: #f3f3f3;
+}
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -138,9 +154,22 @@ li {
 }
 .col5 {
     background-color: #9E9E9E;
+}
+/* Pagination bottom of logs */
+.pages {
+	 padding: 1rem 0;
+ }
 
+.pageButton {
+	margin-right: 1rem;
 }
 
+.menu {
+	margin-top: 1rem;
+}
 
+.menu .btn {
+	margin-right: 1rem;
+}
 
 
