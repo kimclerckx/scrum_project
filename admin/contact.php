@@ -56,7 +56,8 @@ if (isset($_POST['close'])){
               </script>");
       }
 }
-
+}
+echo $_GET['url'];
 ?>
 
 <!-- Including header -->
@@ -67,9 +68,10 @@ require_once 'include/menu.php';?>
     <div class="container">
         <div class="col-4 mx-auto text-center">
             <?php
+                $url = $_GET['url'];
                 $result = $contact->getContact();
             ?>
-            <form action="contact.php" method="post">
+            <form action="contact.php?url=<?php echo $url; ?>" method="post">
                 <div class="form-group">
                     Telefoon: <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
                 </div>
