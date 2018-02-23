@@ -24,7 +24,7 @@ if (!isset($_SESSION['email'])) {
     header("Location:index.php");
 } ?>
 <!--Menu-->
-
+<?php require_once 'include/menu.php'; ?>
 <!--Show log records-->
 <div class="headWrapper">
     <form action="logs.php" method="post">
@@ -37,7 +37,6 @@ if (!isset($_SESSION['email'])) {
         </select>
         <input class='btn btn-primary' type="submit" value="Toon">
     </form>
-    <?php require_once 'include/menu.php'; ?>
 </div>
 
 <?php

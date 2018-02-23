@@ -39,16 +39,26 @@ if (isset($_POST['contactEdit'])) {
     </script>");
 }
 
-if (isset($_POST['close'])) {
-    echo ("<script>
-    window.location.href='loggedIn.php';
-    </script>");
+if (isset($_POST['close'])){
+    
+    
+  if (isset($_GET['url']) && $_GET['url'] == 'logs') {
+      
+      echo ("<script>
+        window.location.href='logs.php';
+        </script>");
+  }elseif($_GET['url'] == 'loggedIn') {
+      echo ("<script>
+        window.location.href='loggedIn.php';
+        </script>");
+}
 }
 
 ?>
 
 <!-- Including header -->
-<?php require_once ('include/header.php'); ?>
+<?php require_once('include/header.php');
+require_once 'include/menu.php';?>
 <body>
     <div class="container">
         <div class="col-4 mx-auto text-center">
@@ -63,7 +73,7 @@ if (isset($_POST['close'])) {
                     Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
-                <button class="btn btn-secondary" name="close">Close</button>
+                <button class="btn btn-secondary" name="close">Sluiten</button>
             </form>
         </div>
     </div>
