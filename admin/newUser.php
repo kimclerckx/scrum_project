@@ -50,7 +50,7 @@ if (isset($_POST['register'])) {
         //7. If no errors -> Enter the new user in the database
         if (count($errors) == 0) {
             $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
-            $result = $db->executeWithParam($sql, array(array(':email', $email), array(':password', $password)));
+            $result = $db->executeWithParam($sql, array(array(':email', $email), array(':password', password_hash($password, PASSWORD_BCRYPT))));
          
             if ($result) {
                 echo ("<script>
