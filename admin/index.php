@@ -95,10 +95,13 @@ if (isset($_POST['login'])) {
             </form>
             <br><br>
             <a class="btn btn-primary" href="passwordReset.php">Reset wachtwoord</a>
+            <p><?php echo implode("<br><br>", $errors);?></p>
         </div>
         <div class="col"></div>
     </div>
+     
 </div>
+
 </body>
 </html>
 
