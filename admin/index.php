@@ -95,6 +95,7 @@ if (isset($_POST['login'])) {
             </form>
             <br><br>
             <a class="btn btn-primary" href="passwordReset.php">Reset wachtwoord</a>
+            <br><br>
             <p><?php echo implode("<br><br>", $errors);?></p>
         </div>
         <div class="col"></div>
