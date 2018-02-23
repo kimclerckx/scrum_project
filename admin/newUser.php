@@ -53,7 +53,9 @@ if (isset($_POST['register'])) {
             $result = $db->executeWithParam($sql, array(array(':email', $email), array(':password', $password)));
          
             if ($result) {
-                $message = 'Nieuwe gebruiker aangemaakt';
+                echo ("<script>
+                window.alert('Nieuwe gebruiker aangemaakt');
+                </script>");
             } else {
                 $message = 'Er is een fout opgetreden bij het aanmaken van een nieuwe gebruiker';
             }
@@ -72,7 +74,7 @@ if (isset($_POST['register'])) {
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <div class="header">
+        <div class="header logo">
             <a href="index.php"><img src="../images/logo-oeverdef.png"></a>
         </div>
 
