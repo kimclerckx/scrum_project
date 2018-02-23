@@ -40,32 +40,38 @@ if (isset($_POST['contactEdit'])) {
 }
 
 if (isset($_POST['close'])){
-    
-    
-  if (isset($_GET['url']) && $_GET['url'] == 'logs') {
-      
-      echo ("<script>
-        window.location.href='logs.php';
-        </script>");
-  }elseif($_GET['url'] == 'loggedIn') {
-      echo ("<script>
-        window.location.href='loggedIn.php';
-        </script>");
-}
-}
 
+        if (isset($_GET['url']) && $_GET['url'] == 'logs') {
+
+            echo ("<script>
+              window.location.href='logs.php';
+              </script>");
+      }   elseif($_GET['url'] == 'loggedIn') {
+            echo ("<script>
+              window.location.href='loggedIn.php';
+              </script>");
+      }   elseif($_GET['url'] == 'newUser') {
+            echo ("<script>
+              window.location.href='newUser.php';
+              </script>");
+      }
+}
+}
+echo $_GET['url'];
 ?>
 
 <!-- Including header -->
 <?php require_once('include/header.php');
 require_once 'include/menu.php';?>
 <body>
+    <h2>Pas contactgegevens aan</h2>
     <div class="container">
         <div class="col-4 mx-auto text-center">
             <?php
+                $url = $_GET['url'];
                 $result = $contact->getContact();
             ?>
-            <form action="contact.php" method="post">
+            <form action="contact.php?url=<?php echo $url; ?>" method="post">
                 <div class="form-group">
                     Telefoon: <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
                 </div>
@@ -73,7 +79,7 @@ require_once 'include/menu.php';?>
                     Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link">
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
-                <button class="btn btn-secondary" name="close">Sluiten</button>
+                <button class="btn btn-secondary" name="close">Terug</button>
             </form>
         </div>
     </div>

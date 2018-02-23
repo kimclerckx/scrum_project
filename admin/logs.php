@@ -7,6 +7,10 @@ if (!isset($_GET['page'])) {
     $_GET['page'] = 1;
 }
 
+if (isset($_GET['goToPage'])) {
+    $_GET['page'] = $_GET['goToPage'];
+}
+
 if (isset($_POST['aantLogs']) || (isset($_SESSION['aantLogs']))) {
     $_SESSION['aantLogs'] = (isset($_POST['aantLogs']) ? $_POST['aantLogs'] : $_SESSION['aantLogs']);
 } else {
@@ -45,55 +49,82 @@ $logCount = $ll->getLogCount();
 $aantPages = ceil($logCount / $aantLogs);
 $list = $ll->getLogs($aantLogs, $_GET['page']);
 ?>
-<div class="wrapperLogs">
-    <span class="box colH text-center">#</span>
-    <span class="box colH text-center">Start</span>
-    <span class="box colH text-center">Einde</span>
-    <span class="box colH text-center">Totale tijd</span>
-    <span class="box colH text-center">Laatst bezochte element</span>
+<div class="container">
+    <div class="wrapperLogs">
+        <span class="box colH text-center">#</span>
+        <span class="box colH text-center">Start</span>
+        <span class="box colH text-center">Einde</span>
+        <span class="box colH text-center">Totale tijd</span>
+        <span class="box colH text-center">Laatst bezochte element</span>
 
-    <?php foreach ($list as $log) {
-        $datetime1 = new DateTime($log['timestampStart']);
-        $datetime2 = new DateTime($log['timestampEnd']);
-        $duurtijd = $datetime2->diff($datetime1);
-        ?>
+        <?php foreach ($list as $log) {
+            $datetime1 = new DateTime($log['timestampStart']);
+            $datetime2 = new DateTime($log['timestampEnd']);
+            $duurtijd = $datetime2->diff($datetime1);
+            //cut content to smaller logs but do not cut inside of a link. (check for position of </a>)
+            $content = $log['content'];
+            $content = strip_tags($content, '<a>');
+            $cutPoint = 100;
+            $findLink = '</a>';
+            $endOfLink = strpos($content, $findLink) + 4;
+            if ($endOfLink > $cutPoint) {
+                $cutPoint = $endOfLink;
+            }
+            $cutContent = substr($content, 0, $cutPoint) ;
+            if (strlen($cutContent) < strlen($content)) {
+                $cutContent = $cutContent . ' ...';
+            }
+            ?>
 
-        <span class="box col1 text-center"><?php print $log['ID']; ?></span>
-        <span class="box col2 text-center"><?php print $log['timestampStart']; ?></span>
-        <span class="box col3 text-center"><?php print $log['timestampEnd']; ?></span>
-        <span class="box col4 text-center"><?php print $duurtijd->format('%hu %im %ss'); ?></span>
-        <span class="box col5 text-center"><?php print $log['content']; ?></span>
+            <span class="box col1 text-center"><?php print $log['ID']; ?></span>
+            <span class="box col2 text-center"><?php print $log['timestampStart']; ?></span>
+            <span class="box col3 text-center"><?php print $log['timestampEnd']; ?></span>
+            <span class="box col4 text-center"><?php print $duurtijd->format('%hu %im %ss'); ?></span>
+            <span class="box col5 text-center"><?php print $cutContent; ?></span>
 
-    <?php } ?>
+        <?php } ?>
 
-</div>
-<div class="text-center pages">
-    <div>
-<?php
-$i = $_GET['page'];
-echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . 1 . "'>Eerste</a>";
-if (($i - 1) > 0) {
-    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i - 1) . "'>Vorige</a>";
-}
-if (($i - 2) > 0) {
-    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i - 2) . "'>" . ($i - 2) . "</a>";
-}
-if (($i - 1) > 0) {
-    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i - 1) . "'>" . ($i - 1) . "</a>";
-}
-echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . $i . "'>" . $i . "</a>";
-if (($i + 1) <= $aantPages) {
-    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i + 1) . "'>" . ($i + 1) . "</a>";
-}
-if (($i + 2) <= $aantPages) {
-    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i + 2) . "'>" . ($i + 2) . "</a>";
-}
+    </div>
+    <div class="text-center pages">
+        <div class='row'>
+            <div class="col-lg-8">
+                <?php
+                $i = $_GET['page'];
+                echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . 1 . "'>Eerste</a>";
+                if (($i - 1) > 0) {
+                    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i - 1) . "'>Vorige</a>";
+                }
+                if (($i - 2) > 0) {
+                    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i - 2) . "'>" . ($i - 2) . "</a>";
+                }
+                if (($i - 1) > 0) {
+                    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i - 1) . "'>" . ($i - 1) . "</a>";
+                }
+                echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . $i . "'>" . $i . "</a>";
+                if (($i + 1) <= $aantPages) {
+                    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i + 1) . "'>" . ($i + 1) . "</a>";
+                }
+                if (($i + 2) <= $aantPages) {
+                    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i + 2) . "'>" . ($i + 2) . "</a>";
+                }
 
-if (($i + 1) <= $aantPages) {
-    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i + 1) . "'>Volgende</a>";
-}
-echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . $aantPages . "'>Laatste</a>";
-?>
-</div>
+                if (($i + 1) <= $aantPages) {
+                    echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . ($i + 1) . "'>Volgende</a>";
+                }
+                echo "<a class='btn btn-primary pageButton' href='logs.php?page=" . $aantPages . "'>Laatste</a>";
+                echo '</div>';
+                echo '<div class="col-lg-4">';
+                echo '<div class="row">';
+                echo '<form class="row" name="form" action="logs.php" method="get">
+            <input type="text" name="goToPage" id="subject" class="col-lg-4 form-control">
+            <div class="col-lg-4">
+            <button type="submit" class="btn btn-primary" name="submit">Ga naar pagina</button>
+            </div>
+        </form>';
+                echo '</div>';
+                echo '</div>';
+                ?>
+            </div>
+        </div>
 </body>
 </html>

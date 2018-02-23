@@ -68,7 +68,6 @@ if (isset($_POST['register'])) {
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Registreer een nieuwe gebruiker</title>
         <link rel="stylesheet" href="css/admin-style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -100,13 +99,13 @@ if (isset($_POST['register'])) {
                             <input type="password" class="form-control" id="passwordConfirm" placeholder="Herhaal wachtwoord" name="passwordConfirm">
                         </div>
                         <button type="submit" class="btn btn-primary" value="register" name="register">Gebruiker aanmaken</button>
+                        <button  class="btn btn-secondary" name="close"><a href="index.php">Terug</a></button>
                     </form>
                 </div>
                 <div class="col"></div>
             </div>
         </div>
         <br/>
-        <a class="btn" href="index.php">Terug</a>
         <br/>
         <!-- implode —> Join array elements with a string and use seperator <br><br> in this case (showing the different error messages under each other)-->
         <p><?php echo implode("<br><br>", $errors); ?></p>
