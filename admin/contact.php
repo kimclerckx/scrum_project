@@ -49,13 +49,13 @@ require_once 'include/menu.php';?>
             <?php
                 $result = $contact->getContact();
             ?>
-            <form action="contact.php" method="post">
+            <form lang="nl" action="contact.php" method="post">
                 <div class="form-group">
-                    Telefoon: (xxxx-xx-xxx) <input type="tel" pattern="[0-9]{4}-[0-9]{2}-[0-9]{3}" classghfg="form-control" id="phoneEdit" name="phone" required value="<?= $result['phone'] ?>">
+                    Telefoon: (xxxxxxxxx) <input type="tel" pattern="[0-9]{9}" class="form-control" id="phoneEdit" name="phone" required value="<?= $result['phone'] ?>" oninvalid="setCustomValidity('Text in het Nederlands!! ')>
                 <span class="validity"></span>
                 </div>
                 <div class="form-group">
-                    Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link" required>
+                    Link<input type="url" class="form-control" id="linkEdit" value="<?= $result['link'] ?>" name="link" required oninvalid="setCustomValidity('Text in het Nederlands!! ') ">
                 </div>
                 <button type="submit" class="btn btn-primary" name="contactEdit">Opslaan</button>
                 <a href="loggedIn.php" class="btn btn-primary">Terug</a>

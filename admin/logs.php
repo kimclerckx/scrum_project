@@ -116,9 +116,10 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
                 echo '<div class="col-lg-4">';
                 echo '<div class="row">';
                 echo '<form class="row formSpacing" name="form" action="logs.php" method="get">
-            <input type="text" name="goToPage" placeholder="Kies pagina" id="subject" class="col-lg-5 form-control">
+            <input type="number" min="1" max="'. $aantPages .'" name="goToPage" placeholder="Kies pagina" id="subject" class="col-lg-5 form-control">
             <div class="col-lg-4">
             <button type="submit" class="btn btn-primary" name="submit">Ga naar pagina</button>
+            
             </div>
         </form>';
                 echo '</div>';
@@ -126,5 +127,6 @@ $list = $ll->getLogs($aantLogs, $_GET['page']);
                 ?>
             </div>
         </div>
+        
 </body>
 </html>
