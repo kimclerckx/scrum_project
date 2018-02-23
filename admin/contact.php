@@ -52,7 +52,7 @@ require_once 'include/menu.php';?>
             <?php
                 $result = $contact->getContact();
             ?>
-            <form action="contact.php?url=<?php echo $url; ?>" method="post">
+            <form action="contact.php" method="post">
                 <div class="form-group">
                     Telefoon <input type="tel" class="form-control" id="phoneEdit" name="phone" value="<?= $result['phone'] ?>">
                 </div>
