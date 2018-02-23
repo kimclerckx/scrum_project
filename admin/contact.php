@@ -18,7 +18,7 @@ class Contact {
 
     public function updateContact($phone, $link) {
         $db = new Database();
-        $sql = 'UPDATE contact set phone = :phone, link = :link where ID = 1';
+        $sql = 'UPDATE contact set phone = :phone, link = :link where ID = 3';
         $db->executeWithParam($sql, array(array(':phone', $phone), array(':link', $link)));
         $db = null;
     }
@@ -50,7 +50,6 @@ require_once 'include/menu.php';?>
     <div class="container">
         <div class="col-4 mx-auto text-center">
             <?php
-                $url = $_GET['url'];
                 $result = $contact->getContact();
             ?>
             <form action="contact.php?url=<?php echo $url; ?>" method="post">
