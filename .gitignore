@@ -2,4 +2,5 @@
 .vscode
 .nbproject
 *.sql
-/nbproject/private/
+/Database.php
+/README.md
